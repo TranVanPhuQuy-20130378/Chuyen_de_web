@@ -186,7 +186,7 @@ function HeaderSearch() {
                                      $('.header-search-categories ul').slideToggle(300)
                                      setToggle(!toggle)
                                  }}>
-                                <span className="position-relative align-middle">{search.from ? getTypeName(search.from) : 'TẤT CẢ CODE'} <i
+                                <span className="position-relative align-middle">{search.from ? getTypeName(search.from) : 'TẤT CẢ HÃNG'} <i
                                     className={toggle ? "fa fa-caret-up" : "fa fa-caret-down"}></i></span>
                                 <ul>
                                     {types.map(type => (
