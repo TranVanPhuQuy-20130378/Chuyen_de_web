@@ -14,7 +14,8 @@ export default function Footer() {
                             <div>
                                 <div className="footer-about-contact-item">
                                     <div className="w-25 float-left font-weight-bolder">Địa chỉ:</div>
-                                    <div>Khoa CNTT - ĐH Nông Lâm</div>
+                                    <div>Đại học Nông Lâm TP HCM
+                                 </div>
                                 </div>
                                 <div className="footer-about-contact-item">
                                     <div className="w-25 float-left font-weight-bolder">Phone:</div>
@@ -22,7 +23,7 @@ export default function Footer() {
                                 </div>
                                 <div className="footer-about-contact-item">
                                     <div className="w-25 float-left font-weight-bolder">Email:</div>
-                                    <div>k46-it-nlu@gmail.com</div>
+                                    <div>chuyendeweb2024@gmail.com</div>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +35,7 @@ export default function Footer() {
                                 <ul>
                                     <li><Link to="/">Giới thiệu</Link></li>
                                     <li><Link to="/">Quy định chung</Link></li>
-                                    <li><Link to="/">Chính sách bán code</Link></li>
+                                    <li><Link to="/">Chính sách bán điện thoại di động </Link></li>
                                     <li><Link to="/">Câu hỏi thường gặp</Link></li>
                                     <li><Link to="/">Sự kiện</Link></li>
                                 </ul>
@@ -42,11 +43,11 @@ export default function Footer() {
                             <div className="footer-links col-lg-6">
                                 <h6>HƯỚNG DẪN</h6>
                                 <ul>
-                                    <li><Link to="/">Tải code miễn phí</Link></li>
-                                    <li><Link to="/">Tải code có phí</Link></li>
+                                    <li><Link to="/">Chọn smartphone tốt nhất </Link></li>
+                                    <li><Link to="/">Android và IOS chọn loại nào </Link></li>
                                     <li><Link to="/">Hướng dẫn thanh toán</Link></li>
-                                    <li><Link to="/">Hướng dẫn cài đặt</Link></li>
-                                    <li><Link to="/">Hỗ trợ kĩ thuật</Link></li>
+                                    <li><Link to="/">Hướng dẫn cài đặt hệ điều hành </Link></li>
+                                    <li><Link to="/">Hỗ trợ kĩ thuậ các phần mềm máy tính </Link></li>
                                 </ul>
                             </div>
                         </div>

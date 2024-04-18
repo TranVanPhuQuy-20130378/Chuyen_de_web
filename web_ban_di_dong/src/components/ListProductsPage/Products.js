@@ -52,7 +52,7 @@ export function SideBar({type}) {
     return (
         <div className="sidebar">
             <div className="sidebar-item">
-                <h6 className="list-group-item">Phân loại code</h6>
+                <h6 className="list-group-item">Phân loại điện thoại</h6>
                 <div className="list-group">
                     {types.map(value => (
                         <div className={`list-group-item ${value.id === type && 'item-active'}`} key={value.id}
@@ -123,7 +123,7 @@ export function ProductItem({p, navigate, addToLiked, addToCart}) {
             <div>
                 <Toast show={showToast} onClose={() => setShowToast(false)} delay={3000} autohide>
                     <Toast.Body className="text-white" style={{backgroundColor: '#7fad39'}}>
-                        Mã nguồn đã được thêm vào giỏ hàng
+                        Sản phẩm  đã được thêm vào giỏ hàng
                     </Toast.Body>
                 </Toast>
             </div>
@@ -258,7 +258,7 @@ export function ProductContainer({query, total, data, forLiked}) {
                 <div className="search-not-found">
                     {forLiked ? <img src={require('../../img/empty.png')} alt=""/> : <img src={require('../../img/not_found.jpg')} alt=""/>}
                     {forLiked ? <div>Danh mục yêu thích trống</div> : <div>Không có kết quả</div>}
-                    {!forLiked && <div>Không tìm thấy code cho từ khóa <span>{query}</span></div>}
+                    {!forLiked && <div>Không tìm thấy sản phẩm cho từ khóa <span>{query}</span></div>}
                 </div>
             )}
         </>

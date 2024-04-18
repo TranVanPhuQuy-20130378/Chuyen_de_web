@@ -80,10 +80,10 @@ function DetailCenter({product}) {
                 <div>
                     <i className="fa fa-list"></i><span>Danh mục</span> <Link to={`/products?type=${product.type.id}`}>{product.type.name}</Link>
                 </div>
-                <div><i className="fa fa-layer-group"></i><span>Nhóm code</span> <Link to={'/top-codes'}>Top code</Link></div>
+                <div><i className="fa fa-layer-group"></i><span>Nhóm sản phẩm </span> <Link to={'/top-codes'}>Top sản phẩm</Link></div>
                 <div><i className="fa fa-calendar"></i><span>Ngày đăng</span> {product.release}</div>
-                <div><i className="fa fa-object-group"></i><span>Loại file</span> {product.file.type}</div>
-                <div><i className="fa fa-file-code"></i><span>File download</span> {product.file.name}
+                <div><i className="fa fa-object-group"></i><span>Loại sản phẩm</span> {product.file.type}</div>
+                <div><i className="fa fa-file-code"></i><span>Sản phẩm được tải lên </span> {product.file.name}
                     <span>[{product.file.size} {product.file.unit}]</span></div>
             </div>
         </div>
