@@ -173,8 +173,7 @@ function ItemProductFeatured({product}) {
                     </div>
                 </div>
                 <div className="product-item-stats d-flex justify-content-between">
-                    <div><i className="fa fa-eye"></i> {product.viewed}</div>
-                    <div><i className="fa fa-download"></i> {product.downloaded}</div>
+
                 </div>
                 <div className="product-item-actions d-flex justify-content-between align-items-center">
                     <div className="d-flex justify-content-start">

@@ -7,29 +7,7 @@ import {getTypeName, getTypes} from "../../javascript/utils"
 import {useDispatch} from "react-redux";
 import {setLayout, setPage, setSort, setType} from "../../redux/Action";
 
-function HeaderAds() {
-    const [adsList, setAdsList] = useState([])
-    const [adsIndex, setAdsIndex] = useState(0)
 
-    useEffect(() => {
-        fetch('http://localhost:9810/ads')
-            .then(value => value.json())
-            .then(json => setAdsList(json))
-    }, [])
-
-    useEffect(() => {
-        const id = setTimeout(() => setAdsIndex((adsIndex + 1) % adsList.length), 5000)
-        return () => clearTimeout(id)
-    }, [adsIndex, adsList.length])
-
-    return (
-        <div className="header-ads" style={{backgroundColor: `${adsList[adsIndex] && adsList[adsIndex].color}`}}>
-            <div className="container">
-                <img src={adsList[adsIndex] && adsList[adsIndex].img} alt=""/>
-            </div>
-        </div>
-    )
-}
 
 function HeaderTop() {
     const [email, setEmail] = useState('');
@@ -115,14 +93,13 @@ function HeaderMenu() {
                         <ul>
                             <li><span onClick={() => handledLink('/')} className={location.pathname === '/' && 'active'}>Trang chủ</span></li>
                             <li><span onClick={() => handledLink('/top-codes')}
-                                      className={location.pathname.indexOf('top-codes') > 0 && 'active'}>Top code</span></li>
+                                      className={location.pathname.indexOf('top-codes') > 0 && 'active'}>Sale</span></li>
                             <li><span onClick={() => handledLink('/quality-codes')}
-                                      className={location.pathname.indexOf('quality-codes') > 0 && 'active'}>Code chất
-                                lượng</span>
+                                      className={location.pathname.indexOf('quality-codes') > 0 && 'active'}>Điện thoại hot</span>
                                 <img src={require('../../img/ic_hot.gif')} alt=""/>
                             </li>
                             <li><span onClick={() => handledLink('/free-codes')}
-                                      className={location.pathname.indexOf('free-codes') > 0 && 'active'}>Code miễn phí</span></li>
+                                      className={location.pathname.indexOf('free-codes') > 0 && 'active'}>Điện thoại cũ</span></li>
                         </ul>
                     </nav>
                 </div>
@@ -152,7 +129,7 @@ function CodeCategories({types}) {
         }}>
             <div className="header-categories-all">
                 <i className="bi bi-list mr-3"></i>
-                <span>Danh mục code</span>
+                <span>Hãng</span>
                 <i className="bi bi-chevron-down"></i>
             </div>
             <ul>
@@ -200,7 +177,7 @@ function HeaderSearch() {
                 <div className="col-lg-3">
                     <CodeCategories types={types}/>
                 </div>
-                <div className="col-lg-7">
+                <div className="col-lg-8">
                     <div className="header-search h-100">
                         <form onSubmit={handleSubmit}>
                             <div className="header-search-categories pl-3"
@@ -216,17 +193,12 @@ function HeaderSearch() {
                                         <li onClick={() => setSearch({...search, from: type.id})}
                                             key={type.id}>{type.name}</li>
                                     ))}
-                                    <li onClick={() => setSearch({})} key={types.length}>TẤT CẢ CODE</li>
+                                    <li onClick={() => setSearch({})} key={types.length}>Hãng</li>
                                 </ul>
                             </div>
                             <input type="text" value={search.query} placeholder="Nhập từ khóa" onChange={handleChange}/>
                             <button type="submit"><i className="fa fa-search"></i></button>
                         </form>
-                    </div>
-                </div>
-                <div className="col-lg-2">
-                    <div className="header-upload d-flex justify-content-end align-items-center h-100">
-                        <div className="header-upload-action"><i className="fa fa-cloud-upload mr-2"></i> TẢI LÊN</div>
                     </div>
                 </div>
             </div>
@@ -247,7 +219,6 @@ export default function Header() {
 
     return (
         <header className="header mb-3">
-            <HeaderAds/>
             <HeaderTop/>
             <HeaderMenu/>
             <HeaderSearch/>

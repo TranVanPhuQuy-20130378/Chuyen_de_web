@@ -16,6 +16,7 @@ export default function Footer() {
                                     <div className="w-25 float-left font-weight-bolder">Địa chỉ:</div>
                                     <div>Đại học Nông Lâm TP HCM
                                  </div>
+                                    <div>Khoa cntp ĐH Nông Lâm</div>
                                 </div>
                                 <div className="footer-about-contact-item">
                                     <div className="w-25 float-left font-weight-bolder">Phone:</div>

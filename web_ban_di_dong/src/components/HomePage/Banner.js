@@ -45,7 +45,7 @@ function Banner() {
                             <Link to="/products?type=wordpress" className="list-group-item"><i className="fa fa-code"></i> Wordpress</Link>
                         </div>
                     </div>
-                    <div className="col-sm-7">
+                    <div className="col-sm-8">
                         <Carousel className="main-slide" {...carouselSettings}>
                             <div>
                                 <img style={styleImage} src={img_banner_1} alt=""/>
