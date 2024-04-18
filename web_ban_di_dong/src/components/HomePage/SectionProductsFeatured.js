@@ -9,7 +9,7 @@ function SectionProductsFeatured() {
                 <div className="row">
                     <div className="col-lg-12">
                         <div className="section-title">
-                            <h2>CODE NỔI BẬT</h2>
+                            <h2>SẢN PHẨM NỔI BẬT </h2>
                         </div>
                     </div>
                 </div>

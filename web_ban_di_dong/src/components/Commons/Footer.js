@@ -48,7 +48,7 @@ export default function Footer() {
                                     <li><Link to="/">Android và IOS chọn loại nào </Link></li>
                                     <li><Link to="/">Hướng dẫn thanh toán</Link></li>
                                     <li><Link to="/">Hướng dẫn cài đặt hệ điều hành </Link></li>
-                                    <li><Link to="/">Hỗ trợ kĩ thuậ các phần mềm máy tính </Link></li>
+                                    <li><Link to="/">Hỗ trợ kĩ thuật các phần mềm máy tính </Link></li>
                                 </ul>
                             </div>
                         </div>
