@@ -8,10 +8,10 @@ import {Link, useNavigate} from "react-router-dom";
 import SectionBreadcrumb from "../Commons/SectionBreadcrumb";
 import React, {useEffect, useState} from "react";
 import {hashText, isEmail, isEmpty} from "../../javascript/utils/Utils_Tai";
-import {loginError} from "../../redux/redux_tai/Action";
-import {checkEmailExists, checkLogin, getProvinces} from "../../javascript/api/Api_Tai";
+import {loginError} from "../../redux/redux_phong/Action";
+import {checkEmailExists, checkLogin, getProvinces} from "../../javascript/api/Api";
 import {useDispatch, useSelector} from "react-redux";
-import {errorLoginSelector, errorRegisterSelector} from "../../redux/redux_tai/Selectors";
+import {errorLoginSelector, errorRegisterSelector} from "../../redux/redux_phong/Selectors";
 
 const breadcrumbs = [{name: "Trang chủ", link: "/"}, {name: "Đăng nhập", link: "/login"}]
 

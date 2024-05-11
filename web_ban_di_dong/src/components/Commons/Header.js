@@ -51,7 +51,7 @@ function HeaderTop() {
                             </div>
                             {email ? (
                                 <div className="header-top-right-auth d-flex justify-content-end align-items-center">
-                                    <Link to="/profile"><i className="fa fa-user-plus"></i>Xin chào, {email}</Link>
+                                    <Link to="/profile"><i className="fa fa-user-plus"></i>Xin chào</Link>
                                     <Link to="/" onClick={handleLogout} className="mr-0"><i className="fa fa-sign-in"></i> Đăng xuất</Link>
                                 </div>
                             ) : (

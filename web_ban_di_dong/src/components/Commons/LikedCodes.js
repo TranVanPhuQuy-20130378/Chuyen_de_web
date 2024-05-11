@@ -5,7 +5,7 @@ import {buildQuery} from "../../javascript/utils";
 import React, {useEffect, useState} from "react";
 import {ProductContainer} from "../ListProductsPage/Products";
 import SectionBreadcrumb from "./SectionBreadcrumb";
-import {fetchCodes} from "../../javascript/api/Api_Dat";
+import {fetchCodes} from "../../javascript/api/Api_phong";
 
 export function Codes() {
     const likedCodes = useSelector(state => state.likedCodesReducer.liked)

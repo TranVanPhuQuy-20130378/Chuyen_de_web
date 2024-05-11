@@ -5,9 +5,9 @@ import {formatNumber, formatRating, getFirstLetter, getPassedTimeInText} from ".
 import Parser from 'html-react-parser'
 import {useDispatch, useSelector} from "react-redux";
 import {addLiked} from "../../redux/Action";
-import {addItemToCart} from "../../redux/redux_tuyen/Action_Tuyen";
+import {addItemToCart} from "../../redux/redux_quy/Action_quy";
 import {PopularCode} from "../ListProductsPage/Products";
-import {fetchCodes, putCodes} from "../../javascript/api/Api_Dat";
+import {fetchCodes, putCodes} from "../../javascript/api/Api_phong";
 import SectionBreadcrumb from "../Commons/SectionBreadcrumb";
 
 function DetailLeft({product}) {

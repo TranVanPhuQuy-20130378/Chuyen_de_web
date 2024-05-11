@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Toast} from 'react-bootstrap';
 import {default as queryString} from 'query-string';
 
-import {addItemToCart} from '../../redux/redux_tuyen/Action_Tuyen';
+import {addItemToCart} from '../../redux/redux_quy/Action_quy';
 
 import Pagination from './Pagination'
 

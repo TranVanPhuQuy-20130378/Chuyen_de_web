@@ -3,11 +3,11 @@ import SectionBreadcrumb from "../Commons/SectionBreadcrumb";
 import Footer from '../Commons/Footer';
 import {Link, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import {changeProfile, getProvinces, loadInfo} from "../../javascript/api/Api_Tai";
+import {changeProfile, getProvinces, loadInfo} from "../../javascript/api/Api";
 import {isEmail, isEmpty, isPhoneNumber} from "../../javascript/utils/Utils_Tai";
 import {useDispatch, useSelector} from "react-redux";
-import {profileError} from "../../redux/redux_tai/Action";
-import {errorProfileSelector} from "../../redux/redux_tai/Selectors";
+import {profileError} from "../../redux/redux_phong/Action";
+import {errorProfileSelector} from "../../redux/redux_phong/Selectors";
 import Swal from "sweetalert2";
 
 const breadcrumbs = [{name: "Trang chủ", link: "/"}, {name: "Hồ sơ cá nhân", link: "/profile"}]

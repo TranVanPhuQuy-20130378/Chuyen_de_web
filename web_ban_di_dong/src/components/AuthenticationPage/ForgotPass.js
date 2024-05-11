@@ -6,9 +6,9 @@ import {Link, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {isEmail, isEmpty} from "../../javascript/utils/Utils_Tai";
 import {useDispatch, useSelector} from "react-redux";
-import {forgotPassError} from "../../redux/redux_tai/Action";
-import {errorForgotPassSelector} from "../../redux/redux_tai/Selectors";
-import {checkEmailExists} from "../../javascript/api/Api_Tai";
+import {forgotPassError} from "../../redux/redux_phong/Action";
+import {errorForgotPassSelector} from "../../redux/redux_phong/Selectors";
+import {checkEmailExists} from "../../javascript/api/Api";
 
 const breadcrumbs = [{name: "Trang chủ", link: "/"}, {name: "Quên mật khẩu", link: "/forgot-password"}]
 function SectionForgotPass(){
