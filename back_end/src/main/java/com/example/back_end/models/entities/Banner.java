@@ -1,4 +1,4 @@
-package com.example.back_end.models;
+package com.example.back_end.models.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;

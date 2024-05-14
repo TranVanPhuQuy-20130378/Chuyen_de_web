@@ -1,4 +1,4 @@
-package com.example.api_web_ban_hang.dto;
+package com.example.back_end.dto;
 
 import lombok.Builder;
 import lombok.Data;
