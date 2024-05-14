@@ -1,4 +1,4 @@
-package com.example.back_end.models.entitles;
+package com.example.back_end.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
