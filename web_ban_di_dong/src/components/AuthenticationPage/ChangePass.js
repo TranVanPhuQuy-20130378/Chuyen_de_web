@@ -5,10 +5,10 @@ import Footer from '../Commons/Footer';
 import {Toast} from 'react-bootstrap';
 import React, {useEffect, useState} from "react";
 import {isEmpty} from "../../javascript/utils/Utils_Tai";
-import {changePassError, loginError} from "../../redux/redux_tai/Action";
-import {changePassword, checkLogin} from "../../javascript/api/Api_Tai";
+import {changePassError, loginError} from "../../redux/redux_phong/Action";
+import {changePassword, checkLogin} from "../../javascript/api/Api";
 import {useDispatch, useSelector} from "react-redux";
-import {errorChangePassSelector} from "../../redux/redux_tai/Selectors";
+import {errorChangePassSelector} from "../../redux/redux_phong/Selectors";
 import {useNavigate} from "react-router-dom";
 const breadcrumbs = [{name: "Trang chủ", link: "/"}, {name: "Đổi mật khẩu", link: "/change-password"}]
 function SectionChangePass(){

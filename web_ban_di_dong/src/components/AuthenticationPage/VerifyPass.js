@@ -7,9 +7,9 @@ import {useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {isEmpty} from "../../javascript/utils/Utils_Tai";
 import {useDispatch, useSelector} from "react-redux";
-import {verifyPassError} from "../../redux/redux_tai/Action";
-import {changePassword} from "../../javascript/api/Api_Tai";
-import {errorVerifyPassSelector} from "../../redux/redux_tai/Selectors";
+import {verifyPassError} from "../../redux/redux_phong/Action";
+import {changePassword} from "../../javascript/api/Api";
+import {errorVerifyPassSelector} from "../../redux/redux_phong/Selectors";
 
 const breadcrumbs = [{name: "Trang chủ", link: "/"}, {name: "Quên mật khẩu", link: "/forgot-password"},
     {name: "Xác thực mật khẩu", link: "/verify-password"}]

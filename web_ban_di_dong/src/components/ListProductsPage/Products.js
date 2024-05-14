@@ -5,12 +5,12 @@ import {addLiked, setLayout, setPage, setSort} from "../../redux/Action";
 import {Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import {StarRate} from "../ProductDetailPage/ProductDetails";
 import {formatNumber, formatRating, getTypeName, getTypes, makeURL} from "../../javascript/utils";
-import {addItemToCart} from "../../redux/redux_tuyen/Action_Tuyen";
+import {addItemToCart} from "../../redux/redux_quy/Action_quy";
 import {Toast} from "react-bootstrap";
 import Header from "../Commons/Header";
 import Footer from "../Commons/Footer";
 import SectionBreadcrumb from "../Commons/SectionBreadcrumb";
-import {fetchCodes, fetchPopularCodes, fetchProducts} from "../../javascript/api/Api_Dat";
+import {fetchCodes, fetchPopularCodes, fetchProducts} from "../../javascript/api/Api_phong";
 
 export function PopularCode() {
     const [data, setData] = useState([])
@@ -21,7 +21,7 @@ export function PopularCode() {
 
     return (
         <div className="sidebar-item sidebar-popular mt-5">
-            <h6 className="list-group-item">Code phổ biến</h6>
+            <h6 className="list-group-item">Sản phẩm phổ biến</h6>
             <div className="list-group">
                 {data.map((product) => (
                     <Link to={`/products/product/${product.id}`} state={product} className="list-group-item" key={product.id}>

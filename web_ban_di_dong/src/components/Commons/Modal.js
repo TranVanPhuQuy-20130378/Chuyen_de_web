@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 
 import {downloadFile} from "../../javascript/utils/Utils_Tuyen";
 
-import {resetCart, showModalPayment, showModalPayPal, updateStatePayment} from "../../redux/redux_tuyen/Action_Tuyen";
+import {resetCart, showModalPayment, showModalPayPal, updateStatePayment} from "../../redux/redux_quy/Action_quy";
 import {ButtonPayPal} from "../Commons/Buttons";
 import {PayPalScriptProvider} from "@paypal/react-paypal-js";
 
