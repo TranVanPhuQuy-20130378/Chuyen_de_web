@@ -1,4 +1,4 @@
-package com.example.api_web_ban_hang.common;
+package com.example.back_end.common;
 
 public class Sex {
     public static final int NAM = 0;

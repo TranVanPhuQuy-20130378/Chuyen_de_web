@@ -1,4 +1,6 @@
-package com.example.api_web_ban_hang.dto;
+package com.example.back_end.dto;
+
+import java.util.List;
 
 /**
  * Class này <=> với chuỗi Json trả về dữ liệu (được phân trang)
@@ -17,4 +19,5 @@ public class PagedResponse_Ver1<T> {
         this.total_items = total_items;
         this.data = data;
     }
+
 }
