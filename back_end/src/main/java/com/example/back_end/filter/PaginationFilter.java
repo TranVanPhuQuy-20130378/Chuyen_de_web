@@ -1,4 +1,4 @@
-package com.example.api_web_ban_hang.filter;
+package com.example.back_end.filter;
 
 /**
  * Class này làm nhiệm vụ đảm bảo sự hợp lệ của các thuộc tính

@@ -1,6 +1,7 @@
 package com.example.back_end.services.interfaces;
 
-import com.example.api_web_ban_hang.dto.ProductDTO_Ver1;
+import com.example.back_end.dto.ProductDTO_Ver1;
+import com.example.back_end.dto.ProductDTO_Ver1;
 
 import java.util.List;
 
@@ -27,4 +28,10 @@ public interface IGetProductService {
      */
 
     List<ProductDTO_Ver1> getListProductBy_TypeAndBrandAndSex(int type_product, int brand, int sex, int page, int page_size);
+
+    int countProductsBy_TypeAndStatus(int type_product, int status_product);
+
+    List<ProductDTO_Ver1> getListProductBy_TypeAndBrandAndSex(int type_product, int brand, int page, int page_size);
+
+    int countProductsBy_TypeAndBrandAndSex(int type_product, int brand);
 }

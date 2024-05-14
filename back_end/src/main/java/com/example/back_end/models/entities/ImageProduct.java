@@ -1,5 +1,6 @@
-package com.example.back_end.models;
+package com.example.back_end.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -9,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "img_product")
-public class ImgProduct {
+public class ImageProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "img_id", nullable = false)
@@ -22,5 +23,8 @@ public class ImgProduct {
     @Size(max = 255)
     @Column(name = "image_url")
     private String imageUrl;
-
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "id_product")
+    private Product product;
 }

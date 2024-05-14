@@ -1,4 +1,4 @@
-package com.example.back_end.service.imp;
+package com.example.back_end.services.imp;
 
 public class ProductServiceImp {
 }

@@ -1,6 +1,6 @@
-package com.example.api_web_ban_hang.repos;
+package com.example.back_end.repos;
 
-import com.example.api_web_ban_hang.models.entities.User;
+import com.example.back_end.models.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
