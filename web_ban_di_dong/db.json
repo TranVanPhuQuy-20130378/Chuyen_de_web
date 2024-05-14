@@ -2,26 +2,25 @@
   "products-featured": [
     {
       "id": 1,
-      "img": "https://topcode.vn/FilesUpload/CodeUpload/%20154431%2036143_full-source-code-android-app-ban-quan-ao-thoi-trang-full-chuc-nang-giao-dien-dep-su-dung-android-studio-api-springboot-mysql-tich-hop-thanh-toan-zalopay-173236241847655.png",
+      "img": "product/Iphone/cellphones 011.png",
       "thumbnails": [
-        "https://topcode.vn/FilesUpload/CodeUpload/%20154431%2036143_full-source-code-android-app-ban-quan-ao-thoi-trang-full-chuc-nang-giao-dien-dep-su-dung-android-studio-api-springboot-mysql-tich-hop-thanh-toan-zalopay-173236241847655.png",
-        "https://topcode.vn/FilesUpload/CodeUpload/%20154431%2036143_full-source-code-android-app-ban-quan-ao-thoi-trang-full-chuc-nang-giao-dien-dep-su-dung-android-studio-api-springboot-mysql-tich-hop-thanh-toan-zalopay-173234781907336.png",
-        "https://topcode.vn/FilesUpload/CodeUpload/%20154431%2036143_full-source-code-android-app-ban-quan-ao-thoi-trang-full-chuc-nang-giao-dien-dep-su-dung-android-studio-api-springboot-mysql-tich-hop-thanh-toan-zalopay-1732351638198547.png"
+        "product/Iphone/cellphones 012.png",
+        "product/Iphone/cellphones 013.png"
       ],
       "type": {
-        "id": "android",
-        "name": "Android",
+        "id": "Iphone",
+        "name": "Iphone",
         "img": "https://www.codester.com/static/uploads/categories/29/icon-alt.png"
       },
-      "name": "iphone 11",
-      "description": "Màn hình\r\n\r\nCông nghệ màn hình:\r\n\r\nOLED\\r\\nĐộ phân giải:\\r\\nSuper Retina XDR (1290 x 2796 Pixels)\\r\\nMàn hình rộng:\\r\\n\\r\\n6.7\\\" - Tần số quét 120 Hz\\r\\nĐộ sáng tối đa:\\r\\n2000 nits\\r\\nMặt kính cảm ứng:\\r\\n\\r\\nKính cường lực Ceramic Shield\\r\\nCamera sau\\r\\n\\r\\nĐộ phân giải:\\r\\nChính 48 MP & Phụ 12 MP, 12 MP\\r\\nQuay phim:\\r\\n\\r\\nHD 720p@30fps\\r\\n\\r\\nFullHD 1080p@60fps\\r\\n\\r\\nFullHD 1080p@30fps\\r\\n\\r\\n4K 2160p@60fps\\r\\n\\r\\n4K 2160p@30fps\\r\\n\\r\\nĐèn Flash:\\r\\n\\r\\nCó\\r\\nTính năng:\\r\\n\\r\\nẢnh Raw\\r\\n\\r\\nZoom quang học\\r\\n\\r\\nZoom kỹ thuật số\\r\\n\\r\\nXóa phông\\r\\n\\r\\nTrôi nhanh thời gian (Time Lapse)\\r\\n\\r\\nToàn cảnh (Panorama)\\r\\n\\r\\nSmart HDR 5\\r\\n\\r\\nSiêu độ phân giải\\r\\n\\r\\nQuay chậm (Slow Motion)\\r\\n\\r\\nLive Photo\\r\\n\\r\\nGóc siêu rộng (Ultrawide)\\r\\n\\r\\nGóc rộng (Wide)\\r\\n\\r\\nDolby Vision HDR\\r\\n\\r\\nDeep Fusion\\r\\n\\r\\nCinematic\\r\\n\\r\\nChống rung quang học (OIS)\\r\\n\\r\\nBộ lọc màu\\r\\n\\r\\nBan đêm (Night Mode)\\r\\n\\r\\nCamera trước\\r\\n\\r\\nĐộ phân giải:\\r\\n12 MP\\r\\nTính năng:\\r\\n\\r\\nSmart HDR 5\\r\\n\\r\\nXóa phông\\r\\n\\r\\nTrôi nhanh thời gian (Time Lapse)\\r\\n\\r\\nQuay video HD\\r\\n\\r\\nQuay video Full HD\\r\\n\\r\\nQuay video 4K\\r\\n\\r\\nNhãn dán (AR Stickers)\\r\\n\\r\\nLive Photo\\r\\n\\r\\nChụp đêm\\r\\n\\r\\nBộ lọc màu\\r\\n\\r\\nHệ điều hành & CPU\\r\\n\\r\\nHệ điều hành:\\r\\niOS 17\\r\\nChip xử lý (CPU):\\r\\n\\r\\nApple A17 Pro 6 nhân\\r\\nTốc độ CPU:\\r\\n3.78 GHz\\r\\nChip đồ họa (GPU):\\r\\n\\r\\nApple GPU 6 nhân\\r\\nBộ nhớ & Lưu trữ\\r\\n\\r\\nRAM:\\r\\n8 GB\\r\\nDung lượng lưu trữ:\\r\\n\\r\\n256 GB\\r\\nDanh bạ:\\r\\n\\r\\nKhông giới hạn\\r\\nKết nối\\r\\n\\r\\nMạng di động:\\r\\n\\r\\nHỗ trợ 5G\\r\\nSIM:\\r\\n\\r\\n1 Nano SIM & 1 eSIM\\r\\nWifi:\\r\\nWi-Fi MIMO\\r\\n\\r\\nWi-Fi 802.11 a/b/g/n/ac/ax\\r\\n\\r\\n6 GHz\\r\\n\\r\\nGPS:\\r\\nQZSS\\r\\n\\r\\nNavIC\\r\\n\\r\\nGPS\\r\\n\\r\\nGLONASS\\r\\n\\r\\nGALILEO\\r\\n\\r\\nBEIDOU\\r\\n\\r\\nBluetooth:\\r\\nv5.3\\r\\nCổng kết nối/sạc:\\r\\n\\r\\nType-C\\r\\nJack tai nghe:\\r\\n\\r\\nType-C\\r\\nPin & Sạc\\r\\n\\r\\nDung lượng pin:\\r\\n\\r\\n4422 mAh\\r\\nLoại pin:\\r\\n\\r\\nLi-Ion\\r\\nHỗ trợ sạc tối đa:\\r\\n\\r\\n20 W\\r\\nCông nghệ pin:\\r\\n\\r\\nTiết kiệm pin\\r\\n\\r\\nSạc ngược không dây\\r\\n\\r\\nSạc không dây MagSafe\\r\\n\\r\\nTiện ích\\r\\n\\r\\nBảo mật nâng cao:\\r\\n\\r\\nMở khoá khuôn mặt Face ID\\r\\nTính năng đặc biệt:\\r\\n\\r\\nPhát hiện va chạm (Crash Detection)Màn hình luôn hiển thị AOD\\r\\nKháng nước, bụi:\\r\\n\\r\\nIP68\\r\\nGhi âm:\\r\\n\\r\\nGhi âm mặc định\\r\\nXem phim:\\r\\n\\r\\nH.264(MPEG4-AVC)\\r\\nNghe nhạc:\\r\\n\\r\\nMP3\\r\\n\\r\\nFLAC\\r\\n\\r\\nAAC\\r\\n\\r\\nThông tin chung\\r\\n\\r\\nThiết kế:\\r\\n\\r\\nNguyên khối\\r\\nChất liệu:\\r\\n\\r\\nKhung Titan & Mặt lưng kính cường lực\\r\\nKích thước, khối lượng:\\r\\n\\r\\nDài 159.9 mm - Ngang 76.7 mm - Dày 8.25 mm - Nặng 221 g\\r\\nThời điểm ra mắt:\\r\\n\\r\\n09/2023\\r\\nHãng:\\r\\n\\r\\niPhone (Apple).' ",
-      "release": "2-05-2023",
+      "name": "iPhone 15 Pro Max 256GB",
+      "description": "Màn hình\n\nCông nghệ màn hình:\n\nOLED\nĐộ phân giải:\nSuper Retina XDR (1290 x 2796 Pixels)\nMàn hình rộng:\n\n6.7\" - Tần số quét 120 Hz\nĐộ sáng tối đa:\n2000 nits\nMặt kính cảm ứng:\n\nKính cường lực Ceramic Shield\nCamera sau\n\nĐộ phân giải:\nChính 48 MP & Phụ 12 MP, 12 MP\nQuay phim:\n\nHD 720p@30fps\n\nFullHD 1080p@60fps\n\nFullHD 1080p@30fps\n\n4K 2160p@60fps\n\n4K 2160p@30fps\n\nĐèn Flash:\n\nCó\nTính năng:\n\nẢnh Raw\n\nZoom quang học\n\nZoom kỹ thuật số\n\nXóa phông\n\nTrôi nhanh thời gian (Time Lapse)\n\nToàn cảnh (Panorama)\n\nSmart HDR 5\n\nSiêu độ phân giải\n\nQuay chậm (Slow Motion)\n\nLive Photo\n\nGóc siêu rộng (Ultrawide)\n\nGóc rộng (Wide)\n\nDolby Vision HDR\n\nDeep Fusion\n\nCinematic\n\nChống rung quang học (OIS)\n\nBộ lọc màu\n\nBan đêm (Night Mode)\n\nCamera trước\n\nĐộ phân giải:\n12 MP\nTính năng:\n\nSmart HDR 5\n\nXóa phông\n\nTrôi nhanh thời gian (Time Lapse)\n\nQuay video HD\n\nQuay video Full HD\n\nQuay video 4K\n\nNhãn dán (AR Stickers)\n\nLive Photo\n\nChụp đêm\n\nBộ lọc màu\n\nHệ điều hành & CPU\n\nHệ điều hành:\niOS 17\nChip xử lý (CPU):\n\nApple A17 Pro 6 nhân\nTốc độ CPU:\n3.78 GHz\nChip đồ họa (GPU):\n\nApple GPU 6 nhân\nBộ nhớ & Lưu trữ\n\nRAM:\n8 GB\nDung lượng lưu trữ:\n\n256 GB\nDanh bạ:\n\nKhông giới hạn\nKết nối\n\nMạng di động:\n\nHỗ trợ 5G\nSIM:\n\n1 Nano SIM & 1 eSIM\nWifi:\nWi-Fi MIMO\n\nWi-Fi 802.11 a/b/g/n/ac/ax\n\n6 GHz\n\nGPS:\nQZSS\n\nNavIC\n\nGPS\n\nGLONASS\n\nGALILEO\n\nBEIDOU\n\nBluetooth:\nv5.3\nCổng kết nối/sạc:\n\nType-C\nJack tai nghe:\n\nType-C\nPin & Sạc\n\nDung lượng pin:\n\n4422 mAh\nLoại pin:\n\nLi-Ion\nHỗ trợ sạc tối đa:\n\n20 W\nCông nghệ pin:\n\nTiết kiệm pin\n\nSạc ngược không dây\n\nSạc không dây MagSafe\n\nTiện ích\n\nBảo mật nâng cao:\n\nMở khoá khuôn mặt Face ID\nTính năng đặc biệt:\n\nPhát hiện va chạm (Crash Detection)Màn hình luôn hiển thị AOD\nKháng nước, bụi:\n\nIP68\nGhi âm:\n\nGhi âm mặc định\nXem phim:\n\nH.264(MPEG4-AVC)\nNghe nhạc:\n\nMP3\n\nFLAC\n\nAAC\n\nThông tin chung\n\nThiết kế:\n\nNguyên khối\nChất liệu:\n\nKhung Titan & Mặt lưng kính cường lực\nKích thước, khối lượng:\n\nDài 159.9 mm - Ngang 76.7 mm - Dày 8.25 mm - Nặng 221 g\nThời điểm ra mắt:\n\n09/2023\nHãng:\n\niPhone (Apple). Xem thông tin hãng",
+      "release": "",
       "file": {
-        "name": "FinalApp.rar",
-        "type": "Full code",
-        "size": 64,
-        "unit": "MB",
-        "link": "https://github.com/TeamAmaze/AmazeFileManager/archive/refs/heads/release/4.0.zip"
+        "name": "",
+        "type": "",
+        "size": 1,
+        "unit": "",
+        "link": ""
       },
       "rating": {
         "5star": 270,
@@ -42,27 +41,6 @@
           "star": 5,
           "when": 1686637249374,
           "comment": "Rất hài lòng"
-        },
-        {
-          "name": "AT",
-          "phone": "0123456789",
-          "star": 5,
-          "when": 1686640503483,
-          "comment": "Rất xinh đẹp, tuyệt vời!"
-        },
-        {
-          "name": "Rất tốt",
-          "phone": "0123456789",
-          "star": 5,
-          "when": 1686641102696,
-          "comment": "Anh Quân"
-        },
-        {
-          "name": "",
-          "phone": "",
-          "star": 3,
-          "when": 1686641217550,
-          "comment": ""
         }
       ],
       "comments": [
@@ -77,20 +55,14 @@
           "email": "nbk@gmail.com",
           "when": 1686706212492,
           "content": "Hello"
-        },
-        {
-          "name": "sfdsf",
-          "email": "dsfdsf",
-          "when": 1686706794034,
-          "content": "dsfd"
         }
       ],
       "viewed": 82,
-      "downloaded": 123,
+      "downloaded": 50,
       "liked": 13,
       "detail": "<div>Chức năng xác thực cơ bản: đăng nhập, đăng ký, đăng xuất, xác thực email. Kiểm tra role của tài khoản trước khi đăng nhập vào ứng dụng. Hiển thị giao diện tùy theo role của tài khoản. Hiển thị thông tin cá nhân. Không ai có thể đăng nhập nếu tài khoản chưa được xác thực.<br/>Phục hồi mật khẩu khi quên mật khẩu bằng email (quên demo :v).<br/>Sử dụng ViewPager2 để lưu trữ Fragment và giữ trạng thái cho các Fragment.<br/>Sử dụng ViewPager2 để chèn nhiều Fragment vào một Activity hoặc một Fragment khác.</div><div className='d-feature'>Các chức năng chính:</div><ul><li>100% Kotlin</li><li>Native Android</li><li>Jetpack Compose</li><li>Hỗ trờ ngôn ngữ đánh dấu Markdown</li><li>Lưu lịch sử chat</li><li>Truy cập toàn bộ mã nguồn</li><li>Mua trong ứng dụng để mở khóa phiên bản PRO</li><li>Tích hợp Admob Ads</li><li>Xem quảng cáo có tặng thưởng để kiếm thêm chức năng tin nhắn</li></ul>",
       "installation": "<div><span>1.</span> Đầu tiên bạn cần phải mua project này trước đã.</div><div><span>2.</span> Tải và mở API bằng <a href='https://www.eclipse.org/downloads/'>Eclipsea</a>, <a href='https://www.jetbrains.com/idea/'>IntelliJ IDEA</a> (nhớ cài các công cụ đi kèm như <a href='https://spring.io/projects/spring-boot'>Spring Boot</a>, <a href='https://projectlombok.org/'>Lombok</a>,...).</div><div><span>3.</span> Thiết lập lại kết nối tài khoản và mật khẩu MySQL trong file <code>application.properties</code> của API.</div><div><span>4.</span> Mở Project bằng Android Studio và cài lại IP và đường dẫn Zalo Pay như video hướng dẫn.</div><div><span>5.</span> Mở MySQL và chạy file <code>script.sql</code> đã đính kèm trong link tải.</div><div><span>6.</span> Chạy project và trải nghiệm đi nào :)))</div><div>Video huớng dẫn cài đặt source code App bán hàng Android với API Spring Boot: <a href='https://www.youtube.com/watch?v=f6bxjdaH_f8'>https://www.youtube.com/watch?v=f6bxjdaH_f8</a></div>",
-      "price": 115000
+      "price": 34990000
     },
     {
       "id": 2,
@@ -5830,29 +5802,22 @@
   "products": [
     {
       "id": 1,
-      "img": "https://topcode.vn/FilesUpload/CodeUpload/%20154431%2036143_full-source-code-android-app-ban-quan-ao-thoi-trang-full-chuc-nang-giao-dien-dep-su-dung-android-studio-api-springboot-mysql-tich-hop-thanh-toan-zalopay-173236241847655.png",
+      "img": "../../product/Iphone/cellphones 011.png",
       "thumbnails": [
-        "https://topcode.vn/FilesUpload/CodeUpload/%20154431%2036143_full-source-code-android-app-ban-quan-ao-thoi-trang-full-chuc-nang-giao-dien-dep-su-dung-android-studio-api-springboot-mysql-tich-hop-thanh-toan-zalopay-173236241847655.png",
-        "https://topcode.vn/FilesUpload/CodeUpload/%20154431%2036143_full-source-code-android-app-ban-quan-ao-thoi-trang-full-chuc-nang-giao-dien-dep-su-dung-android-studio-api-springboot-mysql-tich-hop-thanh-toan-zalopay-173234781907336.png",
-        "https://topcode.vn/FilesUpload/CodeUpload/%20154431%2036143_full-source-code-android-app-ban-quan-ao-thoi-trang-full-chuc-nang-giao-dien-dep-su-dung-android-studio-api-springboot-mysql-tich-hop-thanh-toan-zalopay-1732351638198547.png"
+        "../../product/Iphone/cellphones 012.png",
+        "../../product/Iphone/cellphones 011.png",
+        "../../product/Iphone/cellphones 011.png",
+        "../../product/Iphone/cellphones 013.png"
       ],
       "type": {
-        "id": "android",
-        "name": "Android",
+        "id": "Iphone",
+        "name": "Iphone",
         "img": "https://www.codester.com/static/uploads/categories/29/icon-alt.png"
       },
-      "name": "Iphone 11",
-      "description": "Màn hình\r\n\r\nCông nghệ màn hình:\r\n\r\nOLED\r\nĐộ phân giải:\r\nSuper Retina XDR (1290 x 2796 Pixels)\r\nMàn hình rộng:\r\n\r\n6.7\" - Tần số quét 120 Hz\r\nĐộ sáng tối đa:\r\n2000 nits\r\nMặt kính cảm ứng:\r\n\r\nKính cường lực Ceramic Shield\r\nCamera sau\r\n\r\nĐộ phân giải:\r\nChính 48 MP & Phụ 12 MP, 12 MP\r\nQuay phim:\r\n\r\nHD 720p@30fps\r\n\r\nFullHD 1080p@60fps\r\n\r\nFullHD 1080p@30fps\r\n\r\n4K 2160p@60fps\r\n\r\n4K 2160p@30fps\r\n\r\nĐèn Flash:\r\n\r\nCó\r\nTính năng:\r\n\r\nẢnh Raw\r\n\r\nZoom quang học\r\n\r\nZoom kỹ thuật số\r\n\r\nXóa phông\r\n\r\nTrôi nhanh thời gian (Time Lapse)\r\n\r\nToàn cảnh (Panorama)\r\n\r\nSmart HDR 5\r\n\r\nSiêu độ phân giải\r\n\r\nQuay chậm (Slow Motion)\r\n\r\nLive Photo\r\n\r\nGóc siêu rộng (Ultrawide)\r\n\r\nGóc rộng (Wide)\r\n\r\nDolby Vision HDR\r\n\r\nDeep Fusion\r\n\r\nCinematic\r\n\r\nChống rung quang học (OIS)\r\n\r\nBộ lọc màu\r\n\r\nBan đêm (Night Mode)\r\n\r\nCamera trước\r\n\r\nĐộ phân giải:\r\n12 MP\r\nTính năng:\r\n\r\nSmart HDR 5\r\n\r\nXóa phông\r\n\r\nTrôi nhanh thời gian (Time Lapse)\r\n\r\nQuay video HD\r\n\r\nQuay video Full HD\r\n\r\nQuay video 4K\r\n\r\nNhãn dán (AR Stickers)\r\n\r\nLive Photo\r\n\r\nChụp đêm\r\n\r\nBộ lọc màu\r\n\r\nHệ điều hành & CPU\r\n\r\nHệ điều hành:\r\niOS 17\r\nChip xử lý (CPU):\r\n\r\nApple A17 Pro 6 nhân\r\nTốc độ CPU:\r\n3.78 GHz\r\nChip đồ họa (GPU):\r\n\r\nApple GPU 6 nhân\r\nBộ nhớ & Lưu trữ\r\n\r\nRAM:\r\n8 GB\r\nDung lượng lưu trữ:\r\n\r\n256 GB\r\nDanh bạ:\r\n\r\nKhông giới hạn\r\nKết nối\r\n\r\nMạng di động:\r\n\r\nHỗ trợ 5G\r\nSIM:\r\n\r\n1 Nano SIM & 1 eSIM\r\nWifi:\r\nWi-Fi MIMO\r\n\r\nWi-Fi 802.11 a/b/g/n/ac/ax\r\n\r\n6 GHz\r\n\r\nGPS:\r\nQZSS\r\n\r\nNavIC\r\n\r\nGPS\r\n\r\nGLONASS\r\n\r\nGALILEO\r\n\r\nBEIDOU\r\n\r\nBluetooth:\r\nv5.3\r\nCổng kết nối/sạc:\r\n\r\nType-C\r\nJack tai nghe:\r\n\r\nType-C\r\nPin & Sạc\r\n\r\nDung lượng pin:\r\n\r\n4422 mAh\r\nLoại pin:\r\n\r\nLi-Ion\r\nHỗ trợ sạc tối đa:\r\n\r\n20 W\r\nCông nghệ pin:\r\n\r\nTiết kiệm pin\r\n\r\nSạc ngược không dây\r\n\r\nSạc không dây MagSafe\r\n\r\nTiện ích\r\n\r\nBảo mật nâng cao:\r\n\r\nMở khoá khuôn mặt Face ID\r\nTính năng đặc biệt:\r\n\r\nPhát hiện va chạm (Crash Detection)Màn hình luôn hiển thị AOD\r\nKháng nước, bụi:\r\n\r\nIP68\r\nGhi âm:\r\n\r\nGhi âm mặc định\r\nXem phim:\r\n\r\nH.264(MPEG4-AVC)\r\nNghe nhạc:\r\n\r\nMP3\r\n\r\nFLAC\r\n\r\nAAC\r\n\r\nThông tin chung\r\n\r\nThiết kế:\r\n\r\nNguyên khối\r\nChất liệu:\r\n\r\nKhung Titan & Mặt lưng kính cường lực\r\nKích thước, khối lượng:\r\n\r\nDài 159.9 mm - Ngang 76.7 mm - Dày 8.25 mm - Nặng 221 g\r\nThời điểm ra mắt:\r\n\r\n09/2023\r\nHãng:\r\n\r\niPhone (Apple).",
-      "release": "27-05-2023",
-      "file": {
-        "name": "FinalApp.rar",
-        "type": "Full code",
-        "size": 64,
-        "unit": "MB",
-        "link": "https://github.com/TeamAmaze/AmazeFileManager/archive/refs/heads/release/4.0.zip"
-      },
+      "name": "iPhone 15 Pro Max 256GB",
+      "description": "Màn hình\n\nCông nghệ màn hình:\n\nOLED\nĐộ phân giải:\nSuper Retina XDR (1290 x 2796 Pixels)\nMàn hình rộng:\n\n6.7\" - Tần số quét 120 Hz\nĐộ sáng tối đa:\n2000 nits\nMặt kính cảm ứng:\n\nKính cường lực Ceramic Shield\nCamera sau\n\nĐộ phân giải:\nChính 48 MP & Phụ 12 MP, 12 MP\nQuay phim:\n\nHD 720p@30fps\n\nFullHD 1080p@60fps\n\nFullHD 1080p@30fps\n\n4K 2160p@60fps\n\n4K 2160p@30fps\n\nĐèn Flash:\n\nCó\nTính năng:\n\nẢnh Raw\n\nZoom quang học\n\nZoom kỹ thuật số\n\nXóa phông\n\nTrôi nhanh thời gian (Time Lapse)\n\nToàn cảnh (Panorama)\n\nSmart HDR 5\n\nSiêu độ phân giải\n\nQuay chậm (Slow Motion)\n\nLive Photo\n\nGóc siêu rộng (Ultrawide)\n\nGóc rộng (Wide)\n\nDolby Vision HDR\n\nDeep Fusion\n\nCinematic\n\nChống rung quang học (OIS)\n\nBộ lọc màu\n\nBan đêm (Night Mode)\n\nCamera trước\n\nĐộ phân giải:\n12 MP\nTính năng:\n\nSmart HDR 5\n\nXóa phông\n\nTrôi nhanh thời gian (Time Lapse)\n\nQuay video HD\n\nQuay video Full HD\n\nQuay video 4K\n\nNhãn dán (AR Stickers)\n\nLive Photo\n\nChụp đêm\n\nBộ lọc màu\n\nHệ điều hành & CPU\n\nHệ điều hành:\niOS 17\nChip xử lý (CPU):\n\nApple A17 Pro 6 nhân\nTốc độ CPU:\n3.78 GHz\nChip đồ họa (GPU):\n\nApple GPU 6 nhân\nBộ nhớ & Lưu trữ\n\nRAM:\n8 GB\nDung lượng lưu trữ:\n\n256 GB\nDanh bạ:\n\nKhông giới hạn\nKết nối\n\nMạng di động:\n\nHỗ trợ 5G\nSIM:\n\n1 Nano SIM & 1 eSIM\nWifi:\nWi-Fi MIMO\n\nWi-Fi 802.11 a/b/g/n/ac/ax\n\n6 GHz\n\nGPS:\nQZSS\n\nNavIC\n\nGPS\n\nGLONASS\n\nGALILEO\n\nBEIDOU\n\nBluetooth:\nv5.3\nCổng kết nối/sạc:\n\nType-C\nJack tai nghe:\n\nType-C\nPin & Sạc\n\nDung lượng pin:\n\n4422 mAh\nLoại pin:\n\nLi-Ion\nHỗ trợ sạc tối đa:\n\n20 W\nCông nghệ pin:\n\nTiết kiệm pin\n\nSạc ngược không dây\n\nSạc không dây MagSafe\n\nTiện ích\n\nBảo mật nâng cao:\n\nMở khoá khuôn mặt Face ID\nTính năng đặc biệt:\n\nPhát hiện va chạm (Crash Detection)Màn hình luôn hiển thị AOD\nKháng nước, bụi:\n\nIP68\nGhi âm:\n\nGhi âm mặc định\nXem phim:\n\nH.264(MPEG4-AVC)\nNghe nhạc:\n\nMP3\n\nFLAC\n\nAAC\n\nThông tin chung\n\nThiết kế:\n\nNguyên khối\nChất liệu:\n\nKhung Titan & Mặt lưng kính cường lực\nKích thước, khối lượng:\n\nDài 159.9 mm - Ngang 76.7 mm - Dày 8.25 mm - Nặng 221 g\nThời điểm ra mắt:\n\n09/2023\nHãng:\n\niPhone (Apple). Xem thông tin hãng",
       "rating": {
-        "5star": 274,
+        "5star": 270,
         "4star": 19,
         "3star": 52,
         "2star": 7,
@@ -5870,20 +5835,6 @@
           "star": 5,
           "when": 1686637249374,
           "comment": "Rất hài lòng"
-        },
-        {
-          "name": "AT",
-          "phone": "0123456789",
-          "star": 5,
-          "when": 1686640503483,
-          "comment": "Rất xinh đẹp, tuyệt vời!"
-        },
-        {
-          "name": "Rất tốt",
-          "phone": "0123456789",
-          "star": 5,
-          "when": 1686641102696,
-          "comment": "Khá Ngô"
         }
       ],
       "comments": [
@@ -5900,12 +5851,10 @@
           "content": "Hello"
         }
       ],
-      "viewed": 7730,
-      "downloaded": 388,
+      "viewed": 108,
+      "buy": 50,
       "liked": 13,
-      "detail": "<div>Chức năng xác thực cơ bản: đăng nhập, đăng ký, đăng xuất, xác thực email. Kiểm tra role của tài khoản trước khi đăng nhập vào ứng dụng. Hiển thị giao diện tùy theo role của tài khoản. Hiển thị thông tin cá nhân. Không ai có thể đăng nhập nếu tài khoản chưa được xác thực.<br/>Phục hồi mật khẩu khi quên mật khẩu bằng email (quên demo :v).<br/>Sử dụng ViewPager2 để lưu trữ Fragment và giữ trạng thái cho các Fragment.<br/>Sử dụng ViewPager2 để chèn nhiều Fragment vào một Activity hoặc một Fragment khác.</div><div className='d-feature'>Các chức năng chính:</div><ul><li>100% Kotlin</li><li>Native Android</li><li>Jetpack Compose</li><li>Hỗ trờ ngôn ngữ đánh dấu Markdown</li><li>Lưu lịch sử chat</li><li>Truy cập toàn bộ mã nguồn</li><li>Mua trong ứng dụng để mở khóa phiên bản PRO</li><li>Tích hợp Admob Ads</li><li>Xem quảng cáo có tặng thưởng để kiếm thêm chức năng tin nhắn</li></ul>",
-      "installation": "<div><span>1.</span> Đầu tiên bạn cần phải mua project này trước đã.</div><div><span>2.</span> Tải và mở API bằng <a href='https://www.eclipse.org/downloads/'>Eclipsea</a>, <a href='https://www.jetbrains.com/idea/'>IntelliJ IDEA</a> (nhớ cài các công cụ đi kèm như <a href='https://spring.io/projects/spring-boot'>Spring Boot</a>, <a href='https://projectlombok.org/'>Lombok</a>,...).</div><div><span>3.</span> Thiết lập lại kết nối tài khoản và mật khẩu MySQL trong file <code>application.properties</code> của API.</div><div><span>4.</span> Mở Project bằng Android Studio và cài lại IP và đường dẫn Zalo Pay như video hướng dẫn.</div><div><span>5.</span> Mở MySQL và chạy file <code>script.sql</code> đã đính kèm trong link tải.</div><div><span>6.</span> Chạy project và trải nghiệm đi nào :)))</div><div>Video huớng dẫn cài đặt source code App bán hàng Android với API Spring Boot: <a href='https://www.youtube.com/watch?v=f6bxjdaH_f8'>https://www.youtube.com/watch?v=f6bxjdaH_f8</a></div>",
-      "price": 507000
+      "price": 34990000
     },
     {
       "id": 2,
@@ -9735,7 +9684,7 @@
         }
       ],
       "comments": [],
-      "viewed": 4022,
+      "viewed": 4024,
       "downloaded": 875,
       "liked": 13,
       "detail": "<div>Chức năng xác thực cơ bản: đăng nhập, đăng ký, đăng xuất, xác thực email. Kiểm tra role của tài khoản trước khi đăng nhập vào ứng dụng. Hiển thị giao diện tùy theo role của tài khoản. Hiển thị thông tin cá nhân. Không ai có thể đăng nhập nếu tài khoản chưa được xác thực.<br/>Phục hồi mật khẩu khi quên mật khẩu bằng email (quên demo :v).<br/>Sử dụng ViewPager2 để lưu trữ Fragment và giữ trạng thái cho các Fragment.<br/>Sử dụng ViewPager2 để chèn nhiều Fragment vào một Activity hoặc một Fragment khác.</div><div className='d-feature'>Các chức năng chính:</div><ul><li>100% Kotlin</li><li>Native Android</li><li>Jetpack Compose</li><li>Hỗ trờ ngôn ngữ đánh dấu Markdown</li><li>Lưu lịch sử chat</li><li>Truy cập toàn bộ mã nguồn</li><li>Mua trong ứng dụng để mở khóa phiên bản PRO</li><li>Tích hợp Admob Ads</li><li>Xem quảng cáo có tặng thưởng để kiếm thêm chức năng tin nhắn</li></ul>",
@@ -11705,14 +11654,25 @@
   ],
   "accounts": [
     {
-      "email": "nguyenphutai840@gmail.com",
+      "email": "diepchanphong@gmail.com",
       "hashPass": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "fullname": "Diep Chan Phong",
       "gender": "Nam",
       "phone": "0353677271",
-      "personal_email": "nguyenphutai840@gmail.com",
+      "personal_email": "diepchanphong@gmail.com",
       "address": "123",
-      "province": "Tỉnh Yên Bái",
+      "province": "Tỉnh An Giang",
+      "id": 1
+    },
+    {
+      "email": "tranvanphuquy@gmail.com",
+      "hashPass": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+      "fullname": "Tran Van Phu Quy",
+      "gender": "Nam",
+      "phone": "0749823748",
+      "personal_email": "tranvanphuquy@gmail.com",
+      "address": "123",
+      "province": "Tỉnh Cao Bằng",
       "id": 1
     }
   ],

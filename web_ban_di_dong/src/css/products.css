@@ -151,8 +151,9 @@
 }
 
 .product-item-img img {
-    width: 100%;
-    max-height: 160px;
+    width: 60%;
+    margin-left: 20%;
+    max-height: 170px;
     object-fit: cover;
 }
 

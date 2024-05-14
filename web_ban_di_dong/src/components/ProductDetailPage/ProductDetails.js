@@ -43,6 +43,7 @@ function DetailLeft({product}) {
                 </div>
                 <div className={slideIndex === 2 && 'active'} onClick={() => setSlideIndex(2)}>
                     <img src={product.thumbnails[2]} alt=""/>
+                    <img src={product.thumbnails[2]} alt=""/>
                 </div>
             </div>
         </div>
@@ -73,18 +74,13 @@ function DetailCenter({product}) {
                 </div>
                 <span>({formatRating(product.rating).total} Đánh giá)</span>
                 <span><i className="fa fa-eye"></i> {product.viewed}</span>
-                <span><i className="fa fa-download"></i> {product.downloaded}</span>
+                <span><i className="fa fa-shopping-cart"></i> {product.buy}</span>
             </div>
-            <div className="detail-center-des">{product.description}</div>
             <div className="detail-center-info">
                 <div>
                     <i className="fa fa-list"></i><span>Danh mục</span> <Link to={`/products?type=${product.type.id}`}>{product.type.name}</Link>
                 </div>
                 <div><i className="fa fa-layer-group"></i><span>Nhóm sản phẩm </span> <Link to={'/top-codes'}>Top sản phẩm</Link></div>
-                <div><i className="fa fa-calendar"></i><span>Ngày đăng</span> {product.release}</div>
-                <div><i className="fa fa-object-group"></i><span>Loại sản phẩm</span> {product.file.type}</div>
-                <div><i className="fa fa-file-code"></i><span>Sản phẩm được tải lên </span> {product.file.name}
-                    <span>[{product.file.size} {product.file.unit}]</span></div>
             </div>
         </div>
     )
@@ -104,7 +100,7 @@ function DetailRight({product}) {
     return (
         <div className="detail-right">
             <div className="detail-right-offer">
-                <h6>PHÍ DOWNLOAD</h6>
+                <h6>Giá sản Phẩm</h6>
                 <span className="offer-price">{product.price === 0 ? 'FREE' : <>{formatNumber((product.price), '.')}<sup>đ</sup></>}</span>
                 <button className="offer-download" onClick={handledDownload}>
                     {cart.some(item => item.id === product.id)
@@ -114,13 +110,8 @@ function DetailRight({product}) {
                 <button className={`offer-favorite ${inLiked && 'offer-active'}`}
                         onClick={() => dispatch(addLiked(product))}><i className="fa fa-thumbs-up"></i> {inLiked ? 'Xóa khỏi' : 'Lưu vào'} yêu thích
                 </button>
-                <span><span>CHIA SẺ NHANH</span> (CODE {product.id})</span>
-                <div>
-                    <img src="https://topcode.vn/assets/images/share-email.png" alt=""/>
-                    <div>Gửi code tới email bạn bè</div>
-                </div>
                 <div className="d-flex justify-content-center">
-                    <span><i className="fa fa-thumbs-up"></i> Like</span>
+                    <span><i className="fa fa-thumbs-up"></i> Like </span>
                     <span><i className="fa fa-share-alt"></i> Share</span>
                 </div>
             </div>
@@ -137,9 +128,7 @@ function DetailDescription({product, goTo}) {
         <>
             <DetailDivider title={'MÔ TẢ CHI TIẾT'}/>
             <div className="detail-description">
-                <div>{product.description}</div>
-                {Parser(product.detail)}
-                <div className="di-guide">XEM THÊM <span>==></span><span onClick={goTo}> Hướng dẫn cài đặt chi tiết</span></div>
+                <div><pre> {product.description}</pre></div>
             </div>
         </>
     )
@@ -163,16 +152,7 @@ function DemoImage({product}) {
     )
 }
 
-function Installation({product, refData}) {
-    return (
-        <>
-            <DetailDivider title={'HƯỚNG DẪN CÀI ĐẶT'} refData={refData}/>
-            <div className="installation">
-                {Parser(product.installation)}
-            </div>
-        </>
-    )
-}
+
 
 function RatingModal({product, setProduct, closeModal}) {
     const ratingCriteria = ['Rất tệ', 'Tệ', 'Bình thường', 'Tốt', 'Rất tốt']
@@ -340,97 +320,6 @@ function Rating({product, setProduct}) {
     )
 }
 
-function Comment({product, setProduct}) {
-    const [limit, setLimit] = useState(0)
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [content, setContent] = useState('')
-    const [checkName, setCheckName] = useState(false)
-    const [checkContent, setCheckContent] = useState(false)
-    const chars = 3
-
-    function sendComment() {
-        if (!name) setCheckName(true)
-        if (limit < chars) setCheckContent(true)
-
-        if (name && limit >= chars) {
-            setProduct({
-                ...product, comments: [...product.comments, {
-                    name: name,
-                    email: email,
-                    when: Date.now(),
-                    content: content
-                }]
-            })
-            setName('')
-            setContent('')
-            setEmail('')
-            setLimit(0)
-        }
-    }
-
-    function handleCommentChange(e) {
-        const text = e.target.value
-        setContent(text)
-        setLimit(text.length)
-        if (text.length >= chars) setCheckContent(false)
-    }
-
-    function handleNameChange(e) {
-        const text = e.target.value
-        setName(text)
-        setCheckName(false)
-    }
-
-    return (
-        <>
-            <DetailDivider title={'BÌNH LUẬN'}/>
-            <div className="detail-comment clearfix">
-                <div>
-                    <span style={{display: checkContent ? 'inline-block' : 'none'}}>Nội dung tối thiểu {chars} ký tự</span>
-                    <span style={{display: limit < chars ? 'inline-block' : 'none'}}>{limit}/{chars}</span>
-                    <textarea style={{borderColor: checkContent ? '#e70a0a' : 'var(--color-border)'}}
-                              value={content} onChange={handleCommentChange} placeholder="Vui lòng để lại bình luận..."/>
-                </div>
-                <div className="d-flex justify-content-between">
-                    <div>
-                        <div className="input-box">
-                            <label htmlFor="input-name">Họ và tên <span>*</span></label>
-                            <input style={{borderColor: checkName ? '#e70a0a' : 'var(--color-border)'}}
-                                   value={name} onChange={handleNameChange} name="input-name" type="text"/>
-                            <div style={{display: checkName ? 'block' : 'none'}}><i className="fa fa-warning"></i> Vui lòng nhập Họ và tên</div>
-                        </div>
-                        <div className="input-box">
-                            <label htmlFor="input-name">Email</label>
-                            <input value={email} onChange={e => setEmail(e.target.value)} name="input-name" type="text"/>
-                        </div>
-                    </div>
-                    <button onClick={sendComment}>GỬI</button>
-                </div>
-            </div>
-            <div className="mt-5">
-                <div style={{fontSize: '17px', fontFamily: 'Roboto', fontWeight: '500', color: '#333333'}}>
-                    {product.comments.length} comments
-                </div>
-                {[...product.comments].sort((a, b) => a.when - b.when > 0 ? -1 : 1).map((value, index) => (
-                    <div className="comment-item" key={index}>
-                        <div className="comment-avatar mr-3">
-                            <div>{getFirstLetter(value.name)}</div>
-                        </div>
-                        <div className="comment-detail">
-                            <div>
-                                <div>{value.name}</div>
-                                <div>{getPassedTimeInText(value.when)}</div>
-                            </div>
-                            <div>{value.content}</div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </>
-    )
-}
-
 function DetailContent({product, setProduct}) {
     const ref = useRef(null)
     const goToInstallation = () => ref.current.scrollIntoView({behavior: "auto"})
@@ -438,9 +327,8 @@ function DetailContent({product, setProduct}) {
         <>
             <DetailDescription product={product} goTo={goToInstallation}/>
             <DemoImage product={product}/>
-            <Installation product={product} refData={ref}/>
             <Rating product={product} setProduct={setProduct}/>
-            <Comment product={product} setProduct={setProduct}/>
+
         </>
     )
 }
@@ -469,10 +357,10 @@ export default function ProductDetails() {
     if (loading) return <div>Loading...</div>
 
     function breadcrumbs() {
-        return [{name: 'Trang chủ', link: '/'}, {name: 'Danh sách codes', link: `/products`}, {
+        return [{name: 'Trang chủ', link: '/'}, {name: 'Danh sách sản phẩm', link: `/products`}, {
             name: 'Chi tiết sản phẩm',
             link: `/products/product/${product.id}`
-        }, {name: `Mã code ${product.id}`, link: `/products/product/${product.id}`}]
+        }, {name: `${product.name}`, link: `/products/product/${product.id}`}]
     }
 
     return (

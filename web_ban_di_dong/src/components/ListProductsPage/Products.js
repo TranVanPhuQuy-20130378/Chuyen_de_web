@@ -21,7 +21,7 @@ export function PopularCode() {
 
     return (
         <div className="sidebar-item sidebar-popular mt-5">
-            <h6 className="list-group-item">Code phổ biến</h6>
+            <h6 className="list-group-item">Sản phẩm phổ biến</h6>
             <div className="list-group">
                 {data.map((product) => (
                     <Link to={`/products/product/${product.id}`} state={product} className="list-group-item" key={product.id}>
