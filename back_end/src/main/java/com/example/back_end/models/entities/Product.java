@@ -46,10 +46,23 @@ public class Product {
     @Fetch(FetchMode.JOIN)
     private Set<ImageProduct> imageProducts = new HashSet<>();
 
+
+    @OneToMany(mappedBy = "product", orphanRemoval = true)
+    private Set<Commentp> comments = new HashSet<>();
+
     @Column(name = "img_id")
     private Integer imgId;
 
     @Column(name = "status")
     private Integer status;
+
+    @Column(name = "view")
+    private Integer view;
+
+    @Column(name = "buy")
+    private Integer buy;
+
+    @Column(name = "liked")
+    private Integer liked;
 
 }

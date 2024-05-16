@@ -33,7 +33,7 @@ public class ProductClothesController {
     @GetMapping("/ds-dien-thoai-moi")
     public ResponseEntity<PagedResponse_Ver1<List<ProductDTO_Ver1>>> getListTelephoneNew(
             @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "15") int pageSize) {
+            @RequestParam(defaultValue = "20") int pageSize) {
         try {
             var validFilter = new PaginationFilter(page, pageSize);
 
