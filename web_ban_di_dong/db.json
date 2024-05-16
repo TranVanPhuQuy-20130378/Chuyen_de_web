@@ -545,6 +545,20 @@
           "comment": "Rất hài lòng"
         }
       ],
+      "comments": [
+        {
+          "name": "Lê Anh Quân",
+          "email": "khango@gmail.com",
+          "when": 1686641217550,
+          "content": "Chất lượng sản phẩm tốt"
+        },
+        {
+          "name": "NBK",
+          "email": "nbk@gmail.com",
+          "when": 1686706212492,
+          "content": "Hello"
+        }
+      ],
       "viewed": 109,
       "buy": 50,
       "liked": 13,

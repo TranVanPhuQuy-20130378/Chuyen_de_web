@@ -8,6 +8,7 @@ import com.example.back_end.services.interfaces.ICountProductService;
 import com.example.back_end.services.interfaces.IGetProductService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,7 +50,7 @@ public class ProductService implements IGetProductService, ICountProductService 
     public List<ProductDTO_Ver1> getListProductByTypeAndStatus(int type_product, int status_product, int page, int page_size) {
 
         String jpql = "SELECT DISTINCT p FROM Product p " +
-                "WHERE p.vendor.id = :idTypeProduct " +
+                "WHERE p.category.id = :idTypeProduct " +
                 "AND p.status = :idStatusProduct";
 
         TypedQuery<Product> query = _entityManager.createQuery(jpql, Product.class);
@@ -93,16 +94,15 @@ public class ProductService implements IGetProductService, ICountProductService 
      */
     @Override
     public int countProductsBy_TypeAndStatus(int type_product, int status_product) {
-//        String jpql = "SELECT COUNT(p) FROM Product p " +
-//                "WHERE p.typeProduct.id = :idTypeProduct " +
-//                "AND p.idStatusProduct = :idStatusProduct";
-//
-//        Query query = _entityManager.createQuery(jpql)
-//                .setParameter("idTypeProduct", type_product)
-//                .setParameter("idStatusProduct", status_product);
-//
-//        return ((Number) query.getSingleResult()).intValue();
-        return 1;
+        String jpql = "SELECT COUNT(p) FROM Product p " +
+                "WHERE p.category.id = :idTypeProduct " +
+                "AND p.status = :idStatusProduct";
+
+        Query query = _entityManager.createQuery(jpql)
+                .setParameter("idTypeProduct", type_product)
+                .setParameter("idStatusProduct", status_product);
+
+        return ((Number) query.getSingleResult()).intValue();
     }
 
     /**
@@ -117,40 +117,38 @@ public class ProductService implements IGetProductService, ICountProductService 
      */
     @Override
     public List<ProductDTO_Ver1> getListProductBy_TypeAndBrandAndSex(int type_product, int brand, int page, int page_size) {
-//
-//        String jpql = "SELECT DISTINCT p FROM Product p " +
-//                "WHERE p.typeProduct.id = :idTypeProduct " +
-//                "AND p.brand.id = :idBrandProduct " +
-//                "AND p.idSex= :idSex";
-//
-//        TypedQuery<Product> query = _entityManager.createQuery(jpql, Product.class);
-//        query.setParameter("idTypeProduct", type_product);
-//        query.setParameter("idBrandProduct", (long) brand); //=> cần phải ép kiểu về long tại idBrand trong entity Brand là long
-//
-//
-//        // Phân trang kết quả trả về
-//        query.setFirstResult((page - 1) * page_size);
-//        query.setMaxResults(page_size);
-//
-//        List<Product> productList = query.getResultList();
-//
-//        if (productList == null || productList.isEmpty()) return null;
-//
-//        // convert thành DTO dùng StreamAPI trong Java 8
-//        return productList.stream().map(product -> {
-//
-//            ProductDTO_Ver1 productDTO = ProductDTO_Ver1.builder()
-//                    .id_product(product.getId())
-//                    .name_product(product.getName())
-//                    .listed_price(product.getPrice())
-//                    .promotional_price(product.getPrice())
-//                    .list_image(convertImageProductToDTO(product.getImageProducts())) // Gọi phương thức chuyển đổi thành DTO
-//                    .id_status_product(product.getStatus())
-//                    .build();
-//
-//            return productDTO;
-//        }).collect(Collectors.toList());
-        return null;
+
+        String jpql = "SELECT DISTINCT p FROM Product p " +
+                "WHERE p.category.id = :idTypeProduct " +
+                "AND p.vendor.id = :idBrandProduct ";
+
+        TypedQuery<Product> query = _entityManager.createQuery(jpql, Product.class);
+        query.setParameter("idTypeProduct", type_product);
+        query.setParameter("idBrandProduct", (long) brand); //=> cần phải ép kiểu về long tại idBrand trong entity Brand là long
+
+
+        // Phân trang kết quả trả về
+        query.setFirstResult((page - 1) * page_size);
+        query.setMaxResults(page_size);
+
+        List<Product> productList = query.getResultList();
+
+        if (productList == null || productList.isEmpty()) return null;
+
+        // convert thành DTO dùng StreamAPI trong Java 8
+        return productList.stream().map(product -> {
+
+            ProductDTO_Ver1 productDTO = ProductDTO_Ver1.builder()
+                    .id_product(product.getId())
+                    .name_product(product.getName())
+                    .listed_price(product.getPrice())
+                    .promotional_price(product.getPrice())
+                    .list_image(convertImageProductToDTO(product.getImageProducts())) // Gọi phương thức chuyển đổi thành DTO
+                    .id_status_product(product.getStatus())
+                    .build();
+
+            return productDTO;
+        }).collect(Collectors.toList());
     }
 
     /**
@@ -165,17 +163,17 @@ public class ProductService implements IGetProductService, ICountProductService 
      */
     @Override
     public int countProductsBy_TypeAndBrandAndSex(int type_product, int brand) {
-//        String jpql = "SELECT COUNT(p) FROM Product p " +
-//                "WHERE p.typeProduct.id = :idTypeProduct " +
-//                "AND p.brand.id = :idBrandProduct " ;
-//
-//        Query query = _entityManager.createQuery(jpql)
-//                .setParameter("idTypeProduct", type_product)
-//                .setParameter("idBrandProduct", (long) brand); //=> cần phải ép kiểu về long tại idBrand trong entity Brand là long
-//
-//
-//        return ((Number) query.getSingleResult()).intValue();
-        return 1;
+        String jpql = "SELECT COUNT(p) FROM Product p " +
+                "WHERE p.category.id = :idTypeProduct " +
+                "AND p.vendor.id = :idBrandProduct " ;
+
+        Query query = _entityManager.createQuery(jpql)
+                .setParameter("idTypeProduct", type_product)
+                .setParameter("idBrandProduct", (long) brand); //=> cần phải ép kiểu về long tại idBrand trong entity Brand là long
+
+
+        return ((Number) query.getSingleResult()).intValue();
+
     }
 
     @Override
