@@ -8,6 +8,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -64,5 +65,8 @@ public class Product {
 
     @Column(name = "liked")
     private Integer liked;
+
+    @Column(name = "time_create", nullable = false)
+    private LocalDateTime timeCreate;
 
 }

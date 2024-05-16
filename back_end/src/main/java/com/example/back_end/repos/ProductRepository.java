@@ -19,14 +19,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAllByBrand(@Param("brandName") String brandName);
     @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :keyword, '%'))")
     List<Product> findByNameContainingIgnoreCase(@Param("keyword") String keyword, Pageable pageable);
-//
-//    List<Product> findByBrand_NameBrand(String name,Pageable pageable);
-//    List<Product> findByTypeProduct_IdOrBrand_IdOrIdSex(Integer idType, Long idBrand, Integer idSex,Pageable pageable);
-//    List<Product> findByTypeProduct_IdAndBrand_IdAndIdSex(Integer idType, Long idBrand, Integer idSex,Pageable pageable);
-//    List<Product> findByBrand_IdAndIdSex(Long idBrand, Integer idSex,Pageable pageable);
-//    List<Product> findByTypeProduct_IdAndIdSex(Integer idType, Integer idSex,Pageable pageable);
-//
-//    List<Product> findByTypeProduct_IdAndBrand_Id(Integer idType, Long idBrand, Pageable pageable);
+
+    List<Product> findByCategory_CategoryName(String name,Pageable pageable);
+    List<Product> findByVendor_IdOrCategory_Id(Integer idVendor, Long idCate,Pageable pageable);
+    List<Product> findByVendor_IdAndCategory_Id(Integer idVendor, Long idCate,Pageable pageable);
+    List<Product> findByCategory_Id(Long idCate, Pageable pageable);
+    List<Product> findByVendor_Id(Integer idVendor,Pageable pageable);
 
 
 }
