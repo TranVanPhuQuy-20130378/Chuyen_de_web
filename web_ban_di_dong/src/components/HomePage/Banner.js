@@ -34,15 +34,12 @@ function Banner() {
                 <div className="row">
                     <div className="col-sm-3">
                         <div className="banner-left list-group">
-                            <Link to="/products?type=android" className="list-group-item"><i className="fa fa-code"></i> Android</Link>
-                            <Link to="/products?type=c_cpp" className="list-group-item"><i className="fa fa-code"></i> C/C++</Link>
-                            <Link to="/products?type=ios" className="list-group-item"><i className="fa fa-code"></i> iOS</Link>
-                            <Link to="/products?type=html" className="list-group-item"><i className="fa fa-code"></i> HTML & Template</Link>
-                            <Link to="/products?type=java_jsp" className="list-group-item"><i className="fa fa-code"></i> Java/JSP</Link>
-                            <Link to="/products?type=php_mysql" className="list-group-item"><i className="fa fa-code"></i> PHP & MySQL</Link>
-                            <Link to="/products?type=unity" className="list-group-item"><i className="fa fa-code"></i> Unity</Link>
-                            <Link to="/products?type=visual_c_sharp" className="list-group-item"><i className="fa fa-code"></i> Visual C#</Link>
-                            <Link to="/products?type=wordpress" className="list-group-item"><i className="fa fa-code"></i> Wordpress</Link>
+                            <Link to="/products?type=Samsung" className="list-group-item"><i className="fa fa-code"></i> Samsung</Link>
+                            <Link to="/products?type=iPhone" className="list-group-item"><i className="fa fa-code"></i> iPhone</Link>
+                            <Link to="/products?type=Oppo" className="list-group-item"><i className="fa fa-code"></i> OPPO</Link>
+                            <Link to="/products?type=Xiaomi" className="list-group-item"><i className="fa fa-code"></i> Xiaomi</Link>
+                            <Link to="/products?type=Vivo" className="list-group-item"><i className="fa fa-code"></i> Vivo</Link>
+                            <Link to="/products?type=Realme" className="list-group-item"><i className="fa fa-code"></i> Realme</Link>
                         </div>
                     </div>
                     <div className="col-sm-8">

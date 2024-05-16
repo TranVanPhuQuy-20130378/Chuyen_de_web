@@ -22,7 +22,6 @@
 
 .sidebar-item .list-group .list-group-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     transition: all .2s;
     padding: 15px 20px;
