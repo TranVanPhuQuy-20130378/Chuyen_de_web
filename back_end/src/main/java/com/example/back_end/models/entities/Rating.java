@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -21,7 +23,12 @@ public class Rating {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "rating")
-    private Integer rating;
+    @Column(name = "star")
+    private Integer star;
 
+    @Column(name = "comment")
+    private String comment;
+
+    @Column(name = "create_at", nullable = false)
+    private LocalDateTime Create_at;
 }

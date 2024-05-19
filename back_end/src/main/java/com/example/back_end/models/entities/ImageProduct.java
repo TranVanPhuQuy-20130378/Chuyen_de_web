@@ -23,8 +23,9 @@ public class ImageProduct {
     @Size(max = 255)
     @Column(name = "image_url")
     private String imageUrl;
-    @JsonIgnore
+
+
     @ManyToOne
-    @JoinColumn(name = "id_product")
+    @JoinColumn(name = "product_id")
     private Product product;
 }
