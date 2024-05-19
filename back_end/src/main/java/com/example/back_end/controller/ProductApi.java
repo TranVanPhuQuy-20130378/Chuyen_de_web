@@ -26,8 +26,6 @@ public class ProductApi {
     @Autowired
     private IProductService productService;
 
-
-
 	@GetMapping("/{id}")
 	public ResponseEntity<ResponseObject> findProductById(@PathVariable(name = "id") long id) {
 		return Optional

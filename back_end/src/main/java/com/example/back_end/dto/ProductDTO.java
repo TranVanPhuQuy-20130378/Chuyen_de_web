@@ -1,14 +1,10 @@
 package com.example.back_end.dto;
 
 
-import com.example.back_end.models.entities.Category;
-import com.example.back_end.models.entities.Commentp;
-import com.example.back_end.models.entities.Vendor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -16,15 +12,19 @@ import java.util.List;
 @Setter
 @Builder
 public class ProductDTO {
-private long product_id;
     private Integer id;
     private String name;
     private String description;
-    private BigDecimal price;
+    private int price;
     private Integer stockQuanlity;
-    private  String category;
+    private String category;
     private String vendor;
     private List<ImageDTO> listImg;
     private Integer status;
-    private List<Commentp> list_comment;
+    private List<RatingsDTO> rating_comment;
+    private Integer view;
+    private Integer liked;
+    private Integer buy;
+    private RatingDTO rating;
+
 }

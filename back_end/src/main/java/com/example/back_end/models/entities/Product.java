@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -26,7 +24,7 @@ public class Product {
     private String name;
 
     @Lob
-    @Column(name = "description")
+    @Column(name = "description",columnDefinition = "LONGTEXT")
     private String description;
 
     @Column(name = "price", precision = 10, scale = 2)
@@ -44,12 +42,10 @@ public class Product {
     private Vendor vendor;
 
     @OneToMany(mappedBy = "product", orphanRemoval = true, fetch = FetchType.EAGER)
-    @Fetch(FetchMode.JOIN)
     private Set<ImageProduct> imageProducts = new HashSet<>();
 
-
-    @OneToMany(mappedBy = "product", orphanRemoval = true)
-    private Set<Commentp> comments = new HashSet<>();
+    @OneToMany(mappedBy = "product", orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Rating> rating = new HashSet<>();
 
     @Column(name = "img_id")
     private Integer imgId;
