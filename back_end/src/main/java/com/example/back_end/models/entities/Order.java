@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Table(name = "`order`")
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false)
     private Integer id;
 
