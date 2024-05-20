@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @Table(name = "order_detail")
 public class OrderDetail {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -19,9 +20,9 @@ public class OrderDetail {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
+
+    @Column(name = "product_id")
+    private long product_id;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -32,4 +33,19 @@ public class OrderDetail {
     @Column(name = "total_price", precision = 10, scale = 2)
     private BigDecimal totalPrice;
 
+    @Column(name = "product_name")
+    private String productName;
+
+    @Override
+    public String toString() {
+        return "OrderDetail{" +
+                "id=" + id +
+                ", order=" + order +
+                ", product_id=" + product_id +
+                ", quantity=" + quantity +
+                ", unitPrice=" + unitPrice +
+                ", totalPrice=" + totalPrice +
+                ", productName='" + productName + '\'' +
+                '}';
+    }
 }

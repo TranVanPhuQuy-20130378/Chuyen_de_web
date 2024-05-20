@@ -1,9 +1,6 @@
 package com.example.back_end.models.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +11,7 @@ import lombok.Setter;
 @Table(name = "vendor")
 public class Vendor {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "vendor_id", nullable = false)
     private Integer id;
 

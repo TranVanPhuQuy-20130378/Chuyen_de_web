@@ -1,6 +1,4 @@
-ALTER TABLE commentp
-DROP
-FOREIGN KEY commentp_ibfk_1;
+
 
 ALTER TABLE order_detail
 DROP
