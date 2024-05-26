@@ -26,6 +26,7 @@ public class ProductService implements IGetProductService, ICountProductService 
     @PersistenceContext
     private EntityManager _entityManager;
 
+
 //    public ProductService(EntityManager entityManager) {
 //        this._entityManager = entityManager;
 //    }
@@ -185,4 +186,7 @@ public class ProductService implements IGetProductService, ICountProductService 
     public int countProductsBy_TypeAndBrandAndSex(int type_product, int brand, int sex) {
         return 0;
     }
+
+
+
 }
