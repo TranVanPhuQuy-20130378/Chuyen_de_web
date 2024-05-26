@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -100,5 +97,27 @@ public class ProductServiceImp implements IProductService {
                 .sorted(Comparator.comparing(Product::getTimeCreate).reversed())
                 .map(MapperProduct::mapperProductToDTO)
                 .collect(Collectors.toList());
+    }
+
+    public List<ProductDTO> getProductsByVendor(Integer vendorId) {
+        List<Product> productList = productRepository.findByVendor_Id(vendorId);
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        for (Product product : productList) {
+            productDTOList.add(convertToDTO(product));
+        }
+        return productDTOList;
+    }
+
+    private ProductDTO convertToDTO(Product product) {
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(product.getId());
+        productDTO.setName(product.getName());
+        productDTO.setDescription(product.getDescription());
+        productDTO.setPrice(product.getPrice().intValue());
+        productDTO.setStockQuanlity(product.getStockQuanlity());
+        productDTO.setCategory(product.getCategory().getCategoryName()); // Lấy tên danh mục
+        productDTO.setVendor(product.getVendor().getVendorName()); // Lấy tên nhà cung cấp
+        // Các bước khác để thiết lập các trường khác của ProductDTO
+        return productDTO;
     }
 }

@@ -2,9 +2,11 @@ package com.example.back_end.controller;
 
 import com.example.back_end.dto.ProductDTO;
 import com.example.back_end.models.ResponseObject;
+import com.example.back_end.models.entities.Product;
 import com.example.back_end.repos.ProductRepository;
 import com.example.back_end.services.interfaces.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -119,5 +121,10 @@ public class ProductApi {
 
 	private List<ProductDTO> handleThreeParams(Integer idVendor, Long idCate, Pageable pageable) {
 		return productService.findByTypeProduct_IdAndCate_Id(idVendor,idCate,pageable);
+	}
+
+	@GetMapping("/by-vendor/{vendorId}")
+	public List<ProductDTO> getProductsByVendor(@PathVariable Integer vendorId) {
+		return productService.getProductsByVendor(vendorId);
 	}
 }

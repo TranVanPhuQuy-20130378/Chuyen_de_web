@@ -34,11 +34,11 @@ public class Product {
     @Column(name = "stock_quanlity")
     private Integer stockQuanlity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
 

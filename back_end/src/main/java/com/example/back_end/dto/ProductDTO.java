@@ -27,4 +27,22 @@ public class ProductDTO {
     private Integer buy;
     private RatingDTO rating;
 
+    public ProductDTO() {
+    }
+    public ProductDTO(Integer id, String name, String description, int price, Integer stockQuanlity, String category, String vendor, List<ImageDTO> listImg, Integer status, List<RatingsDTO> rating_comment, Integer view, Integer liked, Integer buy, RatingDTO rating) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.stockQuanlity = stockQuanlity;
+        this.category = category;
+        this.vendor = vendor;
+        this.listImg = listImg;
+        this.status = status;
+        this.rating_comment = rating_comment;
+        this.view = view;
+        this.liked = liked;
+        this.buy = buy;
+        this.rating = rating;
+    }
 }
