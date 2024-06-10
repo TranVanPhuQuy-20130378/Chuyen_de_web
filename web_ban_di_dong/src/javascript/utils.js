@@ -2,7 +2,8 @@ export const formatNumber = (x, char) => x.toString().replace(/\B(?=(\d{3})+(?!\
 
 export function formatRating(rating) {
     const total = Object.keys(rating).reduce((previous, key) => previous + rating[key], 0)
-    const average = (Object.keys(rating).reduce((previous, key, index) => previous + (rating[key] * (5 - index)), 0) / total).toFixed(1)
+    let average = (Object.keys(rating).reduce((previous, key, index) => previous + (rating[key] * (5 - index)), 0) / total).toFixed(1)
+    if (isNaN(average)) average = 0;
     return {
         total: total,
         average: average,

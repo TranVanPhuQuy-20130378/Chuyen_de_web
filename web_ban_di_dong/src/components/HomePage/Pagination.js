@@ -6,8 +6,6 @@ function Pagination({pagination, onPageChange, currentPage}) {
     // Trích xuất các giá trị từ object pagination và gán chúng vào các biến tương ứng
     const {limit, total, totalPages} = pagination;
 
-    console.log("Day la component Pagination :", pagination)
-
     // Hàm xử lý thay đổi trang
     function handlePageChange(newPage) {
 

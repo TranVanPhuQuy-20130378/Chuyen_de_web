@@ -14,7 +14,7 @@ import java.util.List;
 public class ProductDTO_Ver1 {
       public long id_product;
       public String name_product;
-      public int start_review;
+      private RatingDTO rating;
       public BigDecimal listed_price;
       public BigDecimal promotional_price;
       public List<ImageProductDTO_Ver1> list_image;
