@@ -600,7 +600,7 @@
           "comment": "Rất hài lòng"
         }
       ],
-      "viewed": 109,
+      "viewed": 112,
       "buy": 50,
       "liked": 13,
       "price": 25190000
@@ -886,7 +886,7 @@
           "comment": "Rất hài lòng"
         }
       ],
-      "viewed": 108,
+      "viewed": 109,
       "buy": 50,
       "liked": 13,
       "price": 2490000
@@ -987,6 +987,47 @@
         "img": "https://sackim.com/wp-content/uploads/2019/02/logo-apple-hien-tai.jpg"
       },
       "name": "Realme c65",
+      "description": "Màn hình:\tIPS LCD 6.67\" HD+\nHệ điều hành:\tAndroid 14\nCamera sau:\tChính 50 MP & Cảm biến Flicker\nCamera trước:\t8 MP\nChip:\tMediaTek Helio G85\nRAM:\t6 GB\nDung lượng lưu trữ:\t128 GB\nSIM:\t2 Nano SIMHỗ trợ 4G\nPin, Sạc:\t5000 mAh45 W\nHãng\trealme.",
+      "rating": {
+        "5star": 270,
+        "4star": 19,
+        "3star": 52,
+        "2star": 7,
+        "1star": 4
+      },
+      "rating-comment": [
+        {
+          "name": "Chị Hà",
+          "star": 4,
+          "when": 1686637248685,
+          "comment": "Sản phẩm rất tốt tôi rất hài lòng"
+        },
+        {
+          "name": "Anh Quân",
+          "star": 5,
+          "when": 1686637249374,
+          "comment": "Rất hài lòng"
+        }
+      ],
+      "viewed": 108,
+      "buy": 50,
+      "liked": 13,
+      "price": 3690000
+    },
+    {
+      "id": 13,
+      "img": "../../product/Realme/cellphones 61.png",
+      "thumbnails": [
+        "../../product/Realme/cellphones 61.png",
+        "../../product/Realme/cellphones 611.png",
+        "../../product/Realme/cellphones 611.png"
+      ],
+      "type": {
+        "id": "Realme",
+        "name": "Realme",
+        "img": "https://sackim.com/wp-content/uploads/2019/02/logo-apple-hien-tai.jpg"
+      },
+      "name": "Realme c653",
       "description": "Màn hình:\tIPS LCD 6.67\" HD+\nHệ điều hành:\tAndroid 14\nCamera sau:\tChính 50 MP & Cảm biến Flicker\nCamera trước:\t8 MP\nChip:\tMediaTek Helio G85\nRAM:\t6 GB\nDung lượng lưu trữ:\t128 GB\nSIM:\t2 Nano SIMHỗ trợ 4G\nPin, Sạc:\t5000 mAh45 W\nHãng\trealme.",
       "rating": {
         "5star": 270,

@@ -45,6 +45,14 @@ public class ProductServiceImp implements IProductService {
 
     }
 
+    @Override
+    public List<ProductDTO> findAll() {
+        return Optional.ofNullable(productRepository.findAll()).orElse(null)
+                .stream()
+                .map(MapperProduct::mapperProductToDTO)
+                .collect(Collectors.toList());
+    }
+
 
     @Override
     public List<ProductDTO> findProductByBrandWithOptionSort(String name, Pageable pageable) {
@@ -107,6 +115,26 @@ public class ProductServiceImp implements IProductService {
         }
         return productDTOList;
     }
+
+
+    @Override
+    public List<ProductDTO> findByVendorNameContaining(String vendorName, Pageable pageable) {
+        return Optional.ofNullable(productRepository.findByVendor_VendorNameContainingIgnoreCase(vendorName, pageable))
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(MapperProduct::mapperProductToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductDTO> findByVendorNameContaining(String vendorName) {
+        return Optional.ofNullable(productRepository.findByVendor_VendorNameContainingIgnoreCase(vendorName))
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(MapperProduct::mapperProductToDTO)
+                .collect(Collectors.toList());
+    }
+
 
     private ProductDTO convertToDTO(Product product) {
         ProductDTO productDTO = new ProductDTO();

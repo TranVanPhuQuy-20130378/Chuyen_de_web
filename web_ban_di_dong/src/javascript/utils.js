@@ -14,7 +14,6 @@ export function formatRating(rating) {
         avg1: rating['1star'] * 100 / total
     }
 }
-
 export const getTypes = (json) => {
     const types = []
     json.data.forEach(product => {
@@ -38,14 +37,22 @@ export function getTypeName(typeId) {
     return null
 }
 
-export const makeURL = (search, from, type, page, sort) => {
-    const searchPart = search != null ? `name_like=${search}&` : ''
-    const fromPart = from != null ? `type.id=${from}&` : ''
-    const typePart = type != null ? `type.id=${type}&` : ''
-    const pagePart = page != null ? `_page=${page}&_limit=12&` : ''
-    const sortPart = sort != null ? `_sort=${sort}&_order=desc` : ''
-    return trim(trim(`http://localhost:9810/products?${searchPart}${fromPart}${typePart}${pagePart}${sortPart}`, '&'), '?')
+export function makeURL(query, from, type, page, sort) {
+    let url = `http://localhost:8080/api/products?page=${page}&size=12`;
+    if (type) {
+        url = `http://localhost:8080/api/products/filter?page=${page}&size=12&vendor=${type}`;
+    }
+    if (query) {
+        url += `&search=${query}`;
+    }
+
+    if (sort) {
+        url += `&sort=${sort}`;
+    }
+    console.log(url)
+    return url;
 }
+
 
 export const buildQuery = (ids) => {
     let query = ''
