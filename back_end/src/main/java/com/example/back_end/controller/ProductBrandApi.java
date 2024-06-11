@@ -19,7 +19,7 @@ public class ProductBrandApi {
     }
     @GetMapping("/ds-dien-thoai-iphone")
     public ResponseObject getListIphone() {
-        return new ResponseObject("OK", "Danh sách điện thoại Iphone", product.findAllByBrand("Iphone"));
+        return new ResponseObject("OK", "Danh sách điện thoại Iphone", product.findAllByBrand("IPhone"));
     }
     @GetMapping("/ds-dien-thoai-oppo")
     public ResponseObject getListOppo() {

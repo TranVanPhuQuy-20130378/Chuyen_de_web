@@ -55,11 +55,7 @@ function Banner() {
                             </div>
                         </Carousel>
                     </div>
-                    <div className="col-sm-2 pl-0">
-                        <div className="banner-right text-right">
-                            <img src="https://sharecode.vn/assets/images/thiet-ke-web-gia-re.jpg" alt=""/>
-                        </div>
-                    </div>
+                
                 </div>
             </div>
         </>

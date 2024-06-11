@@ -1,13 +1,14 @@
 package com.example.back_end.services;
 
 
+import com.example.back_end.dto.UserDto;
 import com.example.back_end.dto.UserLoginDto;
+import com.example.back_end.dto.UserProfileUpdateDto;
 import com.example.back_end.dto.UserRegistrationDto;
 import com.example.back_end.models.entities.User;
 import com.example.back_end.repos.RoleRepository;
 import com.example.back_end.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -48,5 +49,39 @@ public class UserService {
             }
         }
         return Optional.empty();
+
     }
+    public User updateUserProfile(String email, UserProfileUpdateDto profileUpdateDto) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setUsername(profileUpdateDto.getFullname());
+            user.setGender(profileUpdateDto.getGender());
+            user.setPhone(profileUpdateDto.getPhone());
+            user.setEmail(profileUpdateDto.getPersonal_email());
+            user.setAddress(profileUpdateDto.getAddress());
+
+            return userRepository.save(user);
+        }
+        return null;
+    }
+
+
+        public UserDto getUserDtoByEmail(String email) {
+            User user = userRepository.findByEmail(email)
+                    .orElse(null);
+
+            if (user != null) {
+                UserDto userDto = new UserDto();
+                userDto.setUsername(user.getUsername());
+                userDto.setEmail(user.getEmail());
+                userDto.setPhone(user.getPhone());
+                userDto.setGender(user.getGender());
+                userDto.setAddress(user.getAddress());
+                return userDto;
+            }
+
+            return null;
+        }
+
 }

@@ -3,85 +3,88 @@ import Header from '../Commons/Header';
 import SectionBreadcrumb from "../Commons/SectionBreadcrumb";
 import Footer from '../Commons/Footer';
 
-import {Toast} from 'react-bootstrap';
-import {Link, useNavigate} from "react-router-dom";
+import { Toast } from 'react-bootstrap';
+import { Link, useNavigate } from "react-router-dom";
 
-import {registerError} from "../../redux/redux_phong/Action";
-import {hashText, isEmail, isEmpty} from "../../javascript/utils/Utils_Tai";
-import {errorRegisterSelector} from "../../redux/redux_phong/Selectors";
-import React, {useEffect, useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {checkEmailExists, addAccount} from "../../javascript/api/Api";
+import { registerError } from "../../redux/redux_phong/Action";
+import { hashText, isEmail, isEmpty } from "../../javascript/utils/Utils_Tai";
+import { errorRegisterSelector } from "../../redux/redux_phong/Selectors";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { checkEmailExists, addAccount } from "../../javascript/api/Api";
 
-const breadcrumbs = [{name: "Trang chủ", link: "/"}, {name: "Đăng ký", link: "/register"}]
+const breadcrumbs = [{ name: "Trang chủ", link: "/" }, { name: "Đăng ký", link: "/register" }];
 
-function SectionRegister(){
-    const timeOut = 2000
-    const [showToast, setShowToast] = useState(false)
+function SectionRegister() {
+    const timeOut = 2000;
+    const [showToast, setShowToast] = useState(false);
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirm_pass,setConfirm_pass] = useState("");
+    const [confirm_pass, setConfirm_pass] = useState("");
     const dispatch = useDispatch();
     const errorString = useSelector(errorRegisterSelector);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(isEmpty(email) || isEmpty(password) || isEmpty(confirm_pass)){
+        if (isEmpty(email) || isEmpty(password) || isEmpty(confirm_pass)) {
             dispatch(registerError({
                 errorRegister: "Hãy điền đầy đủ thông tin"
-            }))
-        }else if(!isEmail(email)){
+            }));
+        } else if (!isEmail(email)) {
             dispatch(registerError({
                 errorRegister: "Nhập đúng định dạng email"
-            }))
-        }else if(password.localeCompare(confirm_pass) !==0){
+            }));
+        } else if (password.localeCompare(confirm_pass) !== 0) {
             dispatch(registerError({
                 errorRegister: "Xác thực mật khẩu không chính xác"
-            }))
-        }
-        else{
+            }));
+        } else {
             checkEmailExists(email).then(emailExists => {
-                if(emailExists){
+                if (emailExists) {
                     dispatch(registerError({
                         errorRegister: "Tài khoản đã tồn tại vui lòng đăng ký email khác!"
-                    }))
-                }else{
-                    setShowToast(true)
+                    }));
+                } else {
+                    setShowToast(true);
                     dispatch(registerError({
                         errorRegister: ""
-                    }))
-                    let hashPass = hashText(password);
-                    let fullname = "";
+                    }));
+                    
+                    let username = "";         
+                    let phone ="" ;
+                    let dateOfBirth = "";  
                     let gender = "";
-                    let phone = "";
-                    let personal_email = email;
                     let address = "";
-                    let province = "";
-                    let account = {email, hashPass, fullname, gender, phone, personal_email, address, province};
-                    addAccount(account).then(() =>{
+                    let account = { username, email,password,phone,dateOfBirth,gender,address};
+                    addAccount(account).then(() => {
                         setTimeout(() => {
                             navigate('/login');
                         }, timeOut);
-                    })
+                    });
                 }
-            })
+            });
         }
     }
-    const handleInputEmail = (e) =>{
-        setEmail(e.target.value)
+
+    const handleInputEmail = (e) => {
+        setEmail(e.target.value);
     }
-    const handleInputPassword = (e) =>{
-        setPassword(e.target.value)
+
+    const handleInputPassword = (e) => {
+        setPassword(e.target.value);
     }
-    const handleInputRePassword = (e) =>{
-        setConfirm_pass(e.target.value)
+
+    const handleInputRePassword = (e) => {
+        setConfirm_pass(e.target.value);
     }
-    return(
+
+    return (
         <section className="form-input py-5">
             {/*Thông báo Toast*/}
             <div>
                 <Toast show={showToast} onClose={() => setShowToast(false)} delay={timeOut} autohide>
-                    <Toast.Body className="text-white" style={{backgroundColor: '#7fad39'}}>
+                    <Toast.Body className="text-white" style={{ backgroundColor: '#7fad39' }}>
                         Đăng ký thành công!
                     </Toast.Body>
                 </Toast>
@@ -114,13 +117,14 @@ function SectionRegister(){
         </section>
     )
 }
-export default function RegisterPage(){
-    return(
+
+export default function RegisterPage() {
+    return (
         <>
-            <Header/>
-            <SectionBreadcrumb breadcrumbs={breadcrumbs}/>
-            <SectionRegister/>
-            <Footer/>
+            <Header />
+            <SectionBreadcrumb breadcrumbs={breadcrumbs} />
+            <SectionRegister />
+            <Footer />
         </>
     )
 };

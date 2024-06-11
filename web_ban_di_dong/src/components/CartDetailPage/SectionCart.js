@@ -35,7 +35,7 @@ function SectionCart() {
                             <thead>
                             <tr>
                                 <th></th>
-                                <th className="shoping__product">Mã nguồn</th>
+                                <th className="shoping__product">Sản phẩm</th>
                                 <th>Giá</th>
                                 <th></th>
                             </tr>
@@ -52,8 +52,8 @@ function SectionCart() {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="shoping__cart__btns">
-                        <Link to="/" className="primary-btn cart-btn">Tiếp tục mua code</Link>
-                        <Link to="/" className="primary-btn cart-btn cart-btn-right">Tiếp tục mua code</Link>
+                        <Link to="/" className="primary-btn cart-btn">Tiếp tục mua sản phẩm</Link>
+                        <Link to="/" className="primary-btn cart-btn cart-btn-right">Tiếp tục mua sản phẩm</Link>
                     </div>
                 </div>
                 <div className="col-lg-6">

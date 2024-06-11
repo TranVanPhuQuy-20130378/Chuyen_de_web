@@ -52,29 +52,13 @@ export function ModalPayment() {
             <Container>
                 <Row>
                     <Col md={8}>
-                        <div style={{height: '250px', overflowY: 'auto', overflowX: 'hidden'}}>
+                        <div style={{height: '70px', overflowY: 'auto', overflowX: 'hidden'}}>
 
-                            {cart.map((value, index) => (
-                                <Row className="mt-3" key={index}>
-                                    <Col md={5}>
-                                        <div style={{color: '#7fad39', fontWeight: 'bold'}}>[Mã
-                                            code <span>{value.id}</span>]
-                                        </div>
-                                    </Col>
-                                    <Col md={7}>
-                                        <div><Button variant="warning"
-                                                     disabled={showButtonDownload === false && value.price > 0}
-                                                     onClick={() => downloadFile(value.file.link)}><i
-                                            className="fa fa-download"/> TẢI NGAY </Button>
-                                        </div>
-                                    </Col>
-                                </Row>
-                            ))}
 
                         </div>
                     </Col>
                     <Col md={4}>
-                        {contentRight}
+                      
                     </Col>
                 </Row>
             </Container>
