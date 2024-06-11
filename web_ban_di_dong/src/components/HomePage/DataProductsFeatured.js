@@ -102,6 +102,7 @@ function ItemProductFeatured({ product }) {
             <div>
                 <Toast show={showToast} onClose={() => setShowToast(false)} delay={3000} autohide>
                     <Toast.Body className="text-white" style={{ backgroundColor: '#7fad39' }}>
+
                         Sản phẩm đã được thêm vào giỏ hàng
                     </Toast.Body>
                 </Toast>

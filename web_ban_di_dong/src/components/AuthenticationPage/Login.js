@@ -4,72 +4,68 @@ import logoFacebook from '../../img/authentication/logo-fb.png';
 
 import Header from '../Commons/Header';
 import Footer from '../Commons/Footer';
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SectionBreadcrumb from "../Commons/SectionBreadcrumb";
-import React, {useEffect, useState} from "react";
-import {hashText, isEmail, isEmpty} from "../../javascript/utils/Utils_Tai";
-import {loginError} from "../../redux/redux_phong/Action";
-import {checkEmailExists, checkLogin, getProvinces} from "../../javascript/api/Api";
-import {useDispatch, useSelector} from "react-redux";
-import {errorLoginSelector, errorRegisterSelector} from "../../redux/redux_phong/Selectors";
+import React, { useEffect, useState } from "react";
+import { isEmail, isEmpty } from "../../javascript/utils/Utils_Tai";
+import { loginError } from "../../redux/redux_phong/Action";
+import { checkLogin } from "../../javascript/api/Api";
+import { useDispatch, useSelector } from "react-redux";
+import { errorLoginSelector } from "../../redux/redux_phong/Selectors";
 
 const breadcrumbs = [{name: "Trang chủ", link: "/"}, {name: "Đăng nhập", link: "/login"}]
 
-function SectionLogin(){
-    const timeOut = 2000
+function SectionLogin() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const errorString = useSelector(errorLoginSelector);
 
-    useEffect(()=>{
+    useEffect(() => {
         const storedEmail = localStorage.getItem("account");
-        if(storedEmail){
+        if(storedEmail) {
             navigate('/');
         }
-    },[]);
+    }, []);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(isEmpty(email) || isEmpty(password)){
+        if(isEmpty(email) || isEmpty(password)) {
             dispatch(loginError({
                 errorLogin: "Hãy điền đầy đủ thông tin"
             }))
-        }else if(!isEmail(email)){
+        } else if(!isEmail(email)) {
             dispatch(loginError({
                 errorLogin: "Nhập đúng định dạng email"
             }))
-        }else{
-            checkEmailExists(email).then(emailExists => {
-                if(!emailExists){
+        } else {
+            checkLogin(email, password).then((response) => {
+                if(response) {
+                    navigate("/");
+                    localStorage.setItem("account", email);
+                } else {
                     dispatch(loginError({
-                        errorLogin: "Tài khoản không tồn tại vui lòng nhập lại!"
+                        errorLogin: "Tài khoản hoặc mật khẩu không đúng. Vui lòng đăng nhập lại!"
                     }))
-                }else{
-                    dispatch(loginError({
-                        errorLogin: ""
-                    }))
-                    checkLogin(email, password).then((check)=>{
-                        if(check){
-                            navigate("/");
-                            localStorage.setItem("account", email);
-                        }else{
-                            dispatch(loginError({
-                                errorLogin: "Tài khoản hoặc mật khẩu không đúng. Vui lòng đăng nhập lại!"
-                            }))
-                        }
-                    })
                 }
-            })
+            }).catch((error) => {
+                dispatch(loginError({
+                    errorLogin: "Đã có lỗi xảy ra. Vui lòng thử lại!"
+                }));
+            });
         }
     }
-    const handleInputEmail = (e) =>{
-        setEmail(e.target.value)
+
+    const handleInputEmail = (e) => {
+        setEmail(e.target.value);
     }
-    const handleInputPassword = (e) =>{
-        setPassword(e.target.value)
+
+    const handleInputPassword = (e) => {
+        setPassword(e.target.value);
     }
-    return(
+
+    return (
         <section className="form-input py-5">
             <div className="container">
                 <div className="row">
@@ -84,33 +80,34 @@ function SectionLogin(){
                                     {errorString}
                                 </div>}
                                 <input value={email} onChange={handleInputEmail} id="email" className="w-100 mb-3" placeholder="Email" name="email"/>
-                                <input value={password} onChange={handleInputPassword} id="password" className="w-100 mb-4" type="password" placeholder="Mật khẩu"
-                                       name="password"/>
+                                <input value={password} onChange={handleInputPassword} id="password" className="w-100 mb-4" type="password" placeholder="Mật khẩu" name="password"/>
                                 <button type="submit" className="mb-4 btn next w-100">Đăng nhập</button>
-                                <a id="google-login-button"
-                                   className="google d-flex justify-content-center w-100 mb-3">
-                                    <img src={logoGoogle} width="25px" className="mr-2"/>Google</a>
-                                <a id="fb-login-button"
-                                   className="google d-flex justify-content-center w-100 mb-3">
-                                    <img src={logoFacebook} width="30px" className="mr-2"/>Facebook</a>
+                                <a id="google-login-button" className="google d-flex justify-content-center w-100 mb-3">
+                                    <img src={logoGoogle} width="25px" className="mr-2"/>Google
+                                </a>
+                                <a id="fb-login-button" className="google d-flex justify-content-center w-100 mb-3">
+                                    <img src={logoFacebook} width="30px" className="mr-2"/>Facebook
+                                </a>
                                 <span className="shotcut">
-                                <Link className="mr-3" to="/forgot-password">Quên mật khẩu?</Link>
-                                <Link to="/register">Đăng ký?</Link></span>
+                                    <Link className="mr-3" to="/forgot-password">Quên mật khẩu?</Link>
+                                    <Link to="/register">Đăng ký?</Link>
+                                </span>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    )
+    );
 }
-export default function LoginPage(){
-    return(
+
+export default function LoginPage() {
+    return (
         <>
             <Header/>
             <SectionBreadcrumb breadcrumbs={breadcrumbs}/>
             <SectionLogin/>
             <Footer/>
         </>
-    )
+    );
 }
