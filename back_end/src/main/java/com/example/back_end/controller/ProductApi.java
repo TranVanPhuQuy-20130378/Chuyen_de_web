@@ -2,6 +2,7 @@ package com.example.back_end.controller;
 
 import com.example.back_end.dto.ProductDTO;
 import com.example.back_end.models.ResponseObject;
+import com.example.back_end.models.ResponseObject2;
 import com.example.back_end.models.entities.Product;
 import com.example.back_end.repos.ProductRepository;
 import com.example.back_end.services.interfaces.IProductService;
@@ -37,10 +38,19 @@ public class ProductApi {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body(
 						new ResponseObject(HttpStatus.NOT_FOUND.name(), HttpStatus.NOT_FOUND.getReasonPhrase(), "")));
 	}
+	@PatchMapping("/{id}")
+	public ResponseEntity<ResponseObject> updateProductById(@PathVariable(name = "id") long id, @RequestBody ProductDTO productDTO) {
 
+		ProductDTO updatedProduct = productService.updateById(id, productDTO);
+		if (updatedProduct != null) {
+			return ResponseEntity.ok().body(new ResponseObject(HttpStatus.OK.name(), HttpStatus.OK.getReasonPhrase(), updatedProduct));
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseObject(HttpStatus.NOT_FOUND.name(), HttpStatus.NOT_FOUND.getReasonPhrase(), ""));
+		}
+	}
 	@GetMapping("/search")
 	public ResponseEntity<ResponseObject> findProductByName(@RequestParam(name = "name") String input,
-														  @PageableDefault(size = 30, page = 0) Pageable pageable) {
+														  @PageableDefault(size = 300, page = 0) Pageable pageable) {
 		return ResponseEntity.ok()
 				.body(new ResponseObject(HttpStatus.OK.name(), HttpStatus.OK.getReasonPhrase(),
 						productService.findByNameProduct(input, pageable)));
@@ -59,17 +69,30 @@ public class ProductApi {
     }
 
     @GetMapping("")
-    public ResponseEntity<ResponseObject> findAllProduct(
+    public ResponseEntity<ResponseObject2> findAllProduct(
             @PageableDefault(size = 1000, page = 0) Pageable pageable) {
         return Optional.ofNullable(
                         ResponseEntity.ok()
-                                .body(new ResponseObject("Ok", "OK",
+                                .body(new ResponseObject2("Ok", "OK",productService.findAll().size()+"",
                                         productService.findAll(pageable))))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                        new ResponseObject(HttpStatus.NOT_FOUND.name(), HttpStatus.NOT_FOUND.getReasonPhrase(), "")))
+                        new ResponseObject2(HttpStatus.NOT_FOUND.name(), HttpStatus.NOT_FOUND.getReasonPhrase(),null, "")))
                 ;
     }
 	@GetMapping("/filter")
+	public ResponseEntity<ResponseObject2> findByVendorName(
+			@RequestParam(name = "vendor") String vendorName,
+			@PageableDefault(size = 6, page = 0) Pageable pageable) {
+		List<ProductDTO> products = productService.findByVendorNameContaining(vendorName, pageable);
+
+		return Optional.ofNullable(
+						ResponseEntity.ok()
+								.body(new ResponseObject2("Ok", "OK",productService.findByVendorNameContaining(vendorName).size()+"", products)))
+				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+						new ResponseObject2(HttpStatus.NOT_FOUND.name(), HttpStatus.NOT_FOUND.getReasonPhrase(),null, "")));
+	}
+
+//	@GetMapping("/filter")
 	public ResponseEntity<ResponseObject> findByTypeProduct_IdOrCate_Id(
 			@RequestParam(name = "vendor", required = false) Integer idVenor,
 			@RequestParam(name = "cate", required = false) Long idCate,

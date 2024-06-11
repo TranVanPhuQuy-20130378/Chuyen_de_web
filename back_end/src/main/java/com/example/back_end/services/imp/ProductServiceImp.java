@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -43,6 +44,14 @@ public class ProductServiceImp implements IProductService {
                 .map(MapperProduct::mapperProductToDTO)
                 .collect(Collectors.toList());
 
+    }
+
+    @Override
+    public List<ProductDTO> findAll() {
+        return Optional.ofNullable(productRepository.findAll()).orElse(null)
+                .stream()
+                .map(MapperProduct::mapperProductToDTO)
+                .collect(Collectors.toList());
     }
 
 
@@ -107,6 +116,46 @@ public class ProductServiceImp implements IProductService {
         }
         return productDTOList;
     }
+
+
+    @Override
+    public List<ProductDTO> findByVendorNameContaining(String vendorName, Pageable pageable) {
+        return Optional.ofNullable(productRepository.findByVendor_VendorNameContainingIgnoreCase(vendorName, pageable))
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(MapperProduct::mapperProductToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductDTO> findByVendorNameContaining(String vendorName) {
+        return Optional.ofNullable(productRepository.findByVendor_VendorNameContainingIgnoreCase(vendorName))
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(MapperProduct::mapperProductToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public ProductDTO updateById(long id, ProductDTO productDTO) {
+        // Tìm kiếm sản phẩm trong cơ sở dữ liệu
+        Product existingProduct = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy sản phẩm với ID: " + id));
+
+        // Cập nhật thông tin của sản phẩm từ dữ liệu mới của productDTO
+        existingProduct.setName(productDTO.getName());
+        existingProduct.setDescription(productDTO.getDescription());
+        existingProduct.setPrice(BigDecimal.valueOf(productDTO.getPrice()));
+        existingProduct.setStockQuanlity(productDTO.getStockQuanlity());
+        // Cập nhật các trường khác nếu cần thiết
+
+        // Lưu sản phẩm đã cập nhật vào cơ sở dữ liệu
+        Product updatedProduct = productRepository.save(existingProduct);
+
+        // Trả về DTO của sản phẩm đã được cập nhật
+        return MapperProduct.mapperProductToDTO(updatedProduct);
+    }
+
 
     private ProductDTO convertToDTO(Product product) {
         ProductDTO productDTO = new ProductDTO();

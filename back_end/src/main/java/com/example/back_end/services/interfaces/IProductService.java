@@ -11,6 +11,7 @@ public interface IProductService {
     ProductDTO findById(long id);
     List<ProductDTO> findByNameProduct(String name, Pageable pageable);
     List<ProductDTO> findAll(Pageable pageable);
+    List<ProductDTO> findAll();
     List<ProductDTO> findProductByBrandWithOptionSort(String name,Pageable pageable);
     List<ProductDTO> findByTypeProduct_IdOrCate_Id(Integer idType, Long idCate,Pageable pageable);
 
@@ -18,4 +19,9 @@ public interface IProductService {
     List<ProductDTO> findByTypeProduct_Id(Integer idType, Pageable pageable);
     List<ProductDTO> findByTypeProduct_IdAndCate_Id(Integer idType, Long idCate, Pageable pageable);
     List<ProductDTO> getProductsByVendor(Integer vendorId);
+
+    List<ProductDTO> findByVendorNameContaining(String vendorName, Pageable pageable);
+    List<ProductDTO> findByVendorNameContaining(String vendorName);
+
+    ProductDTO updateById(long id, ProductDTO productDTO);
 }

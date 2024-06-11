@@ -2,8 +2,10 @@ package com.example.back_end.services;
 
 import com.example.back_end.dto.ImageProductDTO_Ver1;
 import com.example.back_end.dto.ProductDTO_Ver1;
+import com.example.back_end.dto.RatingDTO;
 import com.example.back_end.models.entities.ImageProduct;
 import com.example.back_end.models.entities.Product;
+import com.example.back_end.models.entities.Rating;
 import com.example.back_end.services.interfaces.ICountProductService;
 import com.example.back_end.services.interfaces.IGetProductService;
 import jakarta.persistence.EntityManager;
@@ -71,6 +73,7 @@ public class ProductService implements IGetProductService, ICountProductService 
 
             ProductDTO_Ver1 productDTO = ProductDTO_Ver1.builder()
                     .id_product(product.getId())
+                    .rating(mapperRatingToDTO(product.getRating()))
                     .name_product(product.getName())
                     .listed_price(product.getPrice())
                     .list_image(convertImageProductToDTO(product.getImageProducts())) // Gọi phương thức chuyển đổi thành DTO
@@ -187,6 +190,46 @@ public class ProductService implements IGetProductService, ICountProductService 
         return 0;
     }
 
+    public static RatingDTO mapperRatingToDTO(Set<Rating> ratings) {
+        int fiveStar = 0;
+        int fourStar = 0;
+        int threeStar = 0;
+        int twoStar = 0;
+        int oneStar = 0;
+        int zeroStar = 0;
 
+        for (Rating rating : ratings) {
+            switch (rating.getStar()) {
+                case 5:
+                    fiveStar++;
+                    break;
+                case 4:
+                    fourStar++;
+                    break;
+                case 3:
+                    threeStar++;
+                    break;
+                case 2:
+                    twoStar++;
+                    break;
+                case 1:
+                    oneStar++;
+                    break;
+                case 0:
+                    zeroStar++;
+                    break;
+            }
+        }
+
+        RatingDTO ratingDTO = new RatingDTO();
+        ratingDTO.setFive_star(fiveStar);
+        ratingDTO.setFour_star(fourStar);
+        ratingDTO.setThree_star(threeStar);
+        ratingDTO.setTwo_star(twoStar);
+        ratingDTO.setOne_star(oneStar);
+        ratingDTO.setZero_star(zeroStar);
+
+        return ratingDTO;
+    }
 
 }

@@ -113,7 +113,7 @@ function ItemCart({product}) {
     return (
         <tr>
             <td><Link to={`/products/product/${product.id}`} state={product}>
-                <img src={`${product.img}`}
+                <img src={`${product.listImg[0].path_image}`}
                      style={styleImage} alt=""/></Link></td>
             <td className="shoping__cart__item">
                 <Link to={`/products/product/${product.id}`} state={product}>
