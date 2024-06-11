@@ -137,6 +137,7 @@ export async function changeProfile(email, data) {
             },
             body: JSON.stringify(account),
         });
+
         if (!updateResponse.ok) {
             throw new Error('Failed to update profile.');
         }

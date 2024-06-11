@@ -23,27 +23,27 @@ function DetailLeft({product}) {
         <div className="detail-left">
             <div className="detail-slider">
                 <div className="detail-slide" style={{transform: `translateX(${100 * (0 - slideIndex)}%)`}}>
-                    <img src={product.thumbnails[0]} alt=""/>
+                    <img src={product.listImg[0].path_image} alt=""/>
                 </div>
                 <div className="detail-slide" style={{transform: `translateX(${100 * (1 - slideIndex)}%)`}}>
-                    <img src={product.thumbnails[1]} alt=""/>
+                    <img src={product.listImg[1].path_image} alt=""/>
                 </div>
                 <div className="detail-slide" style={{transform: `translateX(${100 * (2 - slideIndex)}%)`}}>
-                    <img src={product.thumbnails[2]} alt=""/>
+                    <img src={product.listImg[2].path_image} alt=""/>
                 </div>
             </div>
             <button className="btn slide-arrow btn-prev" onClick={() => moveSlide(-1)}><i className="bi bi-chevron-left"></i></button>
             <button className="btn slide-arrow btn-next" onClick={() => moveSlide(1)}><i className="bi bi-chevron-right"></i></button>
             <div className="slider-thumbnails d-flex justify-content-between">
                 <div className={slideIndex === 0 && 'active'} onClick={() => setSlideIndex(0)}>
-                    <img src={product.thumbnails[0]} alt=""/>
+                    <img src={product.listImg[0].path_image} alt=""/>
                 </div>
                 <div className={slideIndex === 1 && 'active'} onClick={() => setSlideIndex(1)}>
-                    <img src={product.thumbnails[1]} alt=""/>
+                    <img src={product.listImg[1].path_image} alt=""/>
                 </div>
                 <div className={slideIndex === 2 && 'active'} onClick={() => setSlideIndex(2)}>
-                    <img src={product.thumbnails[2]} alt=""/>
-                    <img src={product.thumbnails[2]} alt=""/>
+                    <img src={product.listImg[2].path_image} alt=""/>
+                    {/*<img src={product.thumbnails[2]} alt=""/>*/}
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@ function DetailCenter({product}) {
             </div>
             <div className="detail-center-info">
                 <div>
-                    <i className="fa fa-list"></i><span>Danh mục</span> <Link to={`/products?type=${product.type.id}`}>{product.type.name}</Link>
+                    <i className="fa fa-list"></i><span>Danh mục</span> <Link to={`/products?type=${product.vendor}`}>{product.vendor}</Link>
                 </div>
                 <div><i className="fa fa-layer-group"></i><span>Nhóm sản phẩm </span> <Link to={'/top-codes'}>Top sản phẩm</Link></div>
             </div>
@@ -139,10 +139,10 @@ function DemoImage({product}) {
         <>
             <DetailDivider title={'HÌNH ẢNH DEMO'}/>
             <div className="text-center">
-                {product.thumbnails.map((value, index) => {
+                {product.listImg.map((value, index) => {
                     return (
                         <div key={index}>
-                            <img style={{display: 'inline-block', marginBottom: '15px'}} key={index} src={value} alt=""/>
+                            <img style={{display: 'inline-block', marginBottom: '15px'}} key={index} src={value.path_image} alt=""/>
                             <p className="text-center mt-0 mb-5 font-italic text-dark">Hình {index + 1}</p>
                         </div>
                     )
@@ -303,7 +303,7 @@ function Rating({product, setProduct}) {
                     </div>
                 </div>
                 <div className="detail-rating-comment">
-                    {[...product['rating-comment']].sort((a, b) => a.when - b.when > 0 ? -1 : 1).map((rating, index) => (
+                    {[...product['rating_comment']].sort((a, b) => a.when - b.when > 0 ? -1 : 1).map((rating, index) => (
                         <div key={index}>
                             <div>{rating.name} <span><i className="fa fa-check-circle"></i> Đã mua hàng</span>
                                 <span>{getPassedTimeInText(rating.when)}</span></div>
@@ -339,15 +339,15 @@ export default function ProductDetails() {
     const {id} = useParams()
 
     useMemo(() => {
-        fetchCodes(`http://localhost:9810/products/${id}`).then(json => {
-            setProduct(json)
+        fetchCodes(`http://localhost:8080/api/products/${id}`).then(json => {
+            setProduct(json.data)
             setProduct(product => ({...product, viewed: product.viewed + 1}))
             setLoading(false)
         })
     }, [id])
 
     useEffect(() => {
-        putCodes(`http://localhost:9810/products/${product.id}`, {
+        putCodes(`http://localhost:8080/api/products/${product.id}`, {
             method: "PATCH",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(product)

@@ -22,4 +22,6 @@ public interface IProductService {
 
     List<ProductDTO> findByVendorNameContaining(String vendorName, Pageable pageable);
     List<ProductDTO> findByVendorNameContaining(String vendorName);
+
+    ProductDTO updateById(long id, ProductDTO productDTO);
 }

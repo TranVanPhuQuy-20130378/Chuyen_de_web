@@ -38,7 +38,16 @@ public class ProductApi {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body(
 						new ResponseObject(HttpStatus.NOT_FOUND.name(), HttpStatus.NOT_FOUND.getReasonPhrase(), "")));
 	}
+	@PatchMapping("/{id}")
+	public ResponseEntity<ResponseObject> updateProductById(@PathVariable(name = "id") long id, @RequestBody ProductDTO productDTO) {
 
+		ProductDTO updatedProduct = productService.updateById(id, productDTO);
+		if (updatedProduct != null) {
+			return ResponseEntity.ok().body(new ResponseObject(HttpStatus.OK.name(), HttpStatus.OK.getReasonPhrase(), updatedProduct));
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseObject(HttpStatus.NOT_FOUND.name(), HttpStatus.NOT_FOUND.getReasonPhrase(), ""));
+		}
+	}
 	@GetMapping("/search")
 	public ResponseEntity<ResponseObject> findProductByName(@RequestParam(name = "name") String input,
 														  @PageableDefault(size = 300, page = 0) Pageable pageable) {

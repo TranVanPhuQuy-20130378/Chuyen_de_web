@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -133,6 +134,26 @@ public class ProductServiceImp implements IProductService {
                 .stream()
                 .map(MapperProduct::mapperProductToDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public ProductDTO updateById(long id, ProductDTO productDTO) {
+        // Tìm kiếm sản phẩm trong cơ sở dữ liệu
+        Product existingProduct = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy sản phẩm với ID: " + id));
+
+        // Cập nhật thông tin của sản phẩm từ dữ liệu mới của productDTO
+        existingProduct.setName(productDTO.getName());
+        existingProduct.setDescription(productDTO.getDescription());
+        existingProduct.setPrice(BigDecimal.valueOf(productDTO.getPrice()));
+        existingProduct.setStockQuanlity(productDTO.getStockQuanlity());
+        // Cập nhật các trường khác nếu cần thiết
+
+        // Lưu sản phẩm đã cập nhật vào cơ sở dữ liệu
+        Product updatedProduct = productRepository.save(existingProduct);
+
+        // Trả về DTO của sản phẩm đã được cập nhật
+        return MapperProduct.mapperProductToDTO(updatedProduct);
     }
 
 
