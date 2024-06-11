@@ -48,8 +48,6 @@ public class Product {
     @OneToMany(mappedBy = "product", orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Rating> rating = new HashSet<>();
 
-    @Column(name = "img_id")
-    private Integer imgId;
 
     @Column(name = "status")
     private Integer status;

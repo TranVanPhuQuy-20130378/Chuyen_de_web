@@ -67,7 +67,7 @@ function DetailCenter({product}) {
 
     return (
         <div className="detail-center">
-            <h6>{product.name} <span>[Mã code {product.id}]</span></h6>
+            <h6>{product.name} <span> </span></h6>
             <div className="detail-center-stats">
                 <div className="product-item-stars mr-3">
                     <StarRate stars={formatRating(product.rating).average} type={"bi bi-star-fill"}/>

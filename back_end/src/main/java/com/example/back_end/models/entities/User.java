@@ -1,5 +1,6 @@
 package com.example.back_end.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -46,6 +47,7 @@ public class User {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
+    @JsonIgnore
     private Role role;
 
 }
