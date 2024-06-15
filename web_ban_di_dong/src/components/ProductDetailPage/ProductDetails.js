@@ -9,6 +9,7 @@ import {addItemToCart} from "../../redux/redux_quy/Action_quy";
 import {PopularCode} from "../ListProductsPage/Products";
 import {fetchCodes, putCodes} from "../../javascript/api/Api_phong";
 import SectionBreadcrumb from "../Commons/SectionBreadcrumb";
+import axios from 'axios';
 
 function DetailLeft({product}) {
     const [slideIndex, setSlideIndex] = useState(0)
@@ -154,73 +155,68 @@ function DemoImage({product}) {
 
 
 
-function RatingModal({product, setProduct, closeModal}) {
-    const ratingCriteria = ['Rất tệ', 'Tệ', 'Bình thường', 'Tốt', 'Rất tốt']
-    const [starIndex, setStarIndex] = useState(-1)
-    const [feel, setFeel] = useState('')
-    const [name, setName] = useState('')
-    const [phone, setPhone] = useState('')
-    const [limit, setLimit] = useState(0)
-    const [checkFeel, setCheckFeel] = useState(false)
-    const [checkName, setCheckName] = useState(false)
-    const starRef = useRef(-1)
+function RatingModal({ product, setProduct, closeModal }) {
+    const ratingCriteria = ['Rất tệ', 'Tệ', 'Bình thường', 'Tốt', 'Rất tốt'];
+    const [starIndex, setStarIndex] = useState(-1);
+    const [feel, setFeel] = useState('');
+    const [limit, setLimit] = useState(0);
+    const [checkFeel, setCheckFeel] = useState(false);
+    const [showLoginMessage, setShowLoginMessage] = useState(false); // State để điều khiển hiển thị thông báo đăng nhập
+    const starRef = useRef(-1);
 
     useEffect(() => {
         document.querySelectorAll('.rating-modal-stars > div').forEach(function (value) {
             value.addEventListener('mouseover', function () {
-                setStarIndex(Number(this.getAttribute('aria-valuenow')))
-            })
+                setStarIndex(Number(this.getAttribute('aria-valuenow')));
+            });
             value.addEventListener('mouseleave', function () {
                 if (starRef.current !== Number(this.getAttribute('aria-valuenow'))) {
-                    setStarIndex(-1)
+                    setStarIndex(-1);
                 }
                 if (starRef.current !== -1) {
-                    setStarIndex(starRef.current)
+                    setStarIndex(starRef.current);
                 }
-            })
-        })
-    }, [starIndex])
+            });
+        });
+    }, [starIndex]);
 
     function onStarClicked(index) {
-        setStarIndex(index)
-        starRef.current = index
+        setStarIndex(index);
+        starRef.current = index;
     }
 
     function handleFeel(e) {
-        const text = e.target.value
-        setFeel(text)
-        setLimit(text.length)
-        if (text.length >= 3) setCheckFeel(false)
-    }
-
-    function handleName(e) {
-        setName(e.target.value)
-        setCheckName(false)
+        const text = e.target.value;
+        setFeel(text);
+        setLimit(text.length);
+        if (text.length >= 3) setCheckFeel(false);
     }
 
     function sendRating() {
-        if (limit < 3) setCheckFeel(true)
-        if (!name) setCheckName(true)
+        const email = localStorage.getItem("account");
 
-        if (name && limit >= 3 && starRef.current !== -1) {
-            const star = `${5 - starRef.current}star`
-
-            setProduct({
-                ...product,
-                rating: {...product.rating, [star]: product.rating[star] + 1},
-                'rating-comment': [...product['rating-comment'], {
-                    name: name,
-                    phone: phone,
-                    star: 5 - starRef.current,
-                    when: Date.now(),
-                    comment: feel
-                }]
-            })
-            setName('')
-            setFeel('')
-            setLimit(0)
-            closeModal()
+        if (!email) {
+            setShowLoginMessage(true); // Hiển thị thông báo yêu cầu đăng nhập
+            return; // Không có email trong localStorage, không thực hiện gửi đánh giá
         }
+
+        const data = {
+            star: 5 - starRef.current,
+            comment: feel,
+            create_at: new Date().toISOString()
+        };
+
+        axios.post(`http://localhost:8080/api/ratings/${email}/product/${product.id}`, data)
+            .then(response => {
+                console.log('Rating created successfully:', response.data);
+                setFeel('');
+                setLimit(0);
+                closeModal();
+            })
+            .catch(error => {
+                console.error('Error creating rating:', error.response);
+                // Xử lý lỗi nếu cần thiết
+            });
     }
 
     return (
@@ -231,10 +227,6 @@ function RatingModal({product, setProduct, closeModal}) {
                     <span onClick={closeModal}><i className="fa fa-x"></i></span>
                 </div>
                 <div>
-                    <div>
-                        SALE - full source code webiste bán hàng laptop - Sử dụng PHP Framework
-                        CodeIgniter
-                    </div>
                     <div className="rating-modal-stars my-4">
                         {ratingCriteria.map((value, index) => (
                             <div aria-valuenow={index} className={starIndex === index && 'bg-active'} key={index}
@@ -245,21 +237,13 @@ function RatingModal({product, setProduct, closeModal}) {
                         ))}
                     </div>
                     <div className="rating-content">
-                        <span style={{display: checkFeel ? 'inline-block' : 'none'}}>Nội dung tối thiểu 3 ký tự</span>
-                        <span style={{display: limit < 3 ? 'inline-block' : 'none'}}>{limit}/3</span>
-                        <textarea style={{borderColor: checkFeel ? '#e70a0a' : 'var(--color-border)'}}
-                                  value={feel} onChange={handleFeel} placeholder="Mời bạn chia sẻ một số cảm nhận về sản phẩm..."/>
-                    </div>
-                    <div className="d-flex justify-content-between mt-2">
-                        <div className="input-container">
-                            <span style={{display: checkName ? 'block' : 'none'}}><i className="fa fa-warning"></i> Vui lòng nhập Họ và tên</span>
-                            <input style={{borderColor: checkName ? '#e70a0a' : 'var(--color-border)'}}
-                                   value={name} onChange={handleName} type="text" placeholder="Họ và tên (bắt buộc)"/>
-                        </div>
-                        <input value={phone} onChange={e => setPhone(e.target.value)} type="text" placeholder="Số điện thoại"/>
-                    </div>
-                    <div style={{marginTop: '30px'}} className="mb-3 rating-guarantee"><i className="fa fa-check-square-o"></i> Chúng tôi cam kết bảo
-                        mật số điện thoại của bạn
+                        {showLoginMessage ? (
+                            <div style={{ color: 'red', marginBottom: '10px' }}>Vui lòng đăng nhập để đánh giá sản phẩm.</div>
+                        ) : null}
+                        <span style={{ display: checkFeel ? 'inline-block' : 'none' }}>Nội dung tối thiểu 3 ký tự</span>
+                        <span style={{ display: limit < 3 ? 'inline-block' : 'none' }}>{limit}/3</span>
+                        <textarea style={{ borderColor: checkFeel ? '#e70a0a' : 'var(--color-border)' }}
+                                  value={feel} onChange={handleFeel} placeholder="Mời bạn chia sẻ một số cảm nhận về sản phẩm..." />
                     </div>
                     <div className="text-center mt-3 mb-1">
                         <button onClick={sendRating}>Gửi đánh giá ngay</button>
@@ -267,8 +251,9 @@ function RatingModal({product, setProduct, closeModal}) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
+
 
 function Rating({product, setProduct}) {
     const [showModal, setShowModal] = useState(false)

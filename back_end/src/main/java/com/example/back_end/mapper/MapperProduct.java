@@ -46,9 +46,10 @@ public class MapperProduct {
                 }).collect(Collectors.toList());
     }
     public static RatingsDTO mapperRatingToDTO(Rating rating) {
+        String username = rating.getUser() != null ? rating.getUser().getUsername() : "Default Username";
         return RatingsDTO.builder()
                 .id(rating.getId())
-                .name(rating.getUser().getUsername())
+                .name(username)
                 .star(rating.getStar())
                 .create_at(LocalDate.from(rating.getCreate_at()))
                 .comment(rating.getComment())

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,5 +36,18 @@ public class OrderServiceImp implements OrderService {
             order.setAddresss(orderRequest.getAddress());
             return orderRepository.save(order);
 
+    }
+    public List<Order> getOrdersByUserId(Integer userId) {
+        return orderRepository.findByUserId(userId);
+    }
+    public Order getOrderByUserIdAndOrderId(Integer userId, Integer orderId) {
+        Optional<Order> orderOptional = orderRepository.findById(Long.valueOf(orderId));
+        if (orderOptional.isPresent()) {
+            Order order = orderOptional.get();
+            if (order.getUser() != null && order.getUser().getId().equals(userId)) {
+                return order;
+            }
+        }
+        return null;
     }
 }
