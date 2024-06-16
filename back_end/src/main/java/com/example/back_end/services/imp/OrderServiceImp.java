@@ -37,6 +37,7 @@ public class OrderServiceImp implements OrderService {
             return orderRepository.save(order);
 
     }
+
     public List<Order> getOrdersByUserId(Integer userId) {
         return orderRepository.findByUserId(userId);
     }
@@ -49,5 +50,8 @@ public class OrderServiceImp implements OrderService {
             }
         }
         return null;
+
+    public List<Order> getOrdersByEmail(String email) {
+        return orderRepository.findByUserEmail(email);
     }
 }

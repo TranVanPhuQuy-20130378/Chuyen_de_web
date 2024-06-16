@@ -1,14 +1,14 @@
-import Header from '../Commons/Header';
-import SectionBreadcrumb from "../Commons/SectionBreadcrumb";
-import Footer from '../Commons/Footer';
-import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { changeProfile, loadInfo } from "../../javascript/api/Api";
-import { isEmail, isEmpty, isPhoneNumber } from "../../javascript/utils/Utils_Tai";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { profileError } from "../../redux/redux_phong/Action";
-import { errorProfileSelector } from "../../redux/redux_phong/Selectors";
 import Swal from "sweetalert2";
+import Header from '../Commons/Header';
+import SectionBreadcrumb from '../Commons/SectionBreadcrumb';
+import Footer from '../Commons/Footer';
+import { changeProfile, loadInfo } from '../../javascript/api/Api';
+import { isEmail, isEmpty, isPhoneNumber } from '../../javascript/utils/Utils_Tai';
+import { profileError } from '../../redux/redux_phong/Action';
+import { errorProfileSelector } from '../../redux/redux_phong/Selectors';
 
 const breadcrumbs = [{ name: "Trang chủ", link: "/" }, { name: "Hồ sơ cá nhân", link: "/profile" }];
 
@@ -28,7 +28,7 @@ function SectionProfile() {
         if (!storedEmail) {
             navigate('/login');
         }
-    }, []);
+    }, [navigate, storedEmail]);
 
     useEffect(() => {
         try {
@@ -42,7 +42,7 @@ function SectionProfile() {
         } catch (error) {
             console.error('Lỗi khi gọi API:', error);
         }
-    }, []);
+    }, [storedEmail]);
 
     const handleLogout = () => {
         localStorage.removeItem('account');
@@ -104,7 +104,7 @@ function SectionProfile() {
                 timer: 3000,
                 timerProgressBar: true
             }).then(() => {
-                // Redirect or other actions after success
+                navigate('/historyCart'); // Chuyển hướng sang trang HistoryCart
             });
         }
     };
@@ -127,7 +127,10 @@ function SectionProfile() {
                                         <Link to="/change-password"><i className="bi bi-lock"></i> Đổi mật khẩu</Link>
                                     </li>
                                     <li>
-                                        <a href="/" onClick={handleLogout}><i className="bi bi-box-arrow-in-right"></i> Đăng xuất</a>
+                                        <Link to="/" onClick={handleLogout}><i className="bi bi-box-arrow-in-right"></i> Đăng xuất</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/historyCart"><i className="bi bi-file-text"></i> Đơn hàng</Link>
                                     </li>
                                 </ul>
                             </div>
