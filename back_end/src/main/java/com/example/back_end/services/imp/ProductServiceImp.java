@@ -36,7 +36,15 @@ public class ProductServiceImp implements IProductService {
                 .map(MapperProduct::mapperProductToDTO)
                 .collect(Collectors.toList());
     }
+    @Override
+    public List<ProductDTO> findByNameProduct(String name) {
 
+        return Optional.ofNullable(productRepository.findByNameContainingIgnoreCase(name))
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(MapperProduct::mapperProductToDTO)
+                .collect(Collectors.toList());
+    }
     @Override
     public List<ProductDTO> findAll(Pageable pageable) {
         return Optional.ofNullable(productRepository.findAll(pageable)).orElse(null)

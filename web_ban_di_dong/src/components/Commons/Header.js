@@ -154,9 +154,9 @@ function HeaderSearch() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:9810/products`)
+        fetch(`http://localhost:8080/api/vendors`)
             .then(res => res.json())
-            .then(json => setTypes(getTypes(json)))
+            .then(json => setTypes(json))
     }, [])
 
     function handleChange(event) {

@@ -50,10 +50,10 @@ public class ProductApi {
 		}
 	}
 	@GetMapping("/search")
-	public ResponseEntity<ResponseObject> findProductByName(@RequestParam(name = "name") String input,
+	public ResponseEntity<ResponseObject2> findProductByName(@RequestParam(name = "name") String input,
 														  @PageableDefault(size = 300, page = 0) Pageable pageable) {
 		return ResponseEntity.ok()
-				.body(new ResponseObject(HttpStatus.OK.name(), HttpStatus.OK.getReasonPhrase(),
+				.body(new ResponseObject2(HttpStatus.OK.name(), HttpStatus.OK.getReasonPhrase(),productService.findByNameProduct(input).size()+"",
 						productService.findByNameProduct(input, pageable)));
 	}
 
