@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import Cart from './Cart'
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import $ from 'jquery'
-import {getTypeName, getTypes} from "../../javascript/utils"
+import {getTypes,makeURL} from "../../javascript/utils"
 import {useDispatch} from "react-redux";
 import {setLayout, setPage, setSort, setType} from "../../redux/Action";
 
@@ -142,70 +142,287 @@ function CodeCategories({types}) {
     )
 }
 
-function HeaderSearch() {
-    const location = useLocation()
+// function HeaderSearch() {
+//     const location = useLocation()
+//     const [search, setSearch] = useState({
+//         query: new URLSearchParams(location.search).get('search'),
+//         from: new URLSearchParams(location.search).get('from')
+//     })
+//     const [types, setTypes] = useState([])
+//     const [toggle, setToggle] = useState(false)
+//     const dispatch = useDispatch()
+//     const navigate = useNavigate()
+
+//     useEffect(() => {
+//         fetch(`http://localhost:8080/api/products`)
+//             .then(res => res.json())
+//             .then(json => setTypes(getTypes(json)))
+//     }, [])
+
+//     function handleChange(event) {
+//         setSearch({...search, query: event.target.value})
+//     }
+
+//     function handleSubmit(event) {
+//         event.preventDefault()
+//         dispatch(setPage(1))
+//         dispatch(setSort(null))
+//         dispatch(setLayout('grid'))
+//         navigate(`/products?search=${search.query}${search.from ? `&from=${search.from}` : ''}`)
+//     }
+
+//     return (
+//         <div className="container">
+//             <div className="row">
+//                 <div className="col-lg-3">
+//                     <CodeCategories types={types}/>
+//                 </div>
+//                 <div className="col-lg-8">
+//                     <div className="header-search h-100">
+//                         <form onSubmit={handleSubmit}>
+//                             <div className="header-search-categories pl-3"
+//                                  onClick={(e) => {
+//                                      e.stopPropagation()
+//                                      $('.header-search-categories ul').slideToggle(300)
+//                                      setToggle(!toggle)
+//                                  }}>
+//                                 <span className="position-relative align-middle">{search.from ? getTypeName(search.from) : 'TẤT CẢ HÃNG'} <i
+//                                     className={toggle ? "fa fa-caret-up" : "fa fa-caret-down"}></i></span>
+//                                 <ul>
+//                                     {types.map(type => (
+//                                         <li onClick={() => setSearch({...search, from: type.id})}
+//                                             key={type.id}>{type.name}</li>
+//                                     ))}
+//                                     <li onClick={() => setSearch({})} key={types.length}>Hãng</li>
+//                                 </ul>
+//                             </div>
+//                             <input type="text" value={search.query} placeholder="Nhập từ khóa" onChange={handleChange}/>
+//                             <button type="submit"><i className="fa fa-search"></i></button>
+//                         </form>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
+
+
+// function HeaderSearch() {
+//     const location = useLocation();
+//     const [search, setSearch] = useState({
+//         query: new URLSearchParams(location.search).get('search'),
+//         from: new URLSearchParams(location.search).get('from')
+//     });
+//     const [types, setTypes] = useState([]);
+//     const [toggle, setToggle] = useState(false);
+//     const [suggestions, setSuggestions] = useState([]);
+//     const dispatch = useDispatch();
+//     const navigate = useNavigate();
+
+//     useEffect(() => {
+//         fetch(`http://localhost:8080/api/products`)
+//             .then(res => res.json())
+//             .then(json => setTypes(getTypes(json)));
+//     }, []);
+
+//     useEffect(() => {
+//         const debounceTimeout = setTimeout(() => {
+//             if (search.query) {
+//                 fetch(`http://localhost:8080/api/products/suggestions?query=${search.query}`)
+//                     .then(res => res.json())
+//                     .then(json => setSuggestions(json));
+//             } else {
+//                 setSuggestions([]);
+//             }
+//         }, 300);
+
+//         return () => clearTimeout(debounceTimeout);
+//     }, [search.query]);
+
+//     function handleChange(event) {
+//         setSearch({ ...search, query: event.target.value });
+//     }
+
+//     function handleSubmit(event) {
+//         event.preventDefault();
+//         dispatch(setPage(1));
+//         dispatch(setSort(null));
+//         dispatch(setLayout('grid'));
+//         navigate(`/products?search=${search.query}${search.from ? `&from=${search.from}` : ''}`);
+//         setSuggestions([]);
+//     }
+
+//     function handleSuggestionClick(suggestion) {
+//         setSearch({ ...search, query: suggestion });
+//         setSuggestions([]);
+//     }
+
+//     return (
+//         <div className="container">
+//             <div className="row">
+//                 <div className="col-lg-3">
+//                     <CodeCategories types={types} />
+//                 </div>
+//                 <div className="col-lg-8">
+//                     <div className="header-search h-100">
+//                         <form onSubmit={handleSubmit}>
+//                             <div className="header-search-categories pl-3"
+//                                 onClick={(e) => {
+//                                     e.stopPropagation();
+//                                     $('.header-search-categories ul').slideToggle(300);
+//                                     setToggle(!toggle);
+//                                 }}>
+//                                 <span className="position-relative align-middle">{search.from ? getTypeName(search.from) : 'TẤT CẢ HÃNG'} <i
+//                                     className={toggle ? "fa fa-caret-up" : "fa fa-caret-down"}></i></span>
+//                                 <ul>
+//                                     {types.map(type => (
+//                                         <li onClick={() => setSearch({ ...search, from: type.id })}
+//                                             key={type.id}>{type.name}</li>
+//                                     ))}
+//                                     <li onClick={() => setSearch({})} key={types.length}>Hãng</li>
+//                                 </ul>
+//                             </div>
+//                             <input
+//                                 type="text"
+//                                 value={search.query}
+//                                 placeholder="Nhập từ khóa"
+//                                 onChange={handleChange}
+//                             />
+//                             <button type="submit"><i className="fa fa-search"></i></button>
+//                         </form>
+//                         {suggestions.length > 0 && (
+//                             <ul className="suggestions-list">
+//                                 {suggestions.map((suggestion, index) => (
+//                                     <li
+//                                         key={index}
+//                                         onClick={() => handleSuggestionClick(suggestion)}
+//                                     >
+//                                         {suggestion}
+//                                     </li>
+//                                 ))}
+//                             </ul>
+//                         )}
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
+
+export function HeaderSearch() {
+    const location = useLocation();
     const [search, setSearch] = useState({
-        query: new URLSearchParams(location.search).get('search'),
-        from: new URLSearchParams(location.search).get('from')
-    })
-    const [types, setTypes] = useState([])
-    const [toggle, setToggle] = useState(false)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+        query: new URLSearchParams(location.search).get('search') || '',
+        from: new URLSearchParams(location.search).get('from') || ''
+    });
+    const [types, setTypes] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [toggle, setToggle] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:9810/products`)
+        fetch(`http://localhost:8080/api/products`)
             .then(res => res.json())
-            .then(json => setTypes(getTypes(json)))
-    }, [])
+            .then(json => {
+                setTypes(getTypes(json));
+                setProducts(json.data); // Lưu danh sách sản phẩm vào state
+            })
+            .catch(error => console.error('Lỗi khi lấy danh sách sản phẩm:', error));
+    }, []);
+
+    useEffect(() => {
+        if (search.query) {
+            setFilteredProducts(products.filter(product =>
+                product.name.toLowerCase().includes(search.query.toLowerCase())
+            ));
+        } else {
+            setFilteredProducts([]);
+        }
+    }, [search.query, products]);
 
     function handleChange(event) {
-        setSearch({...search, query: event.target.value})
+        setSearch({ ...search, query: event.target.value });
     }
 
     function handleSubmit(event) {
-        event.preventDefault()
-        dispatch(setPage(1))
-        dispatch(setSort(null))
-        dispatch(setLayout('grid'))
-        navigate(`/products?search=${search.query}${search.from ? `&from=${search.from}` : ''}`)
+        event.preventDefault();
+        const url = makeURL(search.query, search.from, 1, null); // Thêm page và sort
+        fetch(url)
+            .then(res => res.json())
+            .then(json => {
+                setFilteredProducts(json.data); // Cập nhật danh sách sản phẩm đã tìm kiếm
+                navigate(`/products?search=${search.query}${search.from ? `&from=${search.from}` : ''}`);
+                dispatch(setPage(1));
+                dispatch(setSort(null));
+                dispatch(setLayout('grid'));
+            })
+            .catch(error => console.error('Lỗi khi tìm kiếm sản phẩm:', error));
     }
-
+    
     return (
         <div className="container">
             <div className="row">
                 <div className="col-lg-3">
-                    <CodeCategories types={types}/>
+                    <CodeCategories types={types} />
                 </div>
                 <div className="col-lg-8">
                     <div className="header-search h-100">
                         <form onSubmit={handleSubmit}>
                             <div className="header-search-categories pl-3"
-                                 onClick={(e) => {
-                                     e.stopPropagation()
-                                     $('.header-search-categories ul').slideToggle(300)
-                                     setToggle(!toggle)
-                                 }}>
-                                <span className="position-relative align-middle">{search.from ? getTypeName(search.from) : 'TẤT CẢ HÃNG'} <i
-                                    className={toggle ? "fa fa-caret-up" : "fa fa-caret-down"}></i></span>
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    $('.header-search-categories ul').slideToggle(300);
+                                    setToggle(!toggle);
+                                }}>
+                                <span className="position-relative align-middle">
+                                    {search.from || 'TẤT CẢ HÃNG'}
+                                    <i className={toggle ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
+                                </span>
                                 <ul>
                                     {types.map(type => (
-                                        <li onClick={() => setSearch({...search, from: type.id})}
-                                            key={type.id}>{type.name}</li>
+                                        <li onClick={() => setSearch({ ...search, from: type.name })}
+                                            key={type.name}>{type.name}</li>
                                     ))}
-                                    <li onClick={() => setSearch({})} key={types.length}>Hãng</li>
+                                    <li onClick={() => setSearch({ query: search.query, from: '' })} key="all">TẤT CẢ HÃNG</li>
                                 </ul>
                             </div>
-                            <input type="text" value={search.query} placeholder="Nhập từ khóa" onChange={handleChange}/>
+                            <input
+                                type="text"
+                                value={search.query}
+                                placeholder="Nhập từ khóa"
+                                onChange={handleChange}
+                                onFocus={() => setToggle(true)} // Hiển thị danh sách gợi ý khi input được focus
+                                onBlur={() => setTimeout(() => setToggle(false), 200)} // Ẩn danh sách gợi ý khi input mất focus
+                            />
                             <button type="submit"><i className="fa fa-search"></i></button>
                         </form>
+                        {toggle && (
+                            <div className="search-results" style={{ position: 'absolute', backgroundColor: 'white', zIndex: 1, width: '100%', maxHeight: '200px', overflowY: 'auto', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+                                <ul style={{ listStyleType: 'none', padding: 0 }}>
+                                    {filteredProducts.length > 0 ? (
+                                        filteredProducts.map(product => (
+                                            <li key={product.id} style={{ padding: '8px', borderBottom: '1px solid #ddd', cursor: 'pointer' }}
+                                                onClick={() => {
+                                                    setSearch({ ...search, query: product.name }); // Chọn kết quả tìm kiếm để hiển thị vào input
+                                                    setToggle(false); // Đóng danh sách kết quả
+                                                }}>
+                                                {product.name}
+                                            </li>
+                                        ))
+                                    ) : (
+                                        <li style={{ padding: '8px' }}>Không có kết quả phù hợp</li>
+                                    )}
+                                </ul>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
         </div>
     );
 }
-
 export default function Header() {
     useEffect(() => {
         const ul = $('.header-search-categories ul')

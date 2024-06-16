@@ -50,17 +50,20 @@ export async function checkLogin(email, password) {
         });
 
         if (!response.ok) {
-            throw new Error('Network response was not ok.');
+            // Nếu response không ok, lấy thông tin lỗi chi tiết từ API (nếu có)
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Network response was not ok.');
         }
 
         const data = await response.json();
         return data; // Trả về dữ liệu từ API
       
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error:', error.message || error);
         return false;
     }
 }
+
 
 export async function changePassword(email, newPassword) {
     try {
