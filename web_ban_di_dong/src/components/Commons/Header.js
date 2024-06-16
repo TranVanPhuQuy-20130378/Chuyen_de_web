@@ -92,7 +92,6 @@ function HeaderMenu() {
                     <nav className="header-menu">
                         <ul>
                             <li><span onClick={() => handledLink('/')} className={location.pathname === '/' && 'active'}>Trang chủ</span></li>
-                                      className={location.pathname.indexOf('top-codes') > 0 && 'active'}>Sale</span></li>
                             <li><span onClick={() => handledLink('/sale')}
                                       className={location.pathname.indexOf('sale') > 0 && 'active'}>Sale</span></li>
                             <li><span onClick={() => handledLink('/hot')}
