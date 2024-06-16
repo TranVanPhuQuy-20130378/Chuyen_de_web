@@ -50,20 +50,17 @@ export async function checkLogin(email, password) {
         });
 
         if (!response.ok) {
-            // Nếu response không ok, lấy thông tin lỗi chi tiết từ API (nếu có)
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Network response was not ok.');
+            throw new Error('Network response was not ok.');
         }
 
         const data = await response.json();
         return data; // Trả về dữ liệu từ API
       
     } catch (error) {
-        console.error('Error:', error.message || error);
+        console.error('Error:', error);
         return false;
     }
 }
-
 
 export async function changePassword(email, newPassword) {
     try {
@@ -119,6 +116,20 @@ export async function loadInfo(email) {
     }
 }
 
+export async function getAllOrderItems(email) {
+    try {
+        const url = `http://localhost:8080/api/order/${email}`;
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Failed to fetch order items.');
+        }
+        const orderItems = await response.json();
+        return orderItems;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}
 
 // export async function changeProfile(email, data) {
 //     try {
