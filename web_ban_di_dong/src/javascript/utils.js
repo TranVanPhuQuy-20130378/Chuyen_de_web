@@ -14,42 +14,110 @@ export function formatRating(rating) {
         avg1: rating['1star'] * 100 / total
     }
 }
-export const getTypes = (json) => {
-    const types = []
-    json.data.forEach(product => {
-        const type = types.find(value => value.id === product.type.id)
-        if (type) type.quantity = type.quantity + 1
-        else types.push({...product.type, quantity: 1})
-    })
-    return types.sort((a, b) => a.name < b.name ? -1 : 1)
-}
+// export const getTypes = (json) => {
+//     const types = []
+//     json.data.forEach(product => {
+//         const type = types.find(value => value.id === product.type.id)
+//         if (type) type.quantity = type.quantity + 1
+//         else types.push({...product.type, quantity: 1})
+//     })
+//     return types.sort((a, b) => a.name < b.name ? -1 : 1)
+// }
+
+// export const getTypes = (json) => {
+//     const types = [];
+//     json.data.forEach(product => {
+//         if (product && product.type && product.type.id !== undefined) {
+//             const type = types.find(value => value.id === product.type.id);
+//             if (type) {
+//                 type.quantity = type.quantity + 1;
+//             } else {
+//                 types.push({ ...product.type, quantity: 1 });
+//             }
+//         } else {
+//             console.warn('Product hoặc product.type là undefined hoặc không có id', product);
+//         }
+//     });
+//     return types.sort((a, b) => a.name < b.name ? -1 : 1);
+// };
+
 
 export function getTypeName(typeId) {
-    if (typeId === 'android') return 'Android'
-    if (typeId === 'java_jsp') return 'Java/JSP'
-    if (typeId === 'php_mysql') return 'PHP & MySQL'
-    if (typeId === 'visual_csharp') return 'Visual C#'
-    if (typeId === 'wordpress') return 'WordPress'
-    if (typeId === 'ios') return 'iOS'
-    if (typeId === 'html') return 'HTML & Template'
-    if (typeId === 'c_cpp') return 'C/C++'
-    if (typeId === 'unity') return 'Unity'
+    if (typeId === '1') return 'Samsung'
+    if (typeId === '2') return 'iPhone'
+    if (typeId === '3') return 'OPPO'
+    if (typeId === '4') return 'Xiaomi'
+    if (typeId === '5') return 'VIVO'
+    if (typeId === '6') return 'Realme'
     return null
 }
 
-export function makeURL(query, from, type, page, sort) {
+// export function makeURL(query, from, type, page, sort) {
+//     let url = `http://localhost:8080/api/products?page=${page}&size=12`;
+//     if (type) {
+//         url = `http://localhost:8080/api/products/filter?page=${page}&size=12&vendor=${type}`;
+//     }
+//     if (query) {
+//         url += `&search=${query}`;
+//     }
+
+//     if (sort) {
+//         url += `&sort=${sort}`;
+//     }
+//     console.log(url)
+//     return url;
+// }
+
+//test
+
+export const getTypes = (json) => {
+    const types = [];
+    json.data.forEach(product => {
+        if (product && product.type && product.type.id !== undefined) {
+            const type = types.find(value => value.id === product.type.id);
+            if (type) {
+                type.quantity = type.quantity + 1;
+            } else {
+                types.push({ ...product.type, quantity: 1 });
+            }
+        } else {
+            console.warn('empty', product);
+        }
+    });
+    return types.sort((a, b) => a.name < b.name ? -1 : 1);
+};
+
+// export function makeURL(query, from, type, page, sort) {
+//     let url = `http://localhost:8080/api/products?page=${page}&size=12`;
+//     if (type) {
+//         url = `http://localhost:8080/api/products/filter?page=${page}&size=12&vendor=${type}`;
+//     }
+//     if (query) {
+//         url = `http://localhost:8080/api/products/search=${query}`;
+//     }
+//     if (sort) {
+//         url += `&sort=${sort}`;
+//     }
+//     console.log(url);
+//     return url;
+// }
+
+export function makeURL(query, from, page, sort) {
     let url = `http://localhost:8080/api/products?page=${page}&size=12`;
-    if (type) {
-        url = `http://localhost:8080/api/products/filter?page=${page}&size=12&vendor=${type}`;
+
+    if (from) {
+        url = `http://localhost:8080/api/products/filter?page=${page}&size=12&vendor=${from}`;
     }
+
     if (query) {
-        url += `&search=${query}`;
+        url = `http://localhost:8080/api/products/search?name=${query}`;
     }
 
     if (sort) {
         url += `&sort=${sort}`;
     }
-    console.log(url)
+
+    console.log(url);
     return url;
 }
 
@@ -59,7 +127,7 @@ export const buildQuery = (ids) => {
     for (let id of ids) {
         query = query + `id=${id}&`
     }
-    return trim(trim(`http://localhost:9810/products?${query}`, '&'), '?')
+    return trim(trim(`http://localhost:8080/products?${query}`, '&'), '?')
 }
 
 function trim(s, c) {

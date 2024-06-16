@@ -282,7 +282,7 @@ export function ProductsContent({ group }) {
         const url = makeURL(query, from, type, page, sort);
         fetchCodes(url).then(json => {
             setProducts(json.data);
-            setTotalProducts(json.total);
+            setTotalProducts(5);
         });
     }, [page, sort, type, query, from]);
 
