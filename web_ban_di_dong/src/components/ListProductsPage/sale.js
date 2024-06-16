@@ -6,7 +6,7 @@ function TopProducts() {
     return <ProductsContent/>
 }
 
-export default function TopCodes() {
+export default function Sale() {
     return (
         <>
             <Header/>

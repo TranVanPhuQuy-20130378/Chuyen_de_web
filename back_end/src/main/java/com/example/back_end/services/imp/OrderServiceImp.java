@@ -26,17 +26,31 @@ public class OrderServiceImp implements OrderService {
     @Override
     public Order addOrder(OrderRequest orderRequest) {
         Order order = new Order();
-        Optional<User> userOptional = userRepository.findById(orderRequest.getId_user());
+        Optional<User> userOptional = userRepository.findByEmail(orderRequest.getEmail());
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             order.setUser(user);
         }
             order.setOrderDate(LocalDate.now());
             order.setTotalAmount(orderRequest.getTotal_price());
-            order.setAddresss(orderRequest.getAddress());
+            order.setAddresss(userOptional.get().getAddress());
             return orderRepository.save(order);
 
     }
+
+    public List<Order> getOrdersByUserId(Integer userId) {
+        return orderRepository.findByUserId(userId);
+    }
+    public Order getOrderByUserIdAndOrderId(Integer userId, Integer orderId) {
+        Optional<Order> orderOptional = orderRepository.findById(Long.valueOf(orderId));
+        if (orderOptional.isPresent()) {
+            Order order = orderOptional.get();
+            if (order.getUser() != null && order.getUser().getId().equals(userId)) {
+                return order;
+            }
+        }
+        return null;
+
     public List<Order> getOrdersByEmail(String email) {
         return orderRepository.findByUserEmail(email);
     }

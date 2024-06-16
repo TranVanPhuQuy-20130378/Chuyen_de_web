@@ -82,7 +82,7 @@ function SectionCart() {
 } // => đây là component cha
 
 function ItemCart({product}) {
-
+    console.log(product)
     const styleImage = {
         width: '100%',
         height: '100%',
@@ -113,7 +113,7 @@ function ItemCart({product}) {
     return (
         <tr>
             <td><Link to={`/products/product/${product.id}`} state={product}>
-                <img src={`${product.listImg[0].path_image}`}
+                <img src={`${product.listImg[1].path_image}`}
                      style={styleImage} alt=""/></Link></td>
             <td className="shoping__cart__item">
                 <Link to={`/products/product/${product.id}`} state={product}>

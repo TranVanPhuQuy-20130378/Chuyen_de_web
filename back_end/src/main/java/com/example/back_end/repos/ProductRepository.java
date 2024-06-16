@@ -19,7 +19,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAllByBrand(@Param("brandName") String brandName);
     @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :keyword, '%'))")
     List<Product> findByNameContainingIgnoreCase(@Param("keyword") String keyword, Pageable pageable);
-
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :keyword, '%'))")
+    List<Product> findByNameContainingIgnoreCase(@Param("keyword") String keyword);
     List<Product> findByCategory_CategoryName(String name,Pageable pageable);
     List<Product> findByVendor_IdOrCategory_Id(Integer idVendor, Long idCate,Pageable pageable);
     List<Product> findByVendor_IdAndCategory_Id(Integer idVendor, Long idCate,Pageable pageable);
@@ -29,5 +30,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByVendor_VendorNameContainingIgnoreCase(String vendorName, Pageable pageable);
     List<Product> findByVendor_VendorNameContainingIgnoreCase(String vendorName);
+    List<Product> findByStatus(int status, Pageable pageable);
 
 }

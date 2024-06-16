@@ -9,5 +9,9 @@ import java.util.List;
 public interface OrderService {
     @Modifying
     Order addOrder(OrderRequest orderRequest);
+
+    List<Order> getOrdersByUserId(Integer userId);
+
+    Order getOrderByUserIdAndOrderId(Integer userId, Integer orderId);
     List<Order> getOrdersByEmail(String email);
 }

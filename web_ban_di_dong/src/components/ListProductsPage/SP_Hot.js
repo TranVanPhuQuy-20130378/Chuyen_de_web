@@ -7,7 +7,7 @@ function HighQualityProducts() {
     return <ProductsContent group={'quality'}/>
 }
 
-export default function HighQualityCodes() {
+export default function SP_Hot() {
     return (
         <>
             <Header/>

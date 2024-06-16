@@ -7,7 +7,7 @@ function FreeProducts() {
     return <ProductsContent group={'free'}/>
 }
 
-export default function FreeCodes() {
+export default function SP_old() {
     return (
         <>
             <Header/>

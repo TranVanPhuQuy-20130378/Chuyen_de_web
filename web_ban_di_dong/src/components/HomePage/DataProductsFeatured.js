@@ -23,7 +23,7 @@ function DataProductsFeatured() {
         async function fetchDanhSachSanPhamNoiBat() {
             try {
                 const paramsString = queryString.stringify(boLoc);
-                const requestUrl = `http://localhost:8080/api/products/ds-dien-thoai-moi?${paramsString}`;
+                const requestUrl = `http://localhost:8080/api/products/fitter-product-hot?${paramsString}`;
 
                 const response = await fetch(requestUrl);
                 const responseJson = await response.json();
@@ -89,6 +89,7 @@ function ItemProductFeatured({ product }) {
     const dispatch = useDispatch();
 
     function clickAddItemToCart() {
+        console.log(product);
         dispatch(addItemToCart(product));
         setShowToast(true);
     }
@@ -109,12 +110,12 @@ function ItemProductFeatured({ product }) {
             </div>
 
             <div className="product-item">
-                <Link to={`products/product/${product.id_product}`} state={product} className="product-item-img">
-                    <img src={product.list_image[0].path_image} alt="" />
+                <Link to={`products/product/${product.id}`} state={product} className="product-item-img">
+                    <img src={product.listImg[0].path_image} alt="" />
                 </Link>
                 <div className="product-item-title d-flex justify-content-center align-items-center text-center pt-2">
                     <div className="title-wrapper">
-                        <Link to={`products/product/${product.id_product}`} state={product}>{product.name_product}</Link>
+                        <Link to={`products/product/${product.id}`} state={product}>{product.name}</Link>
                     </div>
                 </div>
                 <div className="product-item-stats d-flex justify-content-between"></div>
@@ -128,13 +129,13 @@ function ItemProductFeatured({ product }) {
                         </a>
                     </div>
                     <div className="product-item-stars">
-                        <StarRate stars={formatRating(product.rating).average} type={"bi bi-star-fill"} />
+                        <StarRate stars={formatRating(product.rating_comment).average} type={"bi bi-star-fill"} />
                     </div>
                 </div>
                 <div className="product-item-bottom d-flex justify-content-between align-items-center">
-                    <div className="product-item-brand"><i className={product.type?.icon}></i> {product.type?.name}</div>
-                    <Link to={`products/product/${product.id_product}`} state={product}
-                          className="product-item-price">{formatNumber(product.listed_price, '.')}đ</Link>
+                    {/*<div className="product-item-brand"><i className={product.type?.icon}></i> {product.type?.name}</div>*/}
+                    <Link to={`products/product/${product.id}`} state={product}
+                          className="product-item-price">{formatNumber(product.price, '.')}đ</Link>
                 </div>
             </div>
         </div>
