@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,5 +36,8 @@ public class OrderServiceImp implements OrderService {
             order.setAddresss(orderRequest.getAddress());
             return orderRepository.save(order);
 
+    }
+    public List<Order> getOrdersByEmail(String email) {
+        return orderRepository.findByUserEmail(email);
     }
 }
