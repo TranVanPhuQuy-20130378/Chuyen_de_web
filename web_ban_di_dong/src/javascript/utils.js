@@ -81,46 +81,46 @@ export const getTypes = (json) => {
                 types.push({ ...product.type, quantity: 1 });
             }
         } else {
-            console.warn('empty', product);
+            // console.warn('empty', product);
         }
     });
     return types.sort((a, b) => a.name < b.name ? -1 : 1);
 };
 
-// export function makeURL(query, from, type, page, sort) {
-//     let url = `http://localhost:8080/api/products?page=${page}&size=12`;
-//     if (type) {
-//         url = `http://localhost:8080/api/products/filter?page=${page}&size=12&vendor=${type}`;
-//     }
-//     if (query) {
-//         url = `http://localhost:8080/api/products/search=${query}`;
-//     }
-//     if (sort) {
-//         url += `&sort=${sort}`;
-//     }
-//     console.log(url);
-//     return url;
-// }
-
-export function makeURL(query, from, page, sort) {
+export function makeURL(query, from, type, page, sort) {
     let url = `http://localhost:8080/api/products?page=${page}&size=12`;
-
-    if (from) {
-        url = `http://localhost:8080/api/products/filter?page=${page}&size=12&vendor=${from}`;
+    if (type) {
+        url = `http://localhost:8080/api/products/filter?page=${page}&size=12&vendor=${type}`;
     }
-
     if (query) {
-        url = `http://localhost:8080/api/products/search?name=${query}`;
+        url = `http://localhost:8080/api/products/search?name=${query}&page=${page}&size=12`;
     }
-
-
     if (sort) {
         url += `&sort=${sort}`;
     }
-
     console.log(url);
     return url;
 }
+//
+// export function makeURL(query, from, page, sort) {
+//     let url = `http://localhost:8080/api/products?page=${page}&size=12`;
+//
+//     if (from) {
+//         url = `http://localhost:8080/api/products/filter?page=${page}&size=12&vendor=${from}`;
+//     }
+//
+//     if (query) {
+//         url = `http://localhost:8080/api/products/search?name=${query}`;
+//     }
+//
+//
+//     if (sort) {
+//         url += `&sort=${sort}`;
+//     }
+//
+//     console.log(url);
+//     return url;
+// }
 
 
 export const buildQuery = (ids) => {

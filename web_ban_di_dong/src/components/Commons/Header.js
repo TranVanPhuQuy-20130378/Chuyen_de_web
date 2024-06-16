@@ -92,14 +92,15 @@ function HeaderMenu() {
                     <nav className="header-menu">
                         <ul>
                             <li><span onClick={() => handledLink('/')} className={location.pathname === '/' && 'active'}>Trang chủ</span></li>
-                            <li><span onClick={() => handledLink('/top-codes')}
                                       className={location.pathname.indexOf('top-codes') > 0 && 'active'}>Sale</span></li>
-                            <li><span onClick={() => handledLink('/quality-codes')}
-                                      className={location.pathname.indexOf('quality-codes') > 0 && 'active'}>Điện thoại hot</span>
+                            <li><span onClick={() => handledLink('/sale')}
+                                      className={location.pathname.indexOf('sale') > 0 && 'active'}>Sale</span></li>
+                            <li><span onClick={() => handledLink('/hot')}
+                                      className={location.pathname.indexOf('hot') > 0 && 'active'}>Điện thoại hot</span>
                                 <img src={require('../../img/ic_hot.gif')} alt=""/>
                             </li>
-                            <li><span onClick={() => handledLink('/free-codes')}
-                                      className={location.pathname.indexOf('free-codes') > 0 && 'active'}>Điện thoại cũ</span></li>
+                            <li><span onClick={() => handledLink('/old')}
+                                      className={location.pathname.indexOf('old') > 0 && 'active'}>Điện thoại cũ</span></li>
                         </ul>
                     </nav>
                 </div>
@@ -341,7 +342,6 @@ export function HeaderSearch() {
             setFilteredProducts([]);
         }
     }, [search.query, products]);
->>>>>>> 452a3ae00dccc2e99f740fd126ebc0f7498d2b4e
 
     function handleChange(event) {
         setSearch({ ...search, query: event.target.value });

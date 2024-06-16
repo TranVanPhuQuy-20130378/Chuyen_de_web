@@ -81,7 +81,7 @@ function DetailCenter({product}) {
                 <div>
                     <i className="fa fa-list"></i><span>Danh mục</span> <Link to={`/products?type=${product.vendor}`}>{product.vendor}</Link>
                 </div>
-                <div><i className="fa fa-layer-group"></i><span>Nhóm sản phẩm </span> <Link to={'/top-codes'}>Top sản phẩm</Link></div>
+                <div><i className="fa fa-layer-group"></i><span>Nhóm sản phẩm </span> <Link to={'/sale'}>Top sản phẩm</Link></div>
             </div>
         </div>
     )

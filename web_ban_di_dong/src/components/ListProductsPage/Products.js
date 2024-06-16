@@ -1,10 +1,10 @@
 import '../../css/products.css';
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addLiked, setLayout, setPage, setSort} from "../../redux/Action";
 import {Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import {StarRate} from "../ProductDetailPage/ProductDetails";
-import {formatNumber, formatRating, getTypeName, getTypes, makeURL} from "../../javascript/utils";
+import {formatNumber, formatRating, getTypeName, makeURL} from "../../javascript/utils";
 import {addItemToCart} from "../../redux/redux_quy/Action_quy";
 import {Toast} from "react-bootstrap";
 import Header from "../Commons/Header";
@@ -282,17 +282,17 @@ export function ProductsContent({ group }) {
         const url = makeURL(query, from, type, page, sort);
         fetchCodes(url).then(json => {
             setProducts(json.data);
-            setTotalProducts(5);
+            setTotalProducts(json.total);
         });
     }, [page, sort, type, query, from]);
 
     function breadcrumbs() {
         const home = { name: 'Trang chủ', link: '/' };
-        const ds = location.pathname.includes('products') ? { name: 'Danh sách codes', link: '/products' } : undefined;
+        const ds = location.pathname.includes('products') ? { name: 'Danh sách san pham', link: '/products' } : undefined;
         const t = type && { name: getTypeName(type), link: `/products?type=${type}` };
-        const tc = location.pathname.includes('top-codes') ? { name: 'Top codes', link: '/top-codes' } : undefined;
-        const qc = location.pathname.includes('quality-codes') ? { name: 'Code chất lượng', link: '/quality-codes' } : undefined;
-        const fc = location.pathname.includes('free-codes') ? { name: 'Code miễn phí', link: '/free-codes' } : undefined;
+        const tc = location.pathname.includes('sale') ? { name: 'Sale', link: '/sale' } : undefined;
+        const qc = location.pathname.includes('hot') ? { name: 'Sp hot', link: '/hot' } : undefined;
+        const fc = location.pathname.includes('old') ? { name: 'old', link: '/old' } : undefined;
         return [home, ds, t, tc, qc, fc].filter(i => i);
     }
 

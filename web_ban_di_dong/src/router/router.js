@@ -1,6 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
 import App from "../App";
-import TopCodes from "../components/ListProductsPage/TopCodes";
+import Sale from "../components/ListProductsPage/sale";
 import ProductDetails from "../components/ProductDetailPage/ProductDetails";
 import LoginPage from "../components/AuthenticationPage/Login";
 import RegisterPage from "../components/AuthenticationPage/Register";
@@ -11,8 +11,8 @@ import CartDetailPage from "../components/CartDetailPage/CartDetailPage";
 import {LikedCodes} from "../components/Commons/LikedCodes";
 import {ErrorPage404} from "../components/ErrorPage/ErrorPage404";
 import VerifyPassPage from "../components/AuthenticationPage/VerifyPass";
-import FreeCodes from "../components/ListProductsPage/FreeCodes";
-import HighQualityCodes from "../components/ListProductsPage/HighQualityCodes";
+import SP_old from "../components/ListProductsPage/SP_old";
+import SP_Hot from "../components/ListProductsPage/SP_Hot";
 import Products, {ProductsContent} from "../components/ListProductsPage/Products";
 
 const profile = {path: '/profile', element: <ProfilePage/>}
@@ -55,16 +55,16 @@ const listProducts = [
         ]
     },
     {
-        path: '/top-codes',
-        element: <TopCodes/>
+        path: '/sale',
+        element: <Sale/>
     },
     {
-        path: '/quality-codes',
-        element: <HighQualityCodes/>
+        path: '/hot',
+        element: <SP_Hot/>
     },
     {
-        path: '/free-codes',
-        element: <FreeCodes/>
+        path: '/old',
+        element: <SP_old/>
     }
 ]
 
