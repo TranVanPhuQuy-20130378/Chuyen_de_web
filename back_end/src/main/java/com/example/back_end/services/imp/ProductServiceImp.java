@@ -55,6 +55,13 @@ public class ProductServiceImp implements IProductService {
     }
 
 
+    public List<ProductDTO> findByStatus(int status, Pageable pageable) {
+        return Optional.ofNullable(productRepository.findByStatus(status, pageable)).orElse(null)
+                .stream()
+                .map(MapperProduct::mapperProductToDTO)
+                .collect(Collectors.toList());
+    }
+
     @Override
     public List<ProductDTO> findProductByBrandWithOptionSort(String name, Pageable pageable) {
         return Optional.of(productRepository.findByCategory_CategoryName(name, pageable))

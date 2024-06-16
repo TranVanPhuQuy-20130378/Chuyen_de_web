@@ -1,5 +1,6 @@
 package com.example.back_end.controller;
 
+import com.example.back_end.common.StatusProduct;
 import com.example.back_end.dto.ProductDTO;
 import com.example.back_end.models.ResponseObject;
 import com.example.back_end.models.ResponseObject2;
@@ -56,17 +57,17 @@ public class ProductApi {
 						productService.findByNameProduct(input, pageable)));
 	}
 
-    @GetMapping("/fitter-product-hot")
-    public ResponseEntity<ResponseObject> findProductHotByBrand(@RequestParam(name = "brand") String brand,
-                                                                @PageableDefault(size = 3, page = 0) Pageable pageable) {
-        return Optional.ofNullable(
-                        ResponseEntity.ok()
-                                .body(new ResponseObject("Ok", "OK",
-                                        productService.findProductByBrandWithOptionSort(brand, pageable))))
-                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                        new ResponseObject(HttpStatus.NOT_FOUND.name(), HttpStatus.NOT_FOUND.getReasonPhrase(), "")))
-                ;
-    }
+	@GetMapping("/fitter-product-hot")
+	public ResponseEntity<ResponseObject> findProductHot(@PageableDefault(size = 3, page = 0) Pageable pageable) {
+		try {
+			List<ProductDTO> hotProducts = productService.findByStatus(StatusProduct.HOT, pageable);
+			return ResponseEntity.ok(new ResponseObject("Ok", "OK", hotProducts));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body(new ResponseObject(HttpStatus.NOT_FOUND.name(), HttpStatus.NOT_FOUND.getReasonPhrase(), ""));
+		}
+	}
+
 
     @GetMapping("")
     public ResponseEntity<ResponseObject2> findAllProduct(

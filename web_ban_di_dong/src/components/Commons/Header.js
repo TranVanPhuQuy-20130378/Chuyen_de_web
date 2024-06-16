@@ -168,7 +168,7 @@ function HeaderSearch() {
         dispatch(setPage(1))
         dispatch(setSort(null))
         dispatch(setLayout('grid'))
-        navigate(`/products?search=${search.query}${search.from ? `&from=${search.from}` : ''}`)
+        navigate(`/products?search=${search.query}`)
     }
 
     return (

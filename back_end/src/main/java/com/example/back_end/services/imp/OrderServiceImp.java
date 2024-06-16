@@ -26,14 +26,14 @@ public class OrderServiceImp implements OrderService {
     @Override
     public Order addOrder(OrderRequest orderRequest) {
         Order order = new Order();
-        Optional<User> userOptional = userRepository.findById(orderRequest.getId_user());
+        Optional<User> userOptional = userRepository.findByEmail(orderRequest.getEmail());
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             order.setUser(user);
         }
             order.setOrderDate(LocalDate.now());
             order.setTotalAmount(orderRequest.getTotal_price());
-            order.setAddresss(orderRequest.getAddress());
+            order.setAddresss(userOptional.get().getAddress());
             return orderRepository.save(order);
 
     }

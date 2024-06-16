@@ -1,5 +1,6 @@
 package com.example.back_end.services.interfaces;
 
+import com.example.back_end.common.StatusProduct;
 import com.example.back_end.dto.ProductDTO;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public interface IProductService {
     List<ProductDTO> findByNameProduct(String name, Pageable pageable);
     List<ProductDTO> findAll(Pageable pageable);
     List<ProductDTO> findAll();
+    List<ProductDTO> findByStatus(int status, Pageable pageable);
     List<ProductDTO> findProductByBrandWithOptionSort(String name,Pageable pageable);
     List<ProductDTO> findByTypeProduct_IdOrCate_Id(Integer idType, Long idCate,Pageable pageable);
 

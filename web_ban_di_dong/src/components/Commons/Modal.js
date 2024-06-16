@@ -19,10 +19,10 @@ import '../../css/modal.css';
 
 export function ModalPayment() {
 
-    const [showButtonDownload, setShowButtonDownload] = useState(false);
 
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cartReducer.cart);
+    const email = localStorage.getItem("account")
     const showModal = useSelector(state => state.modalReducer.modal_payment);
     const checkPayment = useSelector(state => state.paymentReducer.payment);
     const payment = useSelector(state => state.paymentReducer);
@@ -64,33 +64,66 @@ export function ModalPayment() {
             </Container>
         )
     }
-    const clickPayment = (name_payment) => {
-        dispatch(updateStatePayment(name_payment)); // Gửi Action đến Store để cập nhật trạng thái thanh toán
 
-        setTimeout(() => {
-            Swal.fire({
-                title: '',
-                text: 'Thanh toán đơn hàng thành công',
-                icon: 'success',
-                confirmButtonText: 'OK',
-                timer: 3000, // Thời gian tự động tắt thông báo sau 3 giây
-                timerProgressBar: true // Hiển thị thanh tiến trình đếm ngược
-            }).then(() => {
-                setShowButtonDownload(true);
-                setContentRight(<Row className="d-flex align-items-center justify-content-center">
-                    <Row className="mt-3">
-                        <div className="notify-success-content-right">Bạn đã thanh toán thành công</div>
-                    </Row>
-                    <Row className="mt-3">
-                        <div>
-                            <Button onClick={() => clickDownloadAll()} variant="success">
-                                <i className="fa fa-download"/> TẢI TẤT CẢ
-                            </Button>
-                        </div>
-                    </Row>
-                </Row>)
+
+    const clickPayment = async (name_payment) => {
+        // console.log("name "+name_payment);
+        dispatch(updateStatePayment(name_payment)); // Gửi Action đến Store để cập nhật trạng thái thanh toán
+            // console.log(cart);
+        // Create list_order_detail from cart
+        const list_order_detail = cart.map(item => ({
+            id_product: item.id,
+            quantity: 1
+        }));
+
+        // Calculate order value and total price
+        const order_value = cart.reduce((sum, item) => sum + item.price, 0);
+        const total_price = order_value; // Assuming no additional costs for simplicity
+
+        // Create orderRequest object
+        const orderRequest = {
+            email,
+            order_value,
+            total_price,
+            list_order_detail
+        };
+        console.log(orderRequest);
+        try {
+            const response = await fetch('http://localhost:8080/api/order/create-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderRequest)
             });
-        }, 1000);
+
+            if (response.ok) {
+                const responseObject = await response.json();
+
+                setTimeout(() => {
+                    Swal.fire({
+                        title: '',
+                        text: 'Thanh toán đơn hàng thành công',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                        timer: 3000,
+                        timerProgressBar: true
+                    }).then(() => {
+                        setContentRight(
+                            <Row className="d-flex align-items-center justify-content-center">
+                                <Row className="mt-3">
+                                    <div className="notify-success-content-right">Bạn đã thanh toán thành công</div>
+                                </Row>
+                            </Row>
+                        );
+                    });
+                }, 1000);
+            } else {
+                console.error('Failed to create order:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error creating order:', error);
+        }
     };
 
     const clickCloseModal = () => {

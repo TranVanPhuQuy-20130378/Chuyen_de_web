@@ -12,9 +12,7 @@ import java.util.Set;
 @Setter
 @Builder
 public class OrderRequest {
-    private long id_user;
-    private String address;
-    private String note;
+    private String email;
     private BigDecimal order_value;
     private BigDecimal total_price;
     private Set<OrderDetailRequest> list_order_detail = new HashSet<>();

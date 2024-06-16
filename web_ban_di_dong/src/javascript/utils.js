@@ -43,13 +43,13 @@ export function makeURL(query, from, type, page, sort) {
         url = `http://localhost:8080/api/products/filter?page=${page}&size=12&vendor=${type}`;
     }
     if (query) {
-        url += `&search=${query}`;
+        url = `http://localhost:8080/api/products/search?name=${query}`;
     }
-
-    if (sort) {
-        url += `&sort=${sort}`;
-    }
-    console.log(url)
+    //
+    // if (sort) {
+    //     url += `&sort=${sort}`;
+    // }
+    // console.log(url)
     return url;
 }
 
