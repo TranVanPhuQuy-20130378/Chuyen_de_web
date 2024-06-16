@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -39,5 +41,9 @@ public class OrderController {
                 )
         )).get();
     }
-
+    @GetMapping("/{email}")
+    public ResponseEntity<List<Order>> getOrdersByEmail(@PathVariable(name="email") String email) {
+        List<Order> orders = orderService.getOrdersByEmail(email);
+        return ResponseEntity.ok().body(orders);
+    }
 }
