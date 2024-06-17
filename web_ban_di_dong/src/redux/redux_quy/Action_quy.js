@@ -106,3 +106,17 @@ export const showModalPayPal = (checkShow) => {
     }
 
 }
+// Define new action types
+export const INCREASE_QUANTITY = 'cart/increase-quantity';
+export const DECREASE_QUANTITY = 'cart/decrease-quantity';
+
+// Action creators
+export const increaseQuantity = (product) => ({
+    type: INCREASE_QUANTITY,
+    payload: product
+});
+
+export const decreaseQuantity = (product) => ({
+    type: DECREASE_QUANTITY,
+    payload: product
+});

@@ -7,6 +7,8 @@ import {formatCurrency, getPercentDiscount} from "../../javascript/utils/Utils_T
 import {getListDiscountCode} from "../../javascript/api/Api_quy"
 
 import {
+    decreaseQuantity,
+    increaseQuantity,
     removeItemFromCart,
     showModalPayment,
     updateDiscountCode,
@@ -81,40 +83,49 @@ function SectionCart() {
     )
 } // => đây là component cha
 
-function ItemCart({product}) {
-    console.log(product)
+function ItemCart({ product }) {
     const styleImage = {
         width: '100%',
         height: '100%',
         maxWidth: '150px',
         maxHeight: '150px',
-    }
+    };
 
-    const dispatch = useDispatch(); // dùng để gửi Action đến Store
+    const dispatch = useDispatch();
 
     function clickRemoveItemFromCart() {
-
-        console.log("Product remove: ", product);
-        dispatch(removeItemFromCart(product)); // xóa sản phẩm khỏi giỏ hàng
+        dispatch(removeItemFromCart(product));
         Swal.fire({
             title: '',
             text: 'Sản phẩm đã xóa khỏi giỏ hàng',
             icon: 'success',
             confirmButtonText: 'OK',
-            timer: 3000, // Thời gian tự động tắt thông báo sau 3 giây
-            timerProgressBar: true // Hiển thị thanh tiến trình đếm ngược
-        }).then(() => {
-
+            timer: 3000,
+            timerProgressBar: true
         });
-        dispatch(updateDiscountCode('')); // reset lại mã giảm giá
-        dispatch(updateDiscountPercent(0)); // reset lại % giảm giá của đơn hàng
+        dispatch(updateDiscountCode(''));
+        dispatch(updateDiscountPercent(0));
+    }
+
+    function clickIncreaseQuantity() {
+        dispatch(increaseQuantity(product));
+    }
+
+    function clickDecreaseQuantity() {
+        if (product.quantity > 1) {
+            dispatch(decreaseQuantity(product));
+        } else {
+            clickRemoveItemFromCart();
+        }
     }
 
     return (
         <tr>
-            <td><Link to={`/products/product/${product.id}`} state={product}>
-                <img src={`${product.listImg[1].path_image}`}
-                     style={styleImage} alt=""/></Link></td>
+            <td>
+                <Link to={`/products/product/${product.id}`} state={product}>
+                    <img src={`${product.listImg[1].path_image}`} style={styleImage} alt="" />
+                </Link>
+            </td>
             <td className="shoping__cart__item">
                 <Link to={`/products/product/${product.id}`} state={product}>
                     <h5 onMouseOver={(e) => e.target.style.color = '#7fad39'}
@@ -124,12 +135,22 @@ function ItemCart({product}) {
             <td className="shoping__cart__price">
                 {formatCurrency(product.price)}
             </td>
+            <td className="shoping__cart__quantity">
+                <div className="quantity">
+                    <div className="pro-qty">
+                        <span className="dec qtybtn" onClick={clickDecreaseQuantity}>-</span>
+                        <input type="text" value={product.quantity} readOnly />
+                        <span className="inc qtybtn" onClick={clickIncreaseQuantity}>+</span>
+                    </div>
+                </div>
+            </td>
             <td className="shoping__cart__item__close">
                 <span onClick={clickRemoveItemFromCart}>Xóa</span>
             </td>
         </tr>
-    )
-} // => đây là component con
+    );
+}
+
 
 function FormInputDiscount() {
 

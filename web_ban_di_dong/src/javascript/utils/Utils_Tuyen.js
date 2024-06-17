@@ -23,10 +23,11 @@ export function checkItemExistCart(cart, product) {
 export function totalPrice(cart) {
     let total = 0;
     cart.forEach(item => {
-        total += item.price;
+        total += item.price * item.quantity;
     });
     return total;
 }
+
 
 export function loadCartFromLocalStorage() {
     return JSON.parse(localStorage.getItem('cart'));

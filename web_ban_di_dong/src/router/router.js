@@ -14,6 +14,7 @@ import VerifyPassPage from "../components/AuthenticationPage/VerifyPass";
 import SP_old from "../components/ListProductsPage/SP_old";
 import SP_Hot from "../components/ListProductsPage/SP_Hot";
 import Products, {ProductsContent} from "../components/ListProductsPage/Products";
+import HistoryCart from "../components/ProfilePage/HistoryCart";
 
 
 
