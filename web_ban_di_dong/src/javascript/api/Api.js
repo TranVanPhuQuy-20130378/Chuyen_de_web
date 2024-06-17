@@ -64,26 +64,15 @@ export async function checkLogin(email, password) {
 
 export async function changePassword(email, newPassword) {
     try {
-        const hashPass = hashText(newPassword);
-        const url = `http://localhost:9810/api/accounts/?email=${encodeURIComponent(email)}`;
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Failed to fetch account data.');
-        }
-        const accounts = await response.json();
-        const account = accounts.find((acc) => acc.email === email);
-        if (!account) {
-            throw new Error('Account not found.');
-        }
-        account.hashPass = hashPass;
-        const updateResponse = await fetch(`http://localhost:9810/api/accounts/${account.id}`, {
+        const url = `http://localhost:8080/api/auth/change-password?email=${email}`;
+        const response = await fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(account),
+            body: JSON.stringify({ newPassword }),
         });
-        if (!updateResponse.ok) {
+        if (!response.ok) {
             throw new Error('Failed to update password.');
         }
         console.log('Password updated successfully!');
@@ -91,6 +80,7 @@ export async function changePassword(email, newPassword) {
         console.error('Error:', error);
     }
 }
+
 export async function getProvinces() {
     const url = "http://localhost:9810/api/provinces";
     const response = await fetch(url);
@@ -125,6 +115,30 @@ export async function getAllOrderItems(email) {
         }
         const orderItems = await response.json();
         return orderItems;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}
+export async function getOrderDetail(email, id) {
+    if (!email || !id) {
+        throw new Error('Email and Order ID are required.');
+    }
+
+    try {
+        const url = `http://localhost:8080/api/order/${email}/${id}`;
+        const response = await fetch(url, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch order detail.');
+        }
+
+        const orderDetail = await response.json();
+        return orderDetail;
     } catch (error) {
         console.error('Error:', error);
         throw error;

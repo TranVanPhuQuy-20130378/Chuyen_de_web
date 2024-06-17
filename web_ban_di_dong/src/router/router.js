@@ -13,12 +13,11 @@ import { ErrorPage404 } from "../components/ErrorPage/ErrorPage404";
 import VerifyPassPage from "../components/AuthenticationPage/VerifyPass";
 import SP_old from "../components/ListProductsPage/SP_old";
 import SP_Hot from "../components/ListProductsPage/SP_Hot";
-import Products, {ProductsContent} from "../components/ListProductsPage/Products";
+import Products, { ProductsContent } from "../components/ListProductsPage/Products";
+import HistoryCart from "../components/ProfilePage/HistoryCart";
+import OrderDetail from "../components/ProfilePage/OrderDetail";
 
-
-
-
-const profile = { path: '/profile', element: <ProfilePage /> }
+const profile = { path: '/profile', element: <ProfilePage /> };
 const listAuthentication = [
     {
         path: '/login',
@@ -40,7 +39,7 @@ const listAuthentication = [
         path: "/verify-password",
         element: <VerifyPassPage />
     }
-]
+];
 
 const listProducts = [
     {
@@ -59,33 +58,37 @@ const listProducts = [
     },
     {
         path: '/sale',
-        element: <Sale/>
+        element: <Sale />
     },
     {
         path: '/hot',
-        element: <SP_Hot/>
+        element: <SP_Hot />
     },
     {
         path: '/old',
-        element: <SP_old/>
-
+        element: <SP_old />
     }
-]
+];
 
 const likedCodes = [{
     path: '/liked-codes',
     element: <LikedCodes />
-}]
+}];
 
 const cart = [{
     path: '/cart-details',
     element: <CartDetailPage />
-}]
+}];
 
 const historyCart = [{
     path: '/historyCart',
-    element: <HistoryCart />  
-}]
+    element: <HistoryCart />
+}];
+
+const orderDetails = [{
+    path: '/order-details/:orderId',
+    element: <OrderDetail />
+}];
 
 export const router = createBrowserRouter([
     {
@@ -98,5 +101,6 @@ export const router = createBrowserRouter([
     ...listAuthentication,
     ...cart,
     ...likedCodes,
-    ...historyCart  // Thêm historyCart vào trong danh sách router
+    ...historyCart,
+    ...orderDetails // Thêm orderDetails vào trong danh sách router
 ]);
