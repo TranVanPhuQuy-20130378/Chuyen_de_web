@@ -1,0 +1,46 @@
+.order-detail-container {
+    background-color: #edf7f5; /* Màu nền xanh nhạt */
+    border: 1px solid #b3d4d0; /* Viền */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto; /* Canh giữa và thêm khoảng cách trên dưới */
+    padding: 20px;
+}
+
+.order-detail-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.order-details {
+    background-color: #ffffff; /* Nền trắng */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.product-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+.product-item h3 {
+    margin-bottom: 5px;
+}
+
+.total-amount {
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #b3d4d0; /* Viền trên */
+    background-color: #f0f0f0; /* Nền xám nhạt cho phần tổng tiền */
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    font-size: 4rem;
+    font-weight: bold;
+    font-size: 30;
+}
