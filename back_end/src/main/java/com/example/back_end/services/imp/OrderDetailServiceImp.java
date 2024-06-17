@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -43,5 +44,10 @@ public class OrderDetailServiceImp implements OrderDetailService {
         } else {
             throw new RuntimeException("Product with id " + orderDetailRequest.getId_product() + " not found");
         }
+    }
+
+    @Override
+    public List<OrderDetail> getOrderDetailsByOrderId(Long orderId) {
+        return orderDetailRepository.findByOrderId(orderId);
     }
 }

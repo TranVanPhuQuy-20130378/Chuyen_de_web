@@ -1,10 +1,7 @@
 package com.example.back_end.services;
 
 
-import com.example.back_end.dto.UserDto;
-import com.example.back_end.dto.UserLoginDto;
-import com.example.back_end.dto.UserProfileUpdateDto;
-import com.example.back_end.dto.UserRegistrationDto;
+import com.example.back_end.dto.*;
 import com.example.back_end.models.entities.User;
 import com.example.back_end.repos.RoleRepository;
 import com.example.back_end.repos.UserRepository;
@@ -12,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -84,4 +82,14 @@ public class UserService {
             return null;
         }
 
+    public boolean changePasswordByEmail(String email, String newPassword) {
+        List<User> users = userRepository.findAllByEmail(email);
+        if (users.size() == 1) {
+            User user = users.get(0);
+            user.setPassword(passwordEncoder.encode(newPassword));
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.back_end.controller;
 
 
+import com.example.back_end.dto.ChangePasswordDto;
 import com.example.back_end.dto.UserLoginDto;
 import com.example.back_end.dto.UserRegistrationDto;
 import com.example.back_end.models.entities.User;
@@ -35,5 +36,14 @@ public class AuthController {
         }
     }
 
+    @PutMapping("/change-password")
+    public ResponseEntity<?> changePassword(@RequestParam String email, @RequestBody ChangePasswordDto changePasswordDto) {
+        boolean success = userService.changePasswordByEmail(email, changePasswordDto.getNewPassword());
+        if (success) {
+            return ResponseEntity.ok("Password updated successfully");
+        } else {
+            return ResponseEntity.status(400).body("Account not found or update failed");
+        }
+    }
 }
 
