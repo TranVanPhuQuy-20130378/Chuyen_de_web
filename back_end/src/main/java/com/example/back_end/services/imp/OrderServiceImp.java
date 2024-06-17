@@ -28,10 +28,10 @@ public class OrderServiceImp implements OrderService {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             order.setUser(user);
+            order.setAddresss(userOptional.get().getAddress());
         }
             order.setOrderDate(LocalDate.now());
             order.setTotalAmount(orderRequest.getTotal_price());
-            order.setAddresss(userOptional.get().getAddress());
             return orderRepository.save(order);
 
     }

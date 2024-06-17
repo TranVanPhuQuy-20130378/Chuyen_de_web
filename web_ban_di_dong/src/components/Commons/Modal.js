@@ -73,7 +73,7 @@ export function ModalPayment() {
         // Create list_order_detail from cart
         const list_order_detail = cart.map(item => ({
             id_product: item.id,
-            quantity: 1
+            quantity: item.quantity
         }));
 
         // Calculate order value and total price

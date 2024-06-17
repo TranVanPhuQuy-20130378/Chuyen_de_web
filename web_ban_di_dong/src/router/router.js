@@ -13,6 +13,7 @@ import { ErrorPage404 } from "../components/ErrorPage/ErrorPage404";
 import VerifyPassPage from "../components/AuthenticationPage/VerifyPass";
 import SP_old from "../components/ListProductsPage/SP_old";
 import SP_Hot from "../components/ListProductsPage/SP_Hot";
+
 import Products, { ProductsContent } from "../components/ListProductsPage/Products";
 import HistoryCart from "../components/ProfilePage/HistoryCart";
 import OrderDetail from "../components/ProfilePage/OrderDetail";

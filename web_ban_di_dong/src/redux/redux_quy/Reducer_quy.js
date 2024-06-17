@@ -3,6 +3,7 @@ import {
     loadCartFromLocalStorage,
     totalPrice
 } from "../../javascript/utils/Utils_Tuyen"
+import {DECREASE_QUANTITY, INCREASE_QUANTITY} from "./Action_quy";
 
 const initCartState = {
     /* đây là trạng thái ban đầu của giỏ hàng */
@@ -30,30 +31,23 @@ export const cartReducer = (state = initCartState, action) => {
     switch (action.type) {
 
         case 'cart/add-item': {
+            const existingItem = state.cart.find(item => item.id === action.payload.id);
+            const updatedCart = existingItem
+                ? state.cart.map(item =>
+                    item.id === action.payload.id ? { ...item, quantity: item.quantity + 1 } : item
+                )
+                : [...state.cart, { ...action.payload, quantity: 1 }];
 
-            // nếu sản phẩm chưa tồn tại trong giỏ hàng
-            const updatedCart = checkItemExistCart(state.cart, action.payload) === undefined ? [...state.cart, action.payload] : [...state.cart]  /* Cập nhật thuộc tính cart với một mảng mới. Mảng mới này bao gồm toàn bộ phần tử từ state.cart và phần tử mới được thêm vào từ action.payload */
-            // console.log(updatedCart);
-            localStorage.setItem('cart', JSON.stringify(updatedCart)); // Dữ liệu trong Local Storage không có hạn chế về thời gian sống và sẽ được giữ lại sau khi bạn đóng trình duyệt. Điều này có nghĩa là dữ liệu vẫn sẽ tồn tại ngay cả khi người dùng tắt trình duyệt hoặc khởi động lại máy tính.
-
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
             const newTotalPrice = totalPrice(updatedCart);
             localStorage.setItem('total-price', JSON.stringify(newTotalPrice));
 
-
             return {
-                ...state, // sao chép trạng thái hiện tại
-                cart: updatedCart, // cập nhật số lượng sản phẩm trong giỏ hàng
-                totalPrice: newTotalPrice // => tổng giá trị mới của giỏ hàng
-            }
-
-            /**
-             Đây là một trường hợp xử lý cho hành động có loại là 'cart/add-item'.
-             Khi nhận được hành động này, reducer sẽ tạo ra một đối tượng mới bằng cách sao chép trạng thái hiện tại (...state)
-             và cập nhật thuộc tính cart với một mảng mới gồm toàn bộ phần tử từ state.cart và phần tử mới được thêm vào từ action.payload.
-             action.payload chứa dữ liệu mới cần thêm vào giỏ hàng
-             */
+                ...state,
+                cart: updatedCart,
+                totalPrice: newTotalPrice
+            };
         }
-
         case 'cart/remove-item': {
 
             // console.log("Day la Action cart/remove-item");
@@ -97,6 +91,34 @@ export const cartReducer = (state = initCartState, action) => {
                 totalPrice: newTotalPrice,
                 discount_percent: 0
             }
+        }
+
+        case INCREASE_QUANTITY: {
+            const updatedCart = state.cart.map(item =>
+                item.id === action.payload.id ? { ...item, quantity: item.quantity + 1 } : item
+            );
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            const newTotalPrice = totalPrice(updatedCart);
+            localStorage.setItem('total-price', JSON.stringify(newTotalPrice));
+            return {
+                ...state,
+                cart: updatedCart,
+                totalPrice: newTotalPrice
+            };
+        }
+
+        case DECREASE_QUANTITY: {
+            const updatedCart = state.cart.map(item =>
+                item.id === action.payload.id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+            );
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            const newTotalPrice = totalPrice(updatedCart);
+            localStorage.setItem('total-price', JSON.stringify(newTotalPrice));
+            return {
+                ...state,
+                cart: updatedCart,
+                totalPrice: newTotalPrice
+            };
         }
 
         default :
