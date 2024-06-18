@@ -3,7 +3,9 @@ package com.example.back_end.services.imp;
 import com.example.back_end.dto.ProductDTO;
 import com.example.back_end.mapper.MapperProduct;
 import com.example.back_end.models.entities.Product;
+import com.example.back_end.repos.CategoryRepository;
 import com.example.back_end.repos.ProductRepository;
+import com.example.back_end.repos.VendorRepository;
 import com.example.back_end.services.interfaces.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +20,8 @@ public class ProductServiceImp implements IProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    private CategoryRepository categoryRepository;
+    private VendorRepository vendorRepository;
     @Override
     public ProductDTO findById(long id) {
         return Optional.ofNullable(productRepository.findById(id)
@@ -158,11 +162,39 @@ public class ProductServiceImp implements IProductService {
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy sản phẩm với ID: " + id));
 
         // Cập nhật thông tin của sản phẩm từ dữ liệu mới của productDTO
-        existingProduct.setName(productDTO.getName());
-        existingProduct.setDescription(productDTO.getDescription());
-        existingProduct.setPrice(BigDecimal.valueOf(productDTO.getPrice()));
-        existingProduct.setStockQuanlity(productDTO.getStockQuanlity());
-        // Cập nhật các trường khác nếu cần thiết
+        if (productDTO.getName() != null) {
+            existingProduct.setName(productDTO.getName());
+        }
+        if (productDTO.getDescription() != null) {
+            existingProduct.setDescription(productDTO.getDescription());
+        }
+        if (productDTO.getPrice() != 0) {
+            existingProduct.setPrice(BigDecimal.valueOf(productDTO.getPrice()));
+        }
+        if (productDTO.getStockQuanlity() != null) {
+            existingProduct.setStockQuanlity(productDTO.getStockQuanlity());
+        }
+        if (productDTO.getCategory() != null) {
+
+            existingProduct.setCategory(categoryRepository.findById(Integer.parseInt(productDTO.getCategory())));
+        }
+        if (productDTO.getVendor() != null) {
+
+            existingProduct.setVendor(vendorRepository.findById(Integer.parseInt(productDTO.getVendor())));
+        }
+
+        if (productDTO.getStatus() != null) {
+            existingProduct.setStatus(productDTO.getStatus());
+        }
+        if (productDTO.getView() != null) {
+            existingProduct.setView(productDTO.getView());
+        }
+        if (productDTO.getLiked() != null) {
+            existingProduct.setLiked(productDTO.getLiked());
+        }
+        if (productDTO.getBuy() != null) {
+            existingProduct.setBuy(productDTO.getBuy());
+        }
 
         // Lưu sản phẩm đã cập nhật vào cơ sở dữ liệu
         Product updatedProduct = productRepository.save(existingProduct);
@@ -170,6 +202,7 @@ public class ProductServiceImp implements IProductService {
         // Trả về DTO của sản phẩm đã được cập nhật
         return MapperProduct.mapperProductToDTO(updatedProduct);
     }
+
 
 
     private ProductDTO convertToDTO(Product product) {

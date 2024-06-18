@@ -38,11 +38,11 @@
             this.category = category;
             this.vendor = vendor;
             this.listImg = listImg;
-            this.status = status;
             this.rating_comment = rating_comment;
             this.view = view;
             this.liked = liked;
             this.buy = buy;
             this.rating = rating;
+            this.status = status;
         }
     }
