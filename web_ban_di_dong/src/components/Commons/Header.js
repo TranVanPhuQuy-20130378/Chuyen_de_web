@@ -29,7 +29,7 @@ function HeaderTop() {
                 <div className="row">
                     <div className="col-lg-6 col-md-6 py-2">
                         <div className="header-top-left d-flex justify-content-start align-items-center">
-                            <a href="tel:0123.456.789"><i className="fa fa-phone-alt"></i> 0123.456.789</a>
+                            <a href="tel:0123.456.789"><i className="fa afa-phone-alt"></i> 0123.456.789</a>
                             <a href="mailto:k46-it-nlu@gmail.com"><i className="fa fa-envelope"></i> k46-it-nlu@gmail.com</a>
                         </div>
                     </div>

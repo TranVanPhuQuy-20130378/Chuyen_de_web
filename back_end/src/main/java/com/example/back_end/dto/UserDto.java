@@ -1,13 +1,36 @@
 package com.example.back_end.dto;
 
 public class UserDto {
+    private int user_id;
     private String username;
     private String email;
     private String phone;
     private String gender;
     private String address;
 
-    // Getters and setters (You can use Lombok annotations to generate them if configured)
+    // Constructors
+    public UserDto() {
+        // Default constructor
+    }
+
+    public UserDto(int user_id, String username, String email, String phone, String gender, String address) {
+        this.user_id = user_id;
+        this.username = username;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.address = address;
+    }
+
+    // Getters and setters
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
     public String getUsername() {
         return username;
     }
