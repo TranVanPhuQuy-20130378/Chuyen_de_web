@@ -21,7 +21,7 @@ public class MapperProduct {
                 .id(product.getId())
                 .name(product.getName())
                 .description(product.getDescription())
-                .stockQuanlity(product.getStockQuanlity())
+                .stockQuantity(product.getStockQuanlity())
                 .status(product.getStatus())
                 .price(product.getPrice().toBigInteger().intValue())
                 .vendor(product.getVendor().getVendorName())
