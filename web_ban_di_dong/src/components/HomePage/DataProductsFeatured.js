@@ -56,13 +56,13 @@ function DataProductsFeatured() {
 
     }, [boLoc]);
 
-    function handlePageChange(newPage) {
-        // console.log('Trang mới: ' + newPage);
-        setBoLoc({
-            ...boLoc,
-            page: newPage
-        });
-    }
+    // function handlePageChange(newPage) {
+    //     console.log('Trang mới: ' + newPage);
+    //     setBoLoc({
+    //         ...boLoc,
+    //         _page: newPage
+    //     });
+    // }
 
     return (
         <>
@@ -76,7 +76,7 @@ function DataProductsFeatured() {
                 )}
             </div>
             {/*<div className="d-flex justify-content-center">*/}
-            {/*    <Pagination pagination={phanTrang} onPageChange={handlePageChange} currentPage={boLoc.page} />*/}
+            {/*    <Pagination pagination={phanTrang} onPageChange={handlePageChange} currentPage={boLoc._page} />*/}
             {/*</div>*/}
         </>
     );

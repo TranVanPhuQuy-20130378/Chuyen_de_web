@@ -370,6 +370,24 @@ export function HeaderSearch() {
                 <div className="col-lg-8">
                     <div className="header-search h-100">
                         <form onSubmit={handleSubmit}>
+                            <div className="header-search-categories pl-3"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    $('.header-search-categories ul').slideToggle(300);
+                                    setToggle(!toggle);
+                                }}>
+                                <span className="position-relative align-middle">
+                                    {search.from || 'TẤT CẢ HÃNG'}
+                                    <i className={toggle ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
+                                </span>
+                                <ul>
+                                    {types.map(type => (
+                                        <li onClick={() => setSearch({ ...search, from: type.name })}
+                                            key={type.name}>{type.name}</li>
+                                    ))}
+                                    <li onClick={() => setSearch({ query: search.query, from: '' })} key="all">TẤT CẢ HÃNG</li>
+                                </ul>
+                            </div>
                             <input
                                 type="text"
                                 value={search.query}

@@ -79,7 +79,7 @@ function DetailCenter({product}) {
                     <StarRate stars={formatRating(product.rating).average} type={"bi bi-star-fill"}/>
                 </div>
                 <span>({formatRating(product.rating).total} Đánh giá)</span>
-                <span><i className="fa fa-eye"></i> {product.view}</span>
+                <span><i className="fa fa-eye"></i> {product.viewed}</span>
                 <span><i className="fa fa-shopping-cart"></i> {product.buy}</span>
             </div>
             <div className="detail-center-info">
@@ -216,17 +216,12 @@ function RatingModal({ product, setProduct, closeModal }) {
                 console.log('Rating created successfully:', response.data);
                 setFeel('');
                 setLimit(0);
-                fetchCodes(`http://localhost:8080/api/products/${product.id}`).then(json => {
-                    setProduct(json.data)
-                    setProduct(product => ({...product, viewed: product.viewed}))
-                })
                 closeModal();
             })
             .catch(error => {
                 console.error('Error creating rating:', error.response);
                 // Xử lý lỗi nếu cần thiết
             });
-
     }
 
     return (
@@ -265,18 +260,18 @@ function RatingModal({ product, setProduct, closeModal }) {
 }
 
 
-function Rating({ product, setProduct }) {
-    const [showModal, setShowModal] = useState(false);
+function Rating({product, setProduct}) {
+    const [showModal, setShowModal] = useState(false)
 
     return (
         <>
-            <DetailDivider title={'ĐÁNH GIÁ'} />
+            <DetailDivider title={'ĐÁNH GIÁ'}/>
             <div className="detail-rating">
                 <div className="row mt-5 mb-3">
                     <div className="col-lg-4 text-center">
                         <div className="rating-average">{formatRating(product.rating).average}<span>/5</span></div>
                         <div className="product-item-stars">
-                            <StarRate stars={formatRating(product.rating).average} type={"fa fa-star"} />
+                            <StarRate stars={formatRating(product.rating).average} type={"fa fa-star"}/>
                         </div>
                         <div className="rating-count">{formatNumber(formatRating(product.rating).total, ',')} đánh giá</div>
                         <div className="rating-action mt-3 text-center">
@@ -289,7 +284,7 @@ function Rating({ product, setProduct }) {
                                 <div key={index}>
                                     <div>{5 - index} <i className="bi bi-star-fill"></i></div>
                                     <div>
-                                        <div style={{ width: `${formatRating(product.rating)['avg' + (5 - index)]}%` }}></div>
+                                        <div style={{width: `${formatRating(product.rating)['avg' + (5 - index)]}%`}}></div>
                                     </div>
                                     <div>{product.rating[(5 - index) + 'star']}</div>
                                 </div>
@@ -303,18 +298,17 @@ function Rating({ product, setProduct }) {
                             <div>{rating.name} <span><i className="fa fa-check-circle"></i> Đã mua hàng</span>
                                 <span>{getPassedTimeInText(rating.when)}</span></div>
                             <div className="product-item-stars">
-                                <StarRate stars={rating.star} type={"bi bi-star-fill"} />
+                                <StarRate stars={rating.star} type={"bi bi-star-fill"}/>
                             </div>
                             <div>{rating.comment}</div>
                         </div>
                     ))}
                 </div>
             </div>
-            {showModal && <RatingModal product={product} setProduct={setProduct} closeModal={() => setShowModal(false)} />}
+            {showModal && <RatingModal product={product} setProduct={setProduct} closeModal={() => setShowModal(false)}/>}
         </>
-    );
+    )
 }
-
 
 function DetailContent({product, setProduct}) {
     const ref = useRef(null)
@@ -337,11 +331,11 @@ export default function ProductDetails() {
     useMemo(() => {
         fetchCodes(`http://localhost:8080/api/products/${id}`).then(json => {
             setProduct(json.data)
-            setProduct(product => ({...product, view: product.view + 1}))
+            setProduct(product => ({...product, viewed: product.viewed + 1}))
             setLoading(false)
         })
     }, [id])
-    console.log(product)
+
     useEffect(() => {
         putCodes(`http://localhost:8080/api/products/${product.id}`, {
             method: "PATCH",

@@ -7,11 +7,11 @@ export function formatRating(rating) {
     return {
         total: total,
         average: average,
-        avg5: rating['five_star'] * 100 / total,
-        avg4: rating['four_star'] * 100 / total,
-        avg3: rating['three_star'] * 100 / total,
-        avg2: rating['two_star'] * 100 / total,
-        avg1: rating['one_star'] * 100 / total
+        avg5: rating['5star'] * 100 / total,
+        avg4: rating['4star'] * 100 / total,
+        avg3: rating['3star'] * 100 / total,
+        avg2: rating['2star'] * 100 / total,
+        avg1: rating['1star'] * 100 / total
     }
 }
 // export const getTypes = (json) => {
