@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -71,6 +72,7 @@ public class UserService {
 
             if (user != null) {
                 UserDto userDto = new UserDto();
+                userDto.setUser_id(user.getId());
                 userDto.setUsername(user.getUsername());
                 userDto.setEmail(user.getEmail());
                 userDto.setPhone(user.getPhone());
@@ -91,5 +93,26 @@ public class UserService {
             return true;
         }
         return false;
+    }
+
+    public List<UserDto> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(this::mapToUserDto)
+                .collect(Collectors.toList());
+    }
+
+    private UserDto mapToUserDto(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setUser_id(user.getId());
+        userDto.setUsername(user.getUsername());
+        userDto.setEmail(user.getEmail());
+        userDto.setPhone(user.getPhone());
+        userDto.setGender(user.getGender());
+        userDto.setAddress(user.getAddress());
+        return userDto;
+    }
+
+    public void deleteUserById(Integer userId) {
+        userRepository.deleteById(Long.valueOf(userId));
     }
 }
