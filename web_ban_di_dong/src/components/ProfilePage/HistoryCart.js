@@ -31,13 +31,10 @@ function HistoryCart() {
         fetchOrderHistory();
     }, [storedEmail]);
 
-    // Function to handle view order details
-    const viewOrderDetails = (orderId) => {
-        // Redirect to a new route or show details in a modal, etc.
-        console.log("View order details:", orderId);
-        // Example: navigate(`/order-details/${orderId}`);
+    const viewOrderDetails = (email, orderId) => {
+        navigate(`/order-details/${orderId}`);
     };
-
+    
     return (
         <>
             <Header />
@@ -46,7 +43,6 @@ function HistoryCart() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            {/* <h2>Lịch sử đơn hàng</h2> */}
                             {orders.length === 0 ? (
                                 <p>Bạn chưa có đơn hàng nào.</p>
                             ) : (
@@ -56,7 +52,6 @@ function HistoryCart() {
                                             <tr>
                                                 <th>Số thứ tự</th>
                                                 <th>Ngày đặt</th>
-                                           
                                                 <th>Tổng tiền</th>
                                                 <th>Địa chỉ</th>
                                                 <th>Chi tiết đơn hàng</th>
@@ -67,17 +62,17 @@ function HistoryCart() {
                                                 <tr key={order.id}>
                                                     <td>{index + 1}</td>
                                                     <td>{new Date(order.orderDate).toLocaleDateString()}</td>
-                                                
-                                                    <td>{order.totalAmount}</td>
+                                                    <td>{order.totalAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
                                                     <td>{order.addresss}</td>
                                                     <td className="text-center">
-                                                        <button
-                                                            className="btn btn-primary"
-                                                            onClick={() => viewOrderDetails(order.id)}
-                                                        >
-                                                            Xem
+                                                   <button
+                                                    className="btn btn-primary"
+                                                    onClick={() => viewOrderDetails(storedEmail, order.id)}
+                                                                       >
+                                                      Xem
                                                         </button>
-                                                    </td>
+                                                      </td>
+
                                                 </tr>
                                             ))}
                                         </tbody>
