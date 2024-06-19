@@ -11,44 +11,49 @@ import {fetchCodes, putCodes} from "../../javascript/api/Api_phong";
 import SectionBreadcrumb from "../Commons/SectionBreadcrumb";
 import axios from 'axios';
 
-function DetailLeft({product}) {
-    const [slideIndex, setSlideIndex] = useState(0)
+
+function DetailLeft({ product }) {
+    const [slideIndex, setSlideIndex] = useState(0);
 
     function moveSlide(dir) {
-        const currentSlide = slideIndex + dir
-        if (currentSlide > -1 && currentSlide < 3)
-            setSlideIndex(currentSlide)
+        const currentSlide = slideIndex + dir;
+        if (currentSlide > -1 && currentSlide < product.listImg.length) {
+            setSlideIndex(currentSlide);
+        }
     }
 
     return (
         <div className="detail-left">
             <div className="detail-slider">
-                <div className="detail-slide" style={{transform: `translateX(${100 * (0 - slideIndex)}%)`}}>
-                    <img src={product.listImg[0].path_image} alt=""/>
-                </div>
-                <div className="detail-slide" style={{transform: `translateX(${100 * (1 - slideIndex)}%)`}}>
-                    <img src={product.listImg[1].path_image} alt=""/>
-                </div>
-                <div className="detail-slide" style={{transform: `translateX(${100 * (2 - slideIndex)}%)`}}>
-                    <img src={product.listImg[2].path_image} alt=""/>
-                </div>
+                {product.listImg.map((img, index) => (
+                    <div
+                        key={index}
+                        className="detail-slide"
+                        style={{ transform: `translateX(${100 * (index - slideIndex)}%)` }}
+                    >
+                        <img src={img.path_image} alt="" />
+                    </div>
+                ))}
             </div>
-            <button className="btn slide-arrow btn-prev" onClick={() => moveSlide(-1)}><i className="bi bi-chevron-left"></i></button>
-            <button className="btn slide-arrow btn-next" onClick={() => moveSlide(1)}><i className="bi bi-chevron-right"></i></button>
+            <button className="btn slide-arrow btn-prev" onClick={() => moveSlide(-1)}>
+                <i className="bi bi-chevron-left"></i>
+            </button>
+            <button className="btn slide-arrow btn-next" onClick={() => moveSlide(1)}>
+                <i className="bi bi-chevron-right"></i>
+            </button>
             <div className="slider-thumbnails d-flex justify-content-between">
-                <div className={slideIndex === 0 && 'active'} onClick={() => setSlideIndex(0)}>
-                    <img src={product.listImg[0].path_image} alt=""/>
-                </div>
-                <div className={slideIndex === 1 && 'active'} onClick={() => setSlideIndex(1)}>
-                    <img src={product.listImg[1].path_image} alt=""/>
-                </div>
-                <div className={slideIndex === 2 && 'active'} onClick={() => setSlideIndex(2)}>
-                    <img src={product.listImg[2].path_image} alt=""/>
-                    {/*<img src={product.thumbnails[2]} alt=""/>*/}
-                </div>
+                {product.listImg.map((img, index) => (
+                    <div
+                        key={index}
+                        className={slideIndex === index ? 'active' : ''}
+                        onClick={() => setSlideIndex(index)}
+                    >
+                        <img src={img.path_image} alt="" />
+                    </div>
+                ))}
             </div>
         </div>
-    )
+    );
 }
 
 export function StarRate({stars, type}) {

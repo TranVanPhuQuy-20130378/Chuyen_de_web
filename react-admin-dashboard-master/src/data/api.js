@@ -1,1 +1,0 @@
-export const fetchCodes = async (url) => await (await fetch(url)).json()

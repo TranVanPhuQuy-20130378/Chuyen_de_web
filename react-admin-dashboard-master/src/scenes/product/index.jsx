@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
+import {URL} from "../../API/api";
 
 const Products = () => {
     const theme = useTheme();
@@ -15,7 +16,7 @@ const Products = () => {
 
     const fetchContacts = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/products");
+            const response = await fetch(URL+"/api/products");
             const data = await response.json();
             if (data.status === "Ok") {
                 setContacts(data.data);

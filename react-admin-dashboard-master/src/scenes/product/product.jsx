@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import Header from "../../components/Header";
 import { useParams } from "react-router-dom";
+import {URL} from "../../API/api";
 
 const ProductEdit = () => {
   const { id } = useParams();
@@ -16,19 +17,19 @@ const ProductEdit = () => {
     const fetchData = async () => {
       try {
         // Fetch product data
-        const productResponse = await fetch(`http://localhost:8080/api/products/${id}`);
+        const productResponse = await fetch(URL+`/api/products/${id}`);
         const productData = await productResponse.json();
         if (productData.status === "OK") {
           setProduct(productData.data);
         }
 
         // Fetch categories
-        const categoriesResponse = await fetch("http://localhost:8080/api/category");
+        const categoriesResponse = await fetch(URL+"/api/category");
         const categoriesData = await categoriesResponse.json();
         setCategories(categoriesData);
 
         // Fetch vendors
-        const vendorsResponse = await fetch("http://localhost:8080/api/vendors");
+        const vendorsResponse = await fetch(URL+"/api/vendors");
         const vendorsData = await vendorsResponse.json();
         setVendors(vendorsData);
       } catch (error) {

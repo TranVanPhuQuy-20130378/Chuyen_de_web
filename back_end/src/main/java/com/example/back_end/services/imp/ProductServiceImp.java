@@ -173,7 +173,7 @@ public class ProductServiceImp implements IProductService {
             existingProduct.setPrice(BigDecimal.valueOf(productDTO.getPrice()));
         }
         if (productDTO.getStockQuantity() != null) {
-            existingProduct.setStockQuanlity(productDTO.getStockQuantity());
+            existingProduct.setStockQuantity(productDTO.getStockQuantity());
         }
         if (!productDTO.getCategory().isEmpty()) {
 
@@ -212,7 +212,7 @@ public class ProductServiceImp implements IProductService {
         productDTO.setName(product.getName());
         productDTO.setDescription(product.getDescription());
         productDTO.setPrice(product.getPrice().intValue());
-        productDTO.setStockQuantity(product.getStockQuanlity());
+        productDTO.setStockQuantity(product.getStockQuantity());
         productDTO.setCategory(product.getCategory().getCategoryName()); // Lấy tên danh mục
         productDTO.setVendor(product.getVendor().getVendorName()); // Lấy tên nhà cung cấp
         // Các bước khác để thiết lập các trường khác của ProductDTO

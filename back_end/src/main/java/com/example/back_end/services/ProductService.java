@@ -231,5 +231,26 @@ public class ProductService implements IGetProductService, ICountProductService 
 
         return ratingDTO;
     }
+    @Transactional
+    public void decrementStockQuantityById(Long productId, int buyed) {
+        // Find the product by its ID
+        Product product = _entityManager.find(Product.class, productId);
+
+        // Check if product is found
+        if (product != null) {
+            // Decrement the stock quantity
+            int currentStock = product.getStockQuantity();
+            if (currentStock > 0) {
+                product.setStockQuantity(currentStock - buyed);
+            } else {
+                throw new IllegalStateException("Stock quantity is already zero.");
+            }
+
+            // Persist the changes
+            _entityManager.merge(product);
+        } else {
+            throw new IllegalArgumentException("Product with ID " + productId + " not found.");
+        }
+    }
 
 }

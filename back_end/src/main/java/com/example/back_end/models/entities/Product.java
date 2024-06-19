@@ -32,7 +32,7 @@ public class Product {
     private BigDecimal price;
 
     @Column(name = "stock_quanlity")
-    private Integer stockQuanlity;
+    private Integer stockQuantity;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
