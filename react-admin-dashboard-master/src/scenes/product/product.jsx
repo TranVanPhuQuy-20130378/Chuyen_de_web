@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 
 const ProductEdit = () => {
   const { id } = useParams();
-  console.log(id)
   // State variables
   const [product, setProduct] = useState(null);
   const [categories, setCategories] = useState([]);
@@ -39,7 +38,7 @@ const ProductEdit = () => {
 
     fetchData();
   }, [id]);
-
+  console.log(product)
   // Handle form submission
   const handleFormSubmit = async (values) => {
     try {
@@ -252,19 +251,6 @@ const ProductEdit = () => {
                           fullWidth
                           variant="filled"
                           type="text"
-                          label="Status"
-                          name="status"
-                          value={values.status}
-                          onBlur={handleBlur}
-                          onChange={handleChange}
-                          error={!!touched.status && !!errors.status}
-                          helperText={touched.status && errors.status}
-                          sx={{ gridColumn: "span 4", marginTop: "10px" }}
-                      />
-                      <TextField
-                          fullWidth
-                          variant="filled"
-                          type="text"
                           label="Views"
                           name="view"
                           value={values.view}
@@ -298,6 +284,19 @@ const ProductEdit = () => {
                           onChange={handleChange}
                           error={!!touched.buy && !!errors.buy}
                           helperText={touched.buy && errors.buy}
+                          sx={{ gridColumn: "span 4", marginTop: "10px" }}
+                      />
+                      <TextField
+                          fullWidth
+                          variant="filled"
+                          type="text"
+                          label="Status"
+                          name="status"
+                          value={values.status}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          error={!!touched.status && !!errors.status}
+                          helperText={touched.status && errors.status}
                           sx={{ gridColumn: "span 4", marginTop: "10px" }}
                       />
                     </Grid>

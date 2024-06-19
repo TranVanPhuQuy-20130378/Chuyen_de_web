@@ -19,8 +19,9 @@ import java.util.stream.Collectors;
 public class ProductServiceImp implements IProductService {
     @Autowired
     private ProductRepository productRepository;
-
+    @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
     private VendorRepository vendorRepository;
     @Override
     public ProductDTO findById(long id) {
@@ -171,16 +172,16 @@ public class ProductServiceImp implements IProductService {
         if (productDTO.getPrice() != 0) {
             existingProduct.setPrice(BigDecimal.valueOf(productDTO.getPrice()));
         }
-        if (productDTO.getStockQuanlity() != null) {
-            existingProduct.setStockQuanlity(productDTO.getStockQuanlity());
+        if (productDTO.getStockQuantity() != null) {
+            existingProduct.setStockQuanlity(productDTO.getStockQuantity());
         }
-        if (productDTO.getCategory() != null) {
+        if (!productDTO.getCategory().isEmpty()) {
 
-            existingProduct.setCategory(categoryRepository.findById(Integer.parseInt(productDTO.getCategory())));
+            existingProduct.setCategory(categoryRepository.findByCategoryName(productDTO.getCategory()));
         }
         if (productDTO.getVendor() != null) {
 
-            existingProduct.setVendor(vendorRepository.findById(Integer.parseInt(productDTO.getVendor())));
+            existingProduct.setVendor(vendorRepository.findByVendorName(productDTO.getVendor()));
         }
 
         if (productDTO.getStatus() != null) {
@@ -211,7 +212,7 @@ public class ProductServiceImp implements IProductService {
         productDTO.setName(product.getName());
         productDTO.setDescription(product.getDescription());
         productDTO.setPrice(product.getPrice().intValue());
-        productDTO.setStockQuanlity(product.getStockQuanlity());
+        productDTO.setStockQuantity(product.getStockQuanlity());
         productDTO.setCategory(product.getCategory().getCategoryName()); // Lấy tên danh mục
         productDTO.setVendor(product.getVendor().getVendorName()); // Lấy tên nhà cung cấp
         // Các bước khác để thiết lập các trường khác của ProductDTO

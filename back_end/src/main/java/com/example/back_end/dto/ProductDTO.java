@@ -16,7 +16,7 @@
         private String name;
         private String description;
         private int price;
-        private Integer stockQuanlity;
+        private Integer stockQuantity;
         private String category;
         private String vendor;
         private List<ImageDTO> listImg;
@@ -29,12 +29,12 @@
 
         public ProductDTO() {
         }
-        public ProductDTO(Integer id, String name, String description, int price, Integer stockQuanlity, String category, String vendor, List<ImageDTO> listImg, Integer status, List<RatingsDTO> rating_comment, Integer view, Integer liked, Integer buy, RatingDTO rating) {
+        public ProductDTO(Integer id, String name, String description, int price, Integer stockQuantity, String category, String vendor, List<ImageDTO> listImg, Integer status, List<RatingsDTO> rating_comment, Integer view, Integer liked, Integer buy, RatingDTO rating) {
             this.id = id;
             this.name = name;
             this.description = description;
             this.price = price;
-            this.stockQuanlity = stockQuanlity;
+            this.stockQuantity = stockQuantity;
             this.category = category;
             this.vendor = vendor;
             this.listImg = listImg;
