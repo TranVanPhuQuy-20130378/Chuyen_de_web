@@ -27,4 +27,13 @@ export async function deleteUser(id) {
       throw error;
     }
   }
-  
+  export async function getOrder() {
+    try {
+      const response = await fetch(`http://localhost:8080/api/order/all`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  }
