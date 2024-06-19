@@ -133,7 +133,7 @@ const Sidebar = () => {
               Data
             </Typography>
             <Item
-              title="Manage Team"
+              title="Quản lý danh sách đơn hàng "
               to="/team"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
