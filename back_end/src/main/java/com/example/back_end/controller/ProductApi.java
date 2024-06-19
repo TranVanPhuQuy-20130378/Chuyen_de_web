@@ -58,7 +58,7 @@ public class ProductApi {
 	}
 
 	@GetMapping("/fitter-product-hot")
-	public ResponseEntity<ResponseObject> findProductHot(@PageableDefault(size = 3, page = 0) Pageable pageable) {
+	public ResponseEntity<ResponseObject> findProductHot(@PageableDefault(size = 5, page = 0) Pageable pageable) {
 		try {
 			List<ProductDTO> hotProducts = productService.findByStatus(StatusProduct.HOT, pageable);
 			return ResponseEntity.ok(new ResponseObject("Ok", "OK", hotProducts));

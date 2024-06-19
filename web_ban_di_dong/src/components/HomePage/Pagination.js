@@ -4,7 +4,7 @@ import '../../css/pagination.css'
 function Pagination({pagination, onPageChange, currentPage}) {
 
     // Trích xuất các giá trị từ object pagination và gán chúng vào các biến tương ứng
-    const {limit, total, totalPages} = pagination;
+    const {size, total, totalPages} = pagination;
 
     // Hàm xử lý thay đổi trang
     function handlePageChange(newPage) {
