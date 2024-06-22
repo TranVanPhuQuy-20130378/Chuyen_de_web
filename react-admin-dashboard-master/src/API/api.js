@@ -4,7 +4,7 @@ export async function getUsers() {
     try {
         const response = await fetch(URL+'/api/users');
         const data = await response.json();
-        return data;
+        return data; 
     } catch (error) {
         console.error('Error:', error);
         throw error;
