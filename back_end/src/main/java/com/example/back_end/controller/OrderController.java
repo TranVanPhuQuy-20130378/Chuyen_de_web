@@ -4,6 +4,7 @@ import com.example.back_end.models.OrderRequest;
 import com.example.back_end.models.ResponseObject;
 import com.example.back_end.models.entities.Order;
 import com.example.back_end.models.entities.OrderDetail;
+import com.example.back_end.services.ProductService;
 import com.example.back_end.services.interfaces.OrderDetailService;
 import com.example.back_end.services.interfaces.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private OrderDetailService orderDetailService;
+
+    @Autowired
+    private ProductService productService;
     @Transactional
     @PostMapping("/create-order")
     public ResponseEntity<ResponseObject> create(@RequestBody @Valid OrderRequest orderRequest) {
@@ -32,6 +36,7 @@ public class OrderController {
 
 
         orderRequest.getList_order_detail().stream().forEach(o -> {
+            productService.decrementStockQuantityById(o.getId_product(),o.getQuantity());
             orderDetailService.addOrderDetail(o, order);
         });
         return Optional.of(ResponseEntity.ok().body(

@@ -1,38 +1,78 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
-import { tokens } from '../../theme';
-import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
-import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
-import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
-import Header from '../../components/Header';
-import { getOrder } from '../../API/api'; 
+
+import { Box, useTheme, IconButton, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
+import { useState, useEffect } from "react";
+import DeleteIcon from '@mui/icons-material/Delete';
+import { tokens } from "../../theme";
+import Header from "../../components/Header";
+import { getUsers, deleteUser } from "../../API/api";
 
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, [selectedUserId]);
+
+  const fetchData = async () => {
+    try {
+      const data = await getUsers();
+      // Assume the API returns data with 'email' as a unique identifier
+      const formattedData = data.map((user, index) => ({
+        ...user,
+        id: index + 1, // Example: generate a unique id (replace with your logic)
+      }));
+      setUsers(formattedData);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
+  const handleDeleteClick = (id) => {
+    setSelectedUserId(id);
+    console.log(id);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedUserId(null);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (selectedUserId !== null) {
+      try {
+        await deleteUser(selectedUserId);
+        await fetchData(); // Fetch lại danh sách người dùng sau khi xóa
+        handleClose();
+      } catch (error) {
+        console.error("Error deleting user:", error);
+      }
+    }
+  };
 
   const columns = [
-    { field: 'id', headerName: 'ID' },
+    { field: "user_id", headerName: "ID", width: 100 },
+    { field: "username", headerName: "Username", flex: 1 },
+    { field: "email", headerName: "Email", flex: 1 },
+    { field: "phone", headerName: "Phone Number", flex: 1 },
+    { field: "gender", headerName: "Gender", flex: 1 },
+    { field: "address", headerName: "Address", flex: 1 },
     {
-      field: 'orderDate',
-      headerName: 'Order Date',
-      flex: 1,
+      field: "actions",
+      headerName: "Actions",
+      width: 150,
+      renderCell: (params) => (
+        <IconButton onClick={() => handleDeleteClick(params.row.user_id)}>
+          <DeleteIcon />
+        </IconButton>
+      ),
     },
-    {
-      field: 'totalAmount',
-      headerName: 'Total Amount',
-      type: 'number',
-      flex: 1,
-    },
-    {
-      field: 'addresss',
-      headerName: 'Address',
-      flex: 1,
-    }
+
   ];
 
   useEffect(() => {
@@ -56,7 +96,8 @@ const Team = () => {
 
   return (
     <Box m="20px">
-      <Header title="Đơn hàng" subtitle="Quản lý đơn hàng" />
+      <Header title="USER" subtitle="Danh sách các User" />
+
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -84,10 +125,29 @@ const Team = () => {
         }}
       >
         <DataGrid
-          rows={data} // Ensure data is an array of objects with required fields
+          checkboxSelection
+          rows={users}
           columns={columns}
+          getRowId={(row) => row.id} // Example: Use 'email' as unique identifier
         />
       </Box>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Xác nhận xóa</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Bạn có chắc chắn muốn xóa người dùng này không?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Không
+          </Button>
+          <Button onClick={handleConfirmDelete} color="primary" autoFocus>
+            Có
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

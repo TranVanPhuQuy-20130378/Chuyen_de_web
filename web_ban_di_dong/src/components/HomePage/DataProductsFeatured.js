@@ -15,8 +15,8 @@ function DataProductsFeatured() {
     const [phanTrang, setPhanTrang] = useState({});
 
     const [boLoc, setBoLoc] = useState({
-        _limit: 8,
-        _page: 1
+        size: 8,
+        page: 0
     });
 
     useEffect(() => {
@@ -56,13 +56,13 @@ function DataProductsFeatured() {
 
     }, [boLoc]);
 
-    function handlePageChange(newPage) {
-        console.log('Trang mới: ' + newPage);
-        setBoLoc({
-            ...boLoc,
-            _page: newPage
-        });
-    }
+    // function handlePageChange(newPage) {
+    //     console.log('Trang mới: ' + newPage);
+    //     setBoLoc({
+    //         ...boLoc,
+    //         _page: newPage
+    //     });
+    // }
 
     return (
         <>
@@ -75,9 +75,9 @@ function DataProductsFeatured() {
                     <div>Không tìm thấy sản phẩm</div>
                 )}
             </div>
-            <div className="d-flex justify-content-center">
-                <Pagination pagination={phanTrang} onPageChange={handlePageChange} currentPage={boLoc._page} />
-            </div>
+            {/*<div className="d-flex justify-content-center">*/}
+            {/*    <Pagination pagination={phanTrang} onPageChange={handlePageChange} currentPage={boLoc._page} />*/}
+            {/*</div>*/}
         </>
     );
 }
