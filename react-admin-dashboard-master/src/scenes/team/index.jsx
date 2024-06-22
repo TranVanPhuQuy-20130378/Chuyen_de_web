@@ -1,3 +1,4 @@
+
 import { Box, useTheme, IconButton, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useState, useEffect } from "react";
@@ -71,36 +72,54 @@ const Team = () => {
         </IconButton>
       ),
     },
+
   ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await getOrder(); // Assume getOrder is correctly implemented to fetch data
+        setData(response); // Assuming response is an array of objects with required fields
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <Box m="20px">
       <Header title="USER" subtitle="Danh sách các User" />
+
       <Box
         m="40px 0 0 0"
         height="75vh"
         sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
+          '& .MuiDataGrid-root': {
+            border: 'none',
           },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
+          '& .MuiDataGrid-cell': {
+            borderBottom: 'none',
           },
-          "& .name-column--cell": {
-            color: colors.greenAccent[300],
-          },
-          "& .MuiDataGrid-columnHeaders": {
+          '& .MuiDataGrid-columnHeaders': {
             backgroundColor: colors.blueAccent[700],
-            borderBottom: "none",
+            borderBottom: 'none',
           },
-          "& .MuiDataGrid-virtualScroller": {
+          '& .MuiDataGrid-virtualScroller': {
             backgroundColor: colors.primary[400],
           },
-          "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
+          '& .MuiDataGrid-footerContainer': {
+            borderTop: 'none',
             backgroundColor: colors.blueAccent[700],
           },
-          "& .MuiCheckbox-root": {
+          '& .MuiCheckbox-root': {
             color: `${colors.greenAccent[200]} !important`,
           },
         }}

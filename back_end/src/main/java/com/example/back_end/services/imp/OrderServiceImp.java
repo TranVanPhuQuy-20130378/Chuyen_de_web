@@ -52,4 +52,9 @@ public class OrderServiceImp implements OrderService {
     public List<Order> getOrdersByEmail(String email) {
         return orderRepository.findByUserEmail(email);
     }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
 }

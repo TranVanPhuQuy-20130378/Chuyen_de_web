@@ -110,7 +110,7 @@ const Sidebar = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
 
             <Item
-              title="Manage Team"
+              title="Quản lý danh sách đơn hàng "
               to="/team"
               icon={<PeopleOutlinedIcon />}
               selected={selected}

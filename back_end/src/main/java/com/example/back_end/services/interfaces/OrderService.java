@@ -15,6 +15,6 @@ public interface OrderService {
 
     Order getOrderByUserIdAndOrderId(Integer userId, Integer orderId);
     List<Order> getOrdersByEmail(String email);
-
+    List<Order> getAllOrders();
 
 }
